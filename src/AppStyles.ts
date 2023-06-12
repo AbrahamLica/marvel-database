@@ -99,9 +99,6 @@ export const Link = styled.a<TextProps>`
 ////////////////////////// HOME ///////////////////////
 
 
-
-
-
 export const MainContainer = styled.div<ContainerProps>`
   color: white;
   display: flex;
@@ -122,14 +119,52 @@ export const ContainerCard = styled.div<ContainerProps>`
   margin: 30px 30px;
 `;
 
-
-
 export const ImgCard = styled.img`
     width: 300px;
     height: 300px;
 `;
 
+export const ButtonDetails = styled.button`
+    padding: 5px 10px;
+    background-color: green;
+    cursor: pointer;
+    font-size: 25px;
+    border: none;
+`;
 
 
 
+////////////////////////// DETAILS ///////////////////////
 
+export const MainContainerDetails = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const ContainerDetails = styled.div`
+    width: 90%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const ImgDetails = styled.img`
+    width: 400px;
+    height: 400px;
+`;
+
+export const ContainerDescription = styled.div`
+    width: 50%;
+    margin-left: 60px;
+`;
+
+export const Description = styled.p`
+    font-size: 30px;
+    color: white;
+`;
