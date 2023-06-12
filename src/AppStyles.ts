@@ -104,7 +104,24 @@ export const Link = styled.a<TextProps>`
 
 export const MainContainer = styled.div<ContainerProps>`
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 70vw;
   background-color: green;
   height: 100vh;
 `;
+
+export const ContainerCards = styled.div<ContainerProps>`
+  /* margin: 10px; */
+  display: flex;
+  flex-wrap: wrap;
+  background-color: red;
+`;
+
+export const ContainerCard = styled.div<ContainerProps>`
+  margin: 10px;
+`;
+
+
