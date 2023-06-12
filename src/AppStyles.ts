@@ -108,20 +108,28 @@ export const MainContainer = styled.div<ContainerProps>`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 70vw;
-  background-color: green;
-  height: 100vh;
+  width: 80vw;
+  background-color: #100f0f;
 `;
 
 export const ContainerCards = styled.div<ContainerProps>`
-  /* margin: 10px; */
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  background-color: red;
 `;
 
 export const ContainerCard = styled.div<ContainerProps>`
-  margin: 10px;
+  margin: 30px 30px;
 `;
+
+
+
+export const ImgCard = styled.img`
+    width: 300px;
+    height: 300px;
+`;
+
+
+
 
 

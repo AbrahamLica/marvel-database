@@ -1,12 +1,12 @@
 
 export type RequisicaoType = {
-    name: string,
+    name?: string,
     id?: number,
     thumbnail?: Thumbnail[],
     description?: string
 }
 
 export type Thumbnail = {
-    extension: string,
-    path: string
+    extension?: string,
+    path?: string
 }

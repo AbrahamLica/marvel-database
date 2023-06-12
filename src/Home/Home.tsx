@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import * as C from "../AppStyles";
+import { RequisicaoType } from "../Types/Types";
 
 const Home = () => {
-  const [requisicao, setRequisicao] = useState<string[]>([]);
+
+  const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
   const [offSet, setOffSet] = useState<number>(0);
 
   const Hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
@@ -11,8 +13,6 @@ const Home = () => {
   const [url, setUrl] = useState(
     `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${offSet}`
   );
-
-  // https://i.annihil.us/u/prod/marvel/i/mg/a/f0/5202887448860/portrait_incredible.jpg
   
   useEffect(() => {
     executarRequisicao();
@@ -40,6 +40,7 @@ const Home = () => {
       <C.ContainerCards>
         {requisicao.map((item, index) => (
           <C.ContainerCard>
+            <C.ImgCard src={`${item.thumbnail?.path}.${item.thumbnail?.extension}`}/>
             <p>{item.name}</p>
           </C.ContainerCard>
         ))}
