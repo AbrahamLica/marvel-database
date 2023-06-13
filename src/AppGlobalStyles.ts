@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         justify-content: center;
         align-items: center;
         width: 100%;
-        background-color: black;
+        background-color: #FCFCFC;
     }
 `;
  

@@ -6,7 +6,7 @@ import { Context } from "../../Context/Context";
 const Details = () => {
   const { state, dispatch } = useContext(Context);
 
-  function teste() {
+  function back() {
     console.log(state.marvel.name);
     console.log(state.marvel.description);
     console.log(state.marvel.id);
@@ -20,7 +20,7 @@ const Details = () => {
         <C.ContainerDescription>
           <C.Description>{state.marvel.description}</C.Description>
         </C.ContainerDescription>
-        {/* <button onClick={teste}>teste</button> */}
+        {/* <button onClick={back}>Back</button> */}
       </C.ContainerDetails>
     </C.MainContainerDetails>
   );

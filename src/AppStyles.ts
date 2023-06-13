@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import background from './wallpaper.jpg'
 
 /////////////////// PROPS ///////////////////////
 
@@ -106,7 +107,7 @@ export const MainContainer = styled.div<ContainerProps>`
   align-items: center;
   flex-direction: column;
   width: 80vw;
-  background-color: #100f0f;
+  background-color: #26547C;
 `;
 
 export const ContainerCards = styled.div<ContainerProps>`
@@ -125,13 +126,30 @@ export const ImgCard = styled.img`
 `;
 
 export const ButtonDetails = styled.button`
-    padding: 5px 10px;
-    background-color: green;
+    font-size: 1.3rem;
+    padding: 0.6em 1.6em;
+    background-color: #E9190F;
+    border: 3px solid black;
+    border-radius: 1em;
+    color: #fff;
+    font-weight: bolder;
+    transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
+    box-shadow: -5px 5px 0px 0px black;
     cursor: pointer;
-    font-size: 25px;
-    border: none;
+
+
+    :hover {
+    transform: translate(10px, -6px);
+}
+
 `;
 
+
+
+
+// #26547C
+// #E9190F
+// #FCFCFC
 
 
 ////////////////////////// DETAILS ///////////////////////
@@ -139,24 +157,24 @@ export const ButtonDetails = styled.button`
 export const MainContainerDetails = styled.div`
     width: 100vw;
     height: 100vh;
-    background-color: blue;
+    background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.7)),url(${background});
+    background-repeat: no-repeat;
+    background-size: cover;
+`;
+
+export const ContainerDetails = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
-export const ContainerDetails = styled.div`
-    width: 90%;
-    height: 100%;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
 
 export const ImgDetails = styled.img`
     width: 400px;
     height: 400px;
+   
 `;
 
 export const ContainerDescription = styled.div`
