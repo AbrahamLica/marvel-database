@@ -8,7 +8,7 @@ import { Context } from "../../Context/Context";
 const Home = () => {
   const { state, dispatch } = useContext(Context);
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
-  const [offSet, setOffSet] = useState<number>(0);
+  const [offSet, setOffSet] = useState<number>(0);-
   const usenavigate = useNavigate();
 
   const Hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
@@ -41,6 +41,7 @@ const Home = () => {
     id: number,
     description: string,
     img: string,
+    series: string[]
   ) {
 
     dispatch({
@@ -51,6 +52,7 @@ const Home = () => {
         description: description,
         anythingOpen: true,
         img: img,
+        series: series
       },
     });
 
@@ -76,7 +78,8 @@ const Home = () => {
                 item.name,
                 item.id,
                 item.description,
-                item.thumbnail.path
+                item.thumbnail.path,
+                item.series.items
               )}
             >
               Details

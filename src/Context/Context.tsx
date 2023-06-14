@@ -14,7 +14,8 @@ export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
  openPageSelectedCategory: false,
  selectedCategory: '',
  paginaAtual: 0,
- loading: false
+ loading: false,
+ series: []
 };
 
 export function reducerMarvel(state: MarvelReducerInitialStateType, action: ActionType) {
@@ -27,6 +28,7 @@ export function reducerMarvel(state: MarvelReducerInitialStateType, action: Acti
         description: action.payload.description,
         anythingOpen: action.payload.anythingOpen,
         img: action.payload.img,
+        series: action.payload.series
       };
       break;
 

@@ -9,6 +9,7 @@ export type MarvelReducerInitialStateType = {
     selectedCategory: string | number
     paginaAtual: number
     loading: boolean
+    series: string[]
 }
 
 export type ActionType = {

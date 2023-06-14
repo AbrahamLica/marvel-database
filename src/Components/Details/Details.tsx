@@ -7,21 +7,25 @@ const Details = () => {
   const { state, dispatch } = useContext(Context);
 
   function back() {
-    console.log(state.marvel.name);
-    console.log(state.marvel.description);
-    console.log(state.marvel.id);
-    console.log(state.marvel.img);
+    console.log(state.marvel.series);
   }
 
   return (
-    <C.MainContainerDetails>
-      <C.ContainerDetails>
+    <C.MainContainerDetails>  
+      <C.ContainerDescriptions>
         <C.ImgDetails src={`${state.marvel.img}.jpg`} />
-        <C.ContainerDescription>
-          <C.Description>{state.marvel.description}</C.Description>
-        </C.ContainerDescription>
-        {/* <button onClick={back}>Back</button> */}
-      </C.ContainerDetails>
+        <C.Description>
+          {state.marvel.description}
+          <C.Container margin="30px 0px">
+            <C.Text>Series:</C.Text>
+            {state.marvel.series.map((item, index) => (
+              <p>{item.name}</p>
+            ))}
+          </C.Container>
+        </C.Description>
+      </C.ContainerDescriptions>
+
+      {/* <button onClick={back}>Back</button> */}
     </C.MainContainerDetails>
   );
 };
