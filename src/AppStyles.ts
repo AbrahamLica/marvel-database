@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import background from "./wallpaper.jpg";
+import back from "./back.png"
 
 /////////////////// PROPS ///////////////////////
 
@@ -102,14 +103,16 @@ export const MainContainer = styled.div<ContainerProps>`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 80vw;
-  background-color: #26547c;
-`;
+  width: 100%;
+  background-color: white;
+  `;
 
 export const ContainerCards = styled.div<ContainerProps>`
   display: flex;
+  width: 90%;
   justify-content: center;
   flex-wrap: wrap;
+  background-color: #26547c;
 `;
 
 export const ContainerCard = styled.div<ContainerProps>`
@@ -145,13 +148,43 @@ export const ButtonDetails = styled.button`
 ////////////////////////// DETAILS ///////////////////////
 
 export const MainContainerDetails = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url(${background});
   background-repeat: no-repeat;
   background-size: cover;
 `;
+
+export const HeaderFixed = styled.div`
+  width: 100%;
+  background-color: black;
+  color: white;
+  position: fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8))
+`;
+
+export const ButtonBack = styled.div`
+  font-size: 1.1rem;
+  padding: 0.2em 1.2em;
+  background-color: #e9190f;
+  border: 3px solid black;
+  border-radius: 1em;
+  color: #fff;
+  font-weight: bolder;
+  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
+  cursor: pointer;
+  width: 50px;
+
+  :hover {
+    transform: translate(2px, 3px);
+  }
+`;
+
+export const IconBack = styled.img`
+  width: 30px;
+`;
+
 
 export const ContainerDescriptions = styled.div`
   width: 100%;

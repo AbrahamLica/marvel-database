@@ -8,7 +8,7 @@ import { Context } from "../../Context/Context";
 const Home = () => {
   const { state, dispatch } = useContext(Context);
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
-  const [offSet, setOffSet] = useState<number>(0);-
+  const [offSet, setOffSet] = useState<number>(0);
   const usenavigate = useNavigate();
 
   const Hash = "4a8b729d09d1d2ad3fb626dff7e2165d";

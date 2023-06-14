@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as C from "../../AppStyles";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
+import { useNavigate } from "react-router-dom";
+import iconBack from '../../back.png'
 
 const Details = () => {
   const { state, dispatch } = useContext(Context);
+  const usenavigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
+  
   function back() {
-    console.log(state.marvel.series);
+    usenavigate('/')
   }
 
   return (
-    <C.MainContainerDetails>  
+    <C.MainContainerDetails>
+      <C.HeaderFixed>
+        <C.ButtonBack onClick={back}>
+          <C.IconBack src={iconBack}/>
+        </C.ButtonBack>
+      </C.HeaderFixed>  
       <C.ContainerDescriptions>
         <C.ImgDetails src={`${state.marvel.img}.jpg`} />
         <C.Description>

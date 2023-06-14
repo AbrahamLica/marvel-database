@@ -9,11 +9,8 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-family: 'Roboto';
         box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 100%;
-        background-color: #FCFCFC;
+        background-color: white;
         overflow-x: hidden;
     }
 `;
