@@ -4,47 +4,50 @@ import { useEffect, useState } from "react";
 import bannercharacters from "../../Media/characters.png";
 import bannercomics from "../../Media/comics.png";
 
-const Home = () => {
-  const [isHoverText, setIsHoverText] = useState(false);
-  const [isHoverBanner, setIsHoverBanner] = useState(false);
-  const [categoryName, setCategoryName] = useState<any>();
+export const Home = () => {
 
-  useEffect(() => {
-    teste();
-  }, [categoryName]);
+    const [isHoverText, setIsHoverText] = useState(false);
+    const [isHoverBanner, setIsHoverBanner] = useState(false);
+    const [categoryName, setCategoryName] = useState<any>();
 
-  function handleMouseOverText(categoryname: string) {
-    setIsHoverText(true);
-    setCategoryName(categoryname);
-  }
+    useEffect(() => {
+        teste();
+      }, [categoryName]);
 
-  function handleMouseOutText() {
-    setIsHoverText(false);
-  }
-
-  function handleMouseOverBanner() {
-    setIsHoverBanner(true);
-    if (isHoverText == false) {
-      setIsHoverBanner(false);
-    }
-  }
-
-  function handleMouseOutBanner() {
-    setIsHoverBanner(false);
-    setIsHoverText(false);
-  }
-
-  function teste() {
-    if (categoryName == "characters") {
-      setCategoryName(`bannercharacters`);
-    } else if (categoryName == "comics") {
-      setCategoryName(`bannercomics`);
+      function handleMouseOverText(categoryname: string) {
+        setIsHoverText(true);
+        setCategoryName(categoryname);
+      }
     
-  }
+      function handleMouseOutText() {
+        setIsHoverText(false);
+      }
+    
+      function handleMouseOverBanner() {
+        setIsHoverBanner(true);
+        if (isHoverText == false) {
+          setIsHoverBanner(false);
+        }
+      }
+    
+      function handleMouseOutBanner() {
+        setIsHoverBanner(false);
+        setIsHoverText(false);
+      }
+    
+      function teste() {
+        if (categoryName == "characters") {
+          setCategoryName(`bannercharacters`);
+        } else if (categoryName == "comics") {
+          setCategoryName(`bannercomics`);
+        
+      }
+    
+      function teste2() {
+        console.log(categoryName);
+      }
+ 
 
-  function teste2() {
-    console.log(categoryName);
-  }
 
   return (
     <C.MainContainer>
@@ -90,5 +93,6 @@ const Home = () => {
     </C.MainContainer>
   );
 };
+}
 
 export default Home;
