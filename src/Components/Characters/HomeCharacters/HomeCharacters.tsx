@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../../Context/Context";
 
-const Home = () => {
+const HomeCharacters = () => {
   const { state, dispatch } = useContext(Context);
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
   const usenavigate = useNavigate();
@@ -68,6 +68,9 @@ const Home = () => {
         series: series,
       },
     });
+
+    
+    
     usenavigate("/detailsCharacters");
   }
 
@@ -117,6 +120,7 @@ const Home = () => {
               </C.ButtonDetails>
             </C.ContainerCard>
           ))}
+          
         </C.ContainerCards>
         <C.ContainerButtons>
           {state.marvel.currentPage >= 100 && (
@@ -129,4 +133,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeCharacters;

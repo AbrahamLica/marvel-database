@@ -93,13 +93,11 @@ export const Link = styled.a<TextProps>`
   text-decoration: none;
 `;
 
-
 ////////////////////////// HOME  ///////////////////////
-
-
 
 export const MainContainer = styled.div<ContainerProps>`
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   background-color: black;
@@ -131,36 +129,22 @@ export const CategoryText = styled.p<ContainerProps>`
   font-size: 17px;
   color: white;
   margin: 20px 20px;
-  font-family: 'Roboto Condensed';
+  font-family: "Roboto Condensed";
   font-weight: bold;
   text-transform: uppercase;
 `;
 
-export const CharactersBanner = styled.p<ContainerProps>`
-  display: none;
+export const Banner = styled.div<ContainerProps>`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 40vh;
-  background-color: red;
+  height: 0vh;
+  background-color: white;
   position: absolute;
-  top: 80px;
-  transition: 3s;
-
-  
+  top: 91px;
+  transition: 0.5s;
 `;
 
-
-
+export const ImgBanner = styled.img<ContainerProps>``;
 
 // #202020
-
-
-
-
-
-
-
-
-
-
-
-

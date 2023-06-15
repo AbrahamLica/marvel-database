@@ -1,24 +1,33 @@
 import { createContext, useReducer } from "react";
-import { ContextType, ActionType, ChildrenType, InitialStateContextType, MarvelReducerInitialStateType, Thumbnail } from "../Types/Types";
-
+import {
+  ContextType,
+  ActionType,
+  ChildrenType,
+  InitialStateContextType,
+  MarvelReducerInitialStateType,
+  Thumbnail,
+} from "../Types/Types";
 
 ////////////////////////  REDUCER MOVIES  ////////////////////////////////
 
 export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
- id: 0,
- name: '',
- description: '',
- anythingOpen: false,
- img: '',
- homePage: true,
- openPageSelectedCategory: false,
- selectedCategory: '',
- currentPage: 0,
- loading: false,
- series: []
+  id: 0,
+  name: "",
+  description: "",
+  anythingOpen: false,
+  img: "",
+  homePage: true,
+  openPageSelectedCategory: false,
+  selectedCategory: "",
+  currentPage: 0,
+  loading: false,
+  series: [],
 };
 
-export function reducerMarvel(state: MarvelReducerInitialStateType, action: ActionType) {
+export function reducerMarvel(
+  state: MarvelReducerInitialStateType,
+  action: ActionType
+) {
   switch (action.type) {
     case "OPEN_DETAILS":
       return {
@@ -28,17 +37,16 @@ export function reducerMarvel(state: MarvelReducerInitialStateType, action: Acti
         description: action.payload.description,
         anythingOpen: action.payload.anythingOpen,
         img: action.payload.img,
-        series: action.payload.series
+        series: action.payload.series,
       };
       break;
 
-      case "NEXT_PAGE":
-        return {
-          ...state,
-          currentPage: action.payload.currentPage  
-        };
-        break;
-
+    case "NEXT_PAGE":
+      return {
+        ...state,
+        currentPage: action.payload.currentPage,
+      };
+      break;
   }
   return state;
 }
