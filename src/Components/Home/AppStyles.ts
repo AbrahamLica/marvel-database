@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import background from "./wallpaper.jpg";
-import back from "./back.png"
 
 /////////////////// PROPS ///////////////////////
 
@@ -95,114 +93,74 @@ export const Link = styled.a<TextProps>`
   text-decoration: none;
 `;
 
-////////////////////////// HOME ///////////////////////
+
+////////////////////////// HOME  ///////////////////////
+
+
 
 export const MainContainer = styled.div<ContainerProps>`
-  color: white;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  background-color: white;
-  `;
-
-export const ContainerCards = styled.div<ContainerProps>`
-  display: flex;
-  width: 90%;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: #26547c;
-`;
-
-export const ContainerCard = styled.div<ContainerProps>`
-  margin: 30px 30px;
-`;
-
-export const ImgCard = styled.img`
-  width: 300px;
-  height: 300px;
-`;
-
-export const ButtonDetails = styled.button`
-  font-size: 1.3rem;
-  padding: 0.6em 1.6em;
-  background-color: #e9190f;
-  border: 3px solid black;
-  border-radius: 1em;
-  color: #fff;
-  font-weight: bolder;
-  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
-  box-shadow: -5px 5px 0px 0px black;
-  cursor: pointer;
-
-  :hover {
-    transform: translate(10px, -6px);
-  }
-`;
-
-// #26547C
-// #E9190F
-// #FCFCFC
-
-////////////////////////// DETAILS ///////////////////////
-
-export const MainContainerDetails = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(${background});
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
-
-export const HeaderFixed = styled.div`
-  width: 100%;
   background-color: black;
-  color: white;
-  position: fixed;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8))
 `;
 
-export const ButtonBack = styled.div`
-  font-size: 1.1rem;
-  padding: 0.2em 1.2em;
-  background-color: #e9190f;
-  border: 3px solid black;
-  border-radius: 1em;
-  color: #fff;
-  font-weight: bolder;
-  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
-  cursor: pointer;
-  width: 50px;
-
-  :hover {
-    transform: translate(2px, 3px);
-  }
-`;
-
-export const IconBack = styled.img`
-  width: 30px;
-`;
-
-
-export const ContainerDescriptions = styled.div`
+export const Header = styled.div<ContainerProps>`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: 30px;
-`;
-
-export const ImgDetails = styled.img`
-  width: 400px;
-  height: 400px;
-`;
-
-export const Description = styled.p`
-  font-size: 30px;
-  width: 50%;
-  margin-left: 30px;
-  color: white;
+  height: 15vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: #202020;
 `;
+
+export const Logo = styled.img<ContainerProps>`
+  height: 50%;
+  width: 10%;
+`;
+
+export const SubHeader = styled.div<ContainerProps>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #393939;
+`;
+
+export const CategoryText = styled.p<ContainerProps>`
+  font-size: 17px;
+  color: white;
+  margin: 20px 20px;
+  font-family: 'Roboto Condensed';
+  font-weight: bold;
+  text-transform: uppercase;
+`;
+
+export const CharactersBanner = styled.p<ContainerProps>`
+  display: none;
+  width: 100%;
+  height: 40vh;
+  background-color: red;
+  position: absolute;
+  top: 80px;
+  transition: 3s;
+
+  
+`;
+
+
+
+
+// #202020
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { ContextType, ActionType, ChildrenType, InitialStateContextType, MarvelReducerInitialStateType } from "../Types/Types";
+import { ContextType, ActionType, ChildrenType, InitialStateContextType, MarvelReducerInitialStateType, Thumbnail } from "../Types/Types";
 
 
 ////////////////////////  REDUCER MOVIES  ////////////////////////////////
@@ -13,7 +13,7 @@ export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
  homePage: true,
  openPageSelectedCategory: false,
  selectedCategory: '',
- paginaAtual: 0,
+ currentPage: 0,
  loading: false,
  series: []
 };
@@ -31,6 +31,13 @@ export function reducerMarvel(state: MarvelReducerInitialStateType, action: Acti
         series: action.payload.series
       };
       break;
+
+      case "NEXT_PAGE":
+        return {
+          ...state,
+          currentPage: action.payload.currentPage  
+        };
+        break;
 
   }
   return state;
