@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import bannercharacters from "../../Media/characters.png";
 import bannercomics from "../../Media/comics.png";
 
-export const Home = () => {
+ const Home = () => {
 
     const [isHoverText, setIsHoverText] = useState(false);
     const [isHoverBanner, setIsHoverBanner] = useState(false);
@@ -91,8 +91,6 @@ export const Home = () => {
 
       <button onClick={teste2}>teste</button>
     </C.MainContainer>
-  );
-};
-}
+  )}}
 
 export default Home;
