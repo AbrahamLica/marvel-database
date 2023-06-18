@@ -18,9 +18,7 @@ const Home = () => {
   useEffect(() => {
   }, []);
 
-  function teste () 
 
-  
   function handleMouseOverText() {
     setIsHoverText(true);
     setBannerCharacters(true);
