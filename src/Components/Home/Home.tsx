@@ -1,53 +1,46 @@
+import React from "react";
 import * as C from "./AppStyles";
 import logo from "../../Media/logo.png";
 import { useEffect, useState } from "react";
 import bannercharacters from "../../Media/characters.png";
 import bannercomics from "../../Media/comics.png";
 
- const Home = () => {
+const Home = () => {
+  const [isHoverText, setIsHoverText] = useState(false);
+  const [isHoverBanner, setIsHoverBanner] = useState(false);
+  const [bannerCharacters, setBannerCharacters] = useState(false);
+  const [bannerComics, setBannerComics] = useState();
+  // const [bannerCharacters, setCategoryName] = useState<any>();
+  // const [bannerCharacters, setCategoryName] = useState<any>();
+  // const [bannerCharacters, setCategoryName] = useState<any>();
+  // const [bannerCharacters, setCategoryName] = useState<any>();
 
-    const [isHoverText, setIsHoverText] = useState(false);
-    const [isHoverBanner, setIsHoverBanner] = useState(false);
-    const [categoryName, setCategoryName] = useState<any>();
+  useEffect(() => {
+  }, []);
 
-    useEffect(() => {
-        teste();
-      }, [categoryName]);
+  function teste () 
 
-      function handleMouseOverText(categoryname: string) {
-        setIsHoverText(true);
-        setCategoryName(categoryname);
-      }
-    
-      function handleMouseOutText() {
-        setIsHoverText(false);
-      }
-    
-      function handleMouseOverBanner() {
-        setIsHoverBanner(true);
-        if (isHoverText == false) {
-          setIsHoverBanner(false);
-        }
-      }
-    
-      function handleMouseOutBanner() {
-        setIsHoverBanner(false);
-        setIsHoverText(false);
-      }
-    
-      function teste() {
-        if (categoryName == "characters") {
-          setCategoryName(`bannercharacters`);
-        } else if (categoryName == "comics") {
-          setCategoryName(`bannercomics`);
-        
-      }
-    
-      function teste2() {
-        console.log(categoryName);
-      }
- 
+  
+  function handleMouseOverText() {
+    setIsHoverText(true);
+    setBannerCharacters(true);
+  }
 
+  function handleMouseOutText() {
+    setIsHoverText(false);
+  }
+
+  function handleMouseOverBanner() {
+    setIsHoverBanner(true);
+    if (isHoverText == false) {
+      setIsHoverBanner(false);
+    }
+  }
+
+  function handleMouseOutBanner() {
+    setIsHoverBanner(false);
+    setIsHoverText(false);
+  }
 
   return (
     <C.MainContainer>
@@ -55,7 +48,7 @@ import bannercomics from "../../Media/comics.png";
         <C.Logo src={logo} />
         <C.SubHeader>
           <C.CategoryText
-            onMouseOver={() => handleMouseOverText("characters")}
+            onMouseOver={handleMouseOverText}
             onMouseOut={handleMouseOutText}
           >
             Characters
@@ -68,11 +61,13 @@ import bannercomics from "../../Media/comics.png";
               height: isHoverText || isHoverBanner ? "75vh" : "0%",
             }}
           >
-            <C.ImgBanner src={categoryName}></C.ImgBanner>
+            <C.ImgBanner
+              {}        
+            ></C.ImgBanner>
           </C.Banner>
 
           <C.CategoryText
-            onMouseOver={() => handleMouseOverText("comics")}
+            onMouseOver={handleMouseOverText}
             onMouseOut={handleMouseOutText}
           >
             Comics
@@ -89,8 +84,8 @@ import bannercomics from "../../Media/comics.png";
         </C.SubHeader>
       </C.Header>
 
-      <button onClick={teste2}>teste</button>
+      {/* <button onClick={teste2}>teste</button> */}
     </C.MainContainer>
-  )}}
-
+  );
+};
 export default Home;
