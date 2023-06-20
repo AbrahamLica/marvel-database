@@ -141,10 +141,12 @@ export const Banner = styled.div<ContainerProps>`
   height: 0vh;
   background-color: white;
   position: absolute;
-  top: 83px;
+  top: 95px;
   transition: 0.5s;
 `;
 
-export const ImgBanner = styled.img<ContainerProps>``;
+export const ImgBanner = styled.img<ContainerProps>`
+  cursor: pointer;
+`;
 
 // #202020

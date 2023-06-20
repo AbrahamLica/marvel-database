@@ -54,6 +54,15 @@ export const MainContainer = styled.div<ContainerProps>`
   background-color: white;
 `;
 
+export const Header = styled.div<ContainerProps>`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  background-color: red;
+  height: 10vh;
+`;
+
 export const MainContainerCards = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;

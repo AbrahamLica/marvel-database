@@ -7,15 +7,17 @@ import bannercreators from "../../Media/creators.png";
 import bannerevents from "../../Media/events.png";
 import bannerseries from "../../Media/series.png";
 import bannerstories from "../../Media/stories.png";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [isHoverText, setIsHoverText] = useState(false);
   const [isHoverBanner, setIsHoverBanner] = useState(false);
   const [banner, setBanner] = useState<string>();
   const [bannerajustado, setBannerajustado] = useState<string>();
+  const usenavigate = useNavigate();
 
   useEffect(() => {
-    teste();
+    setNameBanner();
   }, [banner]);
 
   function handleMouseOverText(banner: string) {
@@ -39,7 +41,7 @@ const Home = () => {
     setIsHoverText(false);
   }
 
-  function teste() {
+  function setNameBanner() {
     if (banner == "characters") {
       return setBannerajustado(bannercharacters);
     } else if (banner == "comics") {
@@ -53,6 +55,10 @@ const Home = () => {
     } else if (banner == "stories") {
       return setBannerajustado(bannerstories);
     }
+  }
+
+  function pageCharacters(page: string) {
+    usenavigate(`/page${page}`);
   }
 
   return (
@@ -74,7 +80,10 @@ const Home = () => {
               height: isHoverText || isHoverBanner ? "75vh" : "0%",
             }}
           >
-            <C.ImgBanner src={bannerajustado}></C.ImgBanner>
+            <C.ImgBanner
+              onClick={() => pageCharacters(`${banner}`)}
+              src={bannerajustado}
+            ></C.ImgBanner>
           </C.Banner>
 
           <C.CategoryText
@@ -114,7 +123,6 @@ const Home = () => {
           </C.CategoryText>
         </C.SubHeader>
       </C.Header>
-
     </C.MainContainer>
   );
 };

@@ -76,6 +76,9 @@ const HomeCharacters = () => {
 
   return (
     <C.MainContainer>
+      <C.Header>
+        
+      </C.Header>
       <C.MainContainerCards>
         <C.ContainerCards>
           {requisicao.map((item, index) => (

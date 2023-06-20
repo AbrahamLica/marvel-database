@@ -13,7 +13,7 @@ const Details = () => {
   }, []);
 
   function back() {
-    usenavigate("/homeCharacters");
+    usenavigate("/pagecharacters");
   }
 
   return (
