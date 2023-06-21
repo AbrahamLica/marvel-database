@@ -95,12 +95,63 @@ export const Link = styled.a<TextProps>`
 
 ////////////////////////// HOME  ///////////////////////
 
-export const MainContainer = styled.div<ContainerProps>`
+
+export const Header = styled.div<ContainerProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 15vh;
+  background-color: #202020;
+  position: fixed;
+  z-index: 1;
+`;
+
+export const TopHeader = styled.div<ContainerProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 10px;
+`;
+
+export const Logo = styled.img<ContainerProps>`
+  width: 200px;
+  cursor: pointer;
+`;
+
+export const BottomHeader = styled.div<ContainerProps>`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #393939;
+  background-color: #202020;
+`;
+
+export const CategoryText = styled.p<ContainerProps>`
+  font-size: 17px;
+  color: white;
+  margin: 10px 20px;
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  text-transform: uppercase;
+`;
+
+export const Banner = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;
-  background-color: black;
-  color: white;
+  width: 100%;
+  height: 0vh;
+  background-color: white;
+  position: absolute;
+  top: 135px;
+  transition: 0.5s;
+`;
+
+export const ImgBanner = styled.img<ContainerProps>`
+  cursor: pointer;
 `;
 

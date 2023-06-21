@@ -1,76 +1,85 @@
 import styled from "styled-components";
 
 export type ContainerProps = {
-    color?: string;
-    id?: any;
-    width?: string;
-    heigth?: string;
-    backgroundColor?: string;
-    displayFlex?: boolean;
-    flex?: string;
-    flexWrap?: boolean;
-    alignItems?: string;
-    margin?: string;
-    padding?: string;
-    column?: boolean;
-    border?: string;
-    borderRadius?: string;
-    cursorPointer?: boolean;
-    backgroundImage?: string;
-    backgroundPosition?: string;
-    backgroundSize?: string;
-    justifyContent?: string;
-  };
-  
-  export type InputProps = {
-    color?: string;
-    bold?: boolean;
-    fontSize?: string;
-    width?: string;
-    backgroundColor?: string;
-    margin?: string;
-  };
-  
-  export type TextProps = {
-    color?: string;
-    bold?: boolean;
-    fontSize?: string;
-    textAlign?: string;
-    margin?: string;
-    backgroundColor?: string;
-    padding?: string;
-    borderRadius?: string;
-    cursorPointer?: boolean;
-    zIndex?: boolean;
-  };
-  
+  color?: string;
+  id?: any;
+  width?: string;
+  heigth?: string;
+  backgroundColor?: string;
+  displayFlex?: boolean;
+  flex?: string;
+  flexWrap?: boolean;
+  alignItems?: string;
+  margin?: string;
+  padding?: string;
+  column?: boolean;
+  border?: string;
+  borderRadius?: string;
+  cursorPointer?: boolean;
+  backgroundImage?: string;
+  backgroundPosition?: string;
+  backgroundSize?: string;
+  justifyContent?: string;
+};
+
+export type InputProps = {
+  color?: string;
+  bold?: boolean;
+  fontSize?: string;
+  width?: string;
+  backgroundColor?: string;
+  margin?: string;
+};
+
+export type TextProps = {
+  color?: string;
+  bold?: boolean;
+  fontSize?: string;
+  textAlign?: string;
+  margin?: string;
+  backgroundColor?: string;
+  padding?: string;
+  borderRadius?: string;
+  cursorPointer?: boolean;
+  zIndex?: boolean;
+};
+
 ///////////////////////// HOME CHARACTERS ///////////////////////
 
 export const MainContainer = styled.div<ContainerProps>`
-  color: white;
   display: flex;
-  justify-content: center;
+  min-height: 100vh;
   width: 100%;
-  background-color: white;
+  background-color: black;
+  justify-content: center;
 `;
 
 export const Header = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: white;
-  background-color: red;
   height: 10vh;
+  background-color: #202020;
+  position: fixed;
+  z-index: 1;
+  padding: 10px;
+`;
+
+export const Logo = styled.img<ContainerProps>`
+  height: 100%;
+  width: 10%;
+  cursor: pointer;
 `;
 
 export const MainContainerCards = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
-  background-color: #26547c;
+  background-color: black;
   width: 95%;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 140px;
 `;
 
 export const ContainerCards = styled.div<ContainerProps>`
