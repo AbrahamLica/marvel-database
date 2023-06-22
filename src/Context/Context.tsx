@@ -42,17 +42,17 @@ export function reducerMarvel(
       };
       break;
 
-    case "NEXT_PAGE":
+    case "BACK_PAGE":
       return {
         ...state,
         currentPage: action.payload.currentPage,
       };
       break;
 
-    case "SET_URL":
+    case "NEXT_PAGE":
       return {
         ...state,
-        url: action.payload.url,
+        currentPage: action.payload.currentPage,
       };
       break;
   }

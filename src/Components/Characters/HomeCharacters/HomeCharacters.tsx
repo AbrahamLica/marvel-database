@@ -10,29 +10,44 @@ const HomeCharacters = () => {
   const { state, dispatch } = useContext(Context);
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
   const usenavigate = useNavigate();
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState<boolean>(false);
   const Hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
   const publicKey = "8df0db429915d47e065eb03b37ca9039";
-  const [url, setUrl] = useState<any>(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`);
 
   useEffect(() => {
     executarRequisicao();
-  }, [state.marvel.currentPage, url]);
+  }, [state.marvel.currentPage]);
 
   async function executarRequisicao() {
-    let req = await fetch(url);
+    setLoading(true);
+    let req = await fetch(
+      `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
+    );
     let json = await req.json();
     setRequisicao(json.data.results);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }
 
-  async function backPage() {
-    executarRequisicao();
+  function backPage() {
     dispatch({
       type: "BACK_PAGE",
       payload: {
-        currentPage: (state.marvel.currentPage -= 100),
+        currentPage: state.marvel.currentPage - 100,
       },
     });
+    executarRequisicao();
+  }
+
+  function nextPage() {
+    dispatch({
+      type: "NEXT_PAGE",
+      payload: {
+        currentPage: (state.marvel.currentPage += 100),
+      },
+    });
+    executarRequisicao();
   }
 
   function openDetails(
@@ -61,18 +76,7 @@ const HomeCharacters = () => {
     usenavigate("/");
   }
 
-  async function nextPage() {
-    executarRequisicao();
-    dispatch({
-      type: "NEXT_PAGE",
-      payload: {
-        currentPage: (state.marvel.currentPage += 100),
-      },
-    });
-  }
-
   function teste() {
-    console.log(url);
     console.log(state.marvel.currentPage);
   }
 
@@ -80,7 +84,14 @@ const HomeCharacters = () => {
     <C.MainContainer>
       <Header></Header>
       <C.MainContainerCards>
-        {requisicao.length ? (
+        {loading ? (
+          <C.newtonsCradle>
+            <C.newtonsCradleDot></C.newtonsCradleDot>
+            <C.newtonsCradleDot></C.newtonsCradleDot>
+            <C.newtonsCradleDot></C.newtonsCradleDot>
+            <C.newtonsCradleDot></C.newtonsCradleDot>
+          </C.newtonsCradle>
+        ) : (
           <C.ContainerCards>
             {requisicao.map((item, index) => (
               <C.ContainerCard>
@@ -125,13 +136,6 @@ const HomeCharacters = () => {
               </C.ContainerCard>
             ))}
           </C.ContainerCards>
-        ) : (
-          <C.newtonsCradle>
-            <C.newtonsCradleDot></C.newtonsCradleDot>
-            <C.newtonsCradleDot></C.newtonsCradleDot>
-            <C.newtonsCradleDot></C.newtonsCradleDot>
-            <C.newtonsCradleDot></C.newtonsCradleDot>
-          </C.newtonsCradle>
         )}
 
         <C.ContainerButtons>
