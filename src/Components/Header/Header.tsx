@@ -1,6 +1,7 @@
 import * as C from "./AppStyles";
 import logo from "../../Media/logo.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../Context/Context";
 import bannercharacters from "../../Media/characters.png";
 import bannercomics from "../../Media/comics.png";
 import bannercreators from "../../Media/creators.png";
@@ -10,6 +11,7 @@ import bannerstories from "../../Media/stories.png";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const { state, dispatch } = useContext(Context);
   const [isHoverText, setIsHoverText] = useState(false);
   const [isHoverBanner, setIsHoverBanner] = useState(false);
   const [banner, setBanner] = useState<string>();
@@ -59,6 +61,12 @@ const Header = () => {
 
   function pageCharacters(page: string) {
     usenavigate(`/page${page}`);
+    dispatch({
+      type: "SET_URL",
+      payload: {
+        url: page,
+      },
+    });
   }
 
   function backHome() {

@@ -10,6 +10,7 @@ export type MarvelReducerInitialStateType = {
   currentPage: number;
   loading: boolean;
   series: string[] | any;
+  url: string
 };
 
 export type ActionType = {

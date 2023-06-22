@@ -22,6 +22,7 @@ export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
   currentPage: 0,
   loading: false,
   series: [],
+  url: "",
 };
 
 export function reducerMarvel(
@@ -45,6 +46,13 @@ export function reducerMarvel(
       return {
         ...state,
         currentPage: action.payload.currentPage,
+      };
+      break;
+
+    case "SET_URL":
+      return {
+        ...state,
+        url: action.payload.url,
       };
       break;
   }
