@@ -70,7 +70,7 @@ const Header = () => {
   }
 
   function backHome() {
-    usenavigate('/')
+    usenavigate("/");
     dispatch({
       type: "BACK_HOME",
       payload: {
@@ -80,7 +80,6 @@ const Header = () => {
   }
 
   return (
-    
     <C.Header>
       <C.TopHeader>
         <C.Logo src={logo} onClick={backHome} />

@@ -5,14 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../../Context/Context";
 import Header from "../../Header/Header";
-import back from '../../../Media/back.svg'
-import next from '../../../Media/next.svg'
+import Footer from '../../Footer/Footer'
+
 
 const HomeCharacters = () => {
   const { state, dispatch } = useContext(Context);
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
   const usenavigate = useNavigate();
-  const [loading, setLoading] = useState<boolean>(false);
   const Hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
   const publicKey = "8df0db429915d47e065eb03b37ca9039";
 
@@ -21,35 +20,27 @@ const HomeCharacters = () => {
   }, [state.marvel.currentPage]);
 
   async function executarRequisicao() {
-    setLoading(true);
+    dispatch({
+      type: "SET_LOADING",
+      payload: {
+        loading: true
+      },
+    })
+    // setLoading(true);
     let req = await fetch(
       `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
     );
     let json = await req.json();
     setRequisicao(json.data.results);
     setTimeout(() => {
-      setLoading(false);
+      // setLoading(false);
+      dispatch({
+        type: "SET_LOADING",
+        payload: {
+          loading: false
+        },
+      })
     }, 1000);
-  }
-
-  function backPage() {
-    dispatch({
-      type: "BACK_PAGE",
-      payload: {
-        currentPage: state.marvel.currentPage - 100,
-      },
-    });
-    executarRequisicao();
-  }
-
-  function nextPage() {
-    dispatch({
-      type: "NEXT_PAGE",
-      payload: {
-        currentPage: (state.marvel.currentPage += 100),
-      },
-    });
-    executarRequisicao();
   }
 
   function openDetails(
@@ -78,15 +69,31 @@ const HomeCharacters = () => {
     usenavigate("/");
   }
 
-  function teste() {
-    console.log(state.marvel.currentPage);
+  function backPage() {
+    dispatch({
+      type: "BACK_PAGE",
+      payload: {
+        currentPage: state.marvel.currentPage - 100,
+      },
+    });
+    executarRequisicao();
+  }
+
+  function nextPage() {
+    dispatch({
+      type: "NEXT_PAGE",
+      payload: {
+        currentPage: (state.marvel.currentPage += 100),
+      },
+    });
+    executarRequisicao();
   }
 
   return (
     <C.MainContainer>
       <Header></Header>
       <C.MainContainerCards>
-        {loading ? (
+        {state.marvel.loading ? (
           <C.newtonsCradle>
             <C.newtonsCradleDot></C.newtonsCradleDot>
             <C.newtonsCradleDot></C.newtonsCradleDot>
@@ -155,28 +162,8 @@ const HomeCharacters = () => {
           )}
         </C.ContainerButtons> */}
 
-        {loading == true ? null : (
-          <C.ContainerMainNextBack>
-            <C.ContainerMainPageAtual>
-              <C.ContainerPageAtual>
-                <C.TextPaginaAtual>
-                  {state.marvel.currentPage}
-                </C.TextPaginaAtual>
-              </C.ContainerPageAtual>
-            </C.ContainerMainPageAtual>
-
-            <C.ContainerNextBack>
-              <C.Container displayFlex>
-                <C.Container onClick={backPage} cursorPointer>
-                  <img src={back} alt="" width="40px" />
-                </C.Container>
-
-                <C.Container onClick={nextPage} cursorPointer>
-                  <img src={next} alt="" width="40px" />
-                </C.Container>
-              </C.Container>
-            </C.ContainerNextBack>
-          </C.ContainerMainNextBack>
+        {state.marvel.loading == true ? null : (
+          <Footer></Footer>
         )}
       </C.MainContainerCards>
     </C.MainContainer>

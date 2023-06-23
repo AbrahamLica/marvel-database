@@ -46,6 +46,7 @@ export function reducerMarvel(
       return {
         ...state,
         currentPage: action.payload.currentPage,
+        loading: action.payload.loading
       };
       break;
 
@@ -53,6 +54,7 @@ export function reducerMarvel(
       return {
         ...state,
         currentPage: action.payload.currentPage,
+        loading: action.payload.loading
       };
       break;
 
@@ -60,6 +62,13 @@ export function reducerMarvel(
       return {
         ...state,
         currentPage: action.payload.currentPage,
+      };
+      break;
+
+      case "SET_LOADING":
+      return {
+        ...state,
+        loading: action.payload.loading,
       };
       break;
   }
