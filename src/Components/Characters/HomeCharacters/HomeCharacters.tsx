@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../../Context/Context";
 import Header from "../../Header/Header";
+import back from '../../../Media/back.svg'
+import next from '../../../Media/next.svg'
 
 const HomeCharacters = () => {
   const { state, dispatch } = useContext(Context);
@@ -165,11 +167,11 @@ const HomeCharacters = () => {
 
             <C.ContainerNextBack>
               <C.Container displayFlex>
-                <C.Container onClick={voltarPagina} cursorPointer>
+                <C.Container onClick={backPage} cursorPointer>
                   <img src={back} alt="" width="40px" />
                 </C.Container>
 
-                <C.Container onClick={passarPagina} cursorPointer>
+                <C.Container onClick={nextPage} cursorPointer>
                   <img src={next} alt="" width="40px" />
                 </C.Container>
               </C.Container>
