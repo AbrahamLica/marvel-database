@@ -138,14 +138,44 @@ const HomeCharacters = () => {
           </C.ContainerCards>
         )}
 
-        <C.ContainerButtons>
-          {state.marvel.currentPage >= 100 && (
-            <button onClick={backPage}>Back Page</button>
+        {/* <C.ContainerButtons>
+          {loading == true ? (
+              null
+          ) : (
+            <div>
+            {state.marvel.currentPage >= 100 && (
+              <button onClick={backPage}>Back Page</button>
+            )}
+            <button onClick={nextPage}>Next Page</button>
+  
+            <button onClick={teste}>teste</button>
+            </div>
           )}
-          <button onClick={nextPage}>Next Page</button>
+        </C.ContainerButtons> */}
 
-          <button onClick={teste}>teste</button>
-        </C.ContainerButtons>
+        {loading == true ? null : (
+          <C.ContainerMainNextBack>
+            <C.ContainerMainPageAtual>
+              <C.ContainerPageAtual>
+                <C.TextPaginaAtual>
+                  {state.marvel.currentPage}
+                </C.TextPaginaAtual>
+              </C.ContainerPageAtual>
+            </C.ContainerMainPageAtual>
+
+            <C.ContainerNextBack>
+              <C.Container displayFlex>
+                <C.Container onClick={voltarPagina} cursorPointer>
+                  <img src={back} alt="" width="40px" />
+                </C.Container>
+
+                <C.Container onClick={passarPagina} cursorPointer>
+                  <img src={next} alt="" width="40px" />
+                </C.Container>
+              </C.Container>
+            </C.ContainerNextBack>
+          </C.ContainerMainNextBack>
+        )}
       </C.MainContainerCards>
     </C.MainContainer>
   );

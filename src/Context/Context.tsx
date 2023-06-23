@@ -55,6 +55,13 @@ export function reducerMarvel(
         currentPage: action.payload.currentPage,
       };
       break;
+
+    case "BACK_HOME":
+      return {
+        ...state,
+        currentPage: action.payload.currentPage,
+      };
+      break;
   }
   return state;
 }

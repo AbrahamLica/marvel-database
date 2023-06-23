@@ -71,6 +71,12 @@ const Header = () => {
 
   function backHome() {
     usenavigate('/')
+    dispatch({
+      type: "BACK_HOME",
+      payload: {
+        currentPage: 0,
+      },
+    });
   }
 
   return (
