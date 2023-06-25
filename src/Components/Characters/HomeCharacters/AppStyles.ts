@@ -44,8 +44,19 @@ export type TextProps = {
   zIndex?: boolean;
 };
 
-///////////////////////// GENERIC ///////////////////////
+export type ImgProps = {
+  characterWidth?: boolean;
+  comicsWidth?: boolean;
+};
 
+export type ItemNameProps = {
+  characterWidth?: boolean;
+  comicsWidth?: boolean;
+  characterHeight?: boolean
+  comicsHeight?: boolean
+};
+
+///////////////////////// GENERIC ///////////////////////
 
 export const Container = styled.div<ContainerProps>`
   color: ${(props) => props.color};
@@ -70,26 +81,15 @@ export const Container = styled.div<ContainerProps>`
   overflow: hidden;
 `;
 
-
-///////////////////////// HOME CHARACTERS ///////////////////////
+///////////////////////// BODY HOME CHARACTERS ///////////////////////
 
 export const MainContainer = styled.div<ContainerProps>`
   display: flex;
   min-height: 100vh;
+  padding-bottom: 20px;
   width: 100%;
   background-color: black;
   justify-content: center;
-`;
-
-export const Header = styled.div<ContainerProps>`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 10vh;
-  background-color: #202020;
-  position: fixed;
-  z-index: 1;
-  padding: 10px;
 `;
 
 export const Logo = styled.img<ContainerProps>`
@@ -116,8 +116,9 @@ export const ContainerCards = styled.div<ContainerProps>`
   justify-content: center;
 `;
 
-export const ImgCard = styled.img`
-  width: 300px;
+export const ImgCard = styled.img<ImgProps>`
+  width: ${(props) =>
+    (props.characterWidth && "300px") || (props.comicsWidth && "200px")};
   height: 300px;
   transition: 0.3s;
   cursor: pointer;
@@ -127,8 +128,9 @@ export const ImgCard = styled.img`
   }
 `;
 
-export const CharacterName = styled.button`
-  max-width: 300px;
+export const ItemName = styled.div<ItemNameProps>`
+  width: ${(props) =>
+    (props.characterWidth && "300px") || (props.comicsWidth && "200px")};
   font-size: 17px;
   margin-top: 15px;
   margin-bottom: 30px;
@@ -143,6 +145,8 @@ export const CharacterName = styled.button`
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   transition-duration: 400ms;
   transition-property: color;
+  height: ${(props) =>
+    (props.characterHeight && "50px") || (props.comicsHeight && "120px")};
 
   :focus,
   :hover {
@@ -206,78 +210,74 @@ export const ContainerButtons = styled.div<ContainerProps>`
 
 ///////////////////////// ANIMATION ///////////////////////
 
-export const swing = keyframes`
-0% {
-    transform: rotate(0deg);
-    animation-timing-function: ease-out;
-  }
-
-  25% {
-    transform: rotate(70deg);
-    animation-timing-function: ease-in;
-  }
-
-  50% {
-    transform: rotate(0deg);
-    animation-timing-function: linear;
-  }
-`;
-
-export const swing2 = keyframes`
-  0% {
-    transform: rotate(0deg);
-    animation-timing-function: linear;
-  }
-
-  50% {
-    transform: rotate(0deg);
-    animation-timing-function: ease-out;
-  }
-
-  75% {
-    transform: rotate(-70deg);
-    animation-timing-function: ease-in;
-  }
-`;
-
-export const newtonsCradle = styled.div<ContainerProps>`
-  --uib-size: 250px;
-  --uib-speed: 1.2s;
-  --uib-color: #E9190F;
+export const Loader = styled.div<ContainerProps>`
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #0071e2;
+  width: 130px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
   position: relative;
+
+  :before {
+    content: "";
+    position: absolute;
+    background: var(--loader-color);
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 30px;
+    animation: moving 1s ease-in-out infinite;
+  }
+`;
+
+export const moving = keyframes`
+ 50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+`;
+
+///////////////////////// FOOTER ///////////////////////
+
+export const ContainerMainNextBack = styled.div<ContainerProps>`
+  display: flex;
+  width: 100%;
+`;
+
+export const ContainerMainPageAtual = styled.div<ContainerProps>`
+  display: flex;
+  width: 53%;
+  justify-content: flex-end;
+`;
+
+export const ContainerPageAtual = styled.div<ContainerProps>`
+  border-radius: 50%;
+  border: 1px solid #e9190f;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--uib-size);
-  height: var(--uib-size);
+  width: 30px;
+  height: 30px;
+  padding: 10px;
 `;
 
-export const newtonsCradleDot = styled.div<ContainerProps>`
-  position: relative;
+export const TextPaginaAtual = styled.div<ContainerProps>`
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+`;
+
+export const ContainerNextBack = styled.div<ContainerProps>`
   display: flex;
-  align-items: center;
-  height: 100%;
-  width: 25%;
-  transform-origin: center top;
-
-  :after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 25%;
-    border-radius: 50%;
-    background-color: var(--uib-color);
-  }
-
-  :first-child {
-    animation: ${swing} var(--uib-speed) linear infinite;
-  }
-
-  :last-child {
-    animation: ${swing2} var(--uib-speed) linear infinite;
-  }
+  justify-content: flex-end;
+  width: 50%;
 `;
-
-
-
-

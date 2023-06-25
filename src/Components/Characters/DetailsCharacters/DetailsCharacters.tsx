@@ -3,7 +3,7 @@ import * as C from "./AppStyles";
 import { useContext } from "react";
 import { Context } from "../../../Context/Context";
 import { useNavigate } from "react-router-dom";
-import iconBack from '../../../Media/back.png'
+import iconBack from "../../../Media/back.png";
 
 const Details = () => {
   const { state, dispatch } = useContext(Context);
@@ -13,7 +13,7 @@ const Details = () => {
   }, []);
 
   function back() {
-    usenavigate("/pagecharacters");
+    usenavigate(-1);
   }
 
   return (

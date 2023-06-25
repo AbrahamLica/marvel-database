@@ -152,6 +152,7 @@ export const Banner = styled.div<ContainerProps>`
 `;
 
 export const ImgBanner = styled.img<ContainerProps>`
+  max-width: 100%;
   cursor: pointer;
 `;
 

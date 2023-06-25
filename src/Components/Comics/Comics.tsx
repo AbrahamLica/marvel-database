@@ -1,17 +1,17 @@
 import React, { Fragment, useEffect, useState } from "react";
-import * as C from "./AppStyles";
-import { RequisicaoCharactersType } from "../../../Types/Types";
+import * as C from "../Characters/HomeCharacters/AppStyles";
+import { RequisicaoComicsType } from "../../Types/Types";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "../../../Context/Context";
-import Header from "../../Header/Header";
-import back from "../../../Media/back.svg";
-import next from "../../../Media/next.svg";
-import "./styles.css";
+import { Context } from "../../Context/Context";
+import Header from "../Header/Header";
+import back from "../../Media/back.svg";
+import next from "../../Media/next.svg";
+import "../Characters/HomeCharacters/styles.css";
 
-const HomeCharacters = () => {
+const Comics = () => {
   const { state, dispatch } = useContext(Context);
-  const [requisicao, setRequisicao] = useState<RequisicaoCharactersType[]>([]);
+  const [requisicao, setRequisicao] = useState<RequisicaoComicsType[]>([]);
   const [numberPage, setNumberPage] = useState<number>(0);
   const usenavigate = useNavigate();
   const Hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
@@ -31,7 +31,7 @@ const HomeCharacters = () => {
       },
     });
     let req = await fetch(
-      `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
+      `http://gateway.marvel.com/v1/public/comics?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
     );
     let json = await req.json();
     setRequisicao(json.data.results);
@@ -46,21 +46,20 @@ const HomeCharacters = () => {
   }
 
   function openDetails(
-    name: string,
+    title: string,
     id: number,
     description: string,
-    img: string,
-    series: string[]
+    img: string
   ) {
     dispatch({
       type: "OPEN_DETAILS",
       payload: {
         id: id,
-        name: name,
+        name: title,
         description: description,
         anythingOpen: true,
         img: img,
-        series: series,
+        series: "",
       },
     });
 
@@ -120,7 +119,6 @@ const HomeCharacters = () => {
       setNumberPage(13);
     }
   }
-
   return (
     <C.MainContainer>
       <Header></Header>
@@ -153,40 +151,38 @@ const HomeCharacters = () => {
             {requisicao.map((item, index) => (
               <C.ContainerCard>
                 <C.ImgCard
-                  characterWidth
+                  comicsWidth
                   onClick={() =>
                     openDetails(
-                      item.name,
+                      item.title,
                       item.id,
                       item.description,
-                      item.thumbnail.path,
-                      item.series.items
+                      item.thumbnail.path
                     )
                   }
                   src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
                 />
                 <C.ItemName
-                  characterHeight
+                comicsWidth
+                comicsHeight
                   onClick={() =>
                     openDetails(
-                      item.name,
+                      item.title,
                       item.id,
                       item.description,
-                      item.thumbnail.path,
-                      item.series.items
+                      item.thumbnail.path
                     )
                   }
                 >
-                  {item.name}
+                  {item.title}
                 </C.ItemName>
                 <C.ButtonDetails
                   onClick={() =>
                     openDetails(
-                      item.name,
+                      item.title,
                       item.id,
                       item.description,
-                      item.thumbnail.path,
-                      item.series.items
+                      item.thumbnail.path
                     )
                   }
                 >
@@ -223,4 +219,4 @@ const HomeCharacters = () => {
   );
 };
 
-export default HomeCharacters;
+export default Comics;

@@ -33,12 +33,23 @@ export type InitialStateContextType = {
   marvel: MarvelReducerInitialStateType;
 };
 
-export type RequisicaoType = {
+export type RequisicaoCharactersType = {
   series: any;
   name: string;
   id: number;
   thumbnail: Thumbnail;
   description: string;
+};
+
+export type RequisicaoComicsType = {
+  title: string
+  characters: string[]
+  creators: string
+  dates: string
+  description: string
+  id: number
+  pageCount: number
+  thumbnail: Thumbnail;
 };
 
 export type Thumbnail = {
