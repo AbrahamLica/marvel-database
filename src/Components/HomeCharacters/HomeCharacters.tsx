@@ -1,17 +1,17 @@
 import React, { Fragment, useEffect, useState } from "react";
-import * as C from "../Characters/HomeCharacters/AppStyles";
-import { RequisicaoComicsType } from "../../Types/Types";
+import * as C from "./AppStyles";
+import { RequisicaoCharactersType } from "../../Types/Types";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
 import Header from "../Header/Header";
 import back from "../../Media/back.svg";
 import next from "../../Media/next.svg";
-import "../Characters/HomeCharacters/styles.css";
+import "./styles.css";
 
-const Comics = () => {
+const HomeCharacters = () => {
   const { state, dispatch } = useContext(Context);
-  const [requisicao, setRequisicao] = useState<RequisicaoComicsType[]>([]);
+  const [requisicao, setRequisicao] = useState<RequisicaoCharactersType[]>([]);
   const [numberPage, setNumberPage] = useState<number>(0);
   const usenavigate = useNavigate();
   const Hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
@@ -31,7 +31,7 @@ const Comics = () => {
       },
     });
     let req = await fetch(
-      `http://gateway.marvel.com/v1/public/comics?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
+      `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
     );
     let json = await req.json();
     setRequisicao(json.data.results);
@@ -46,24 +46,25 @@ const Comics = () => {
   }
 
   function openDetails(
-    title: string,
+    name: string,
     id: number,
     description: string,
-    img: string
+    img: string,
+    series: string[]
   ) {
     dispatch({
       type: "OPEN_DETAILS",
       payload: {
         id: id,
-        name: title,
+        name: name,
         description: description,
         anythingOpen: true,
         img: img,
-        series: "",
+        series: series,
       },
     });
 
-    usenavigate("/detailsCharacters");
+    usenavigate("/details");
   }
 
   function backHome() {
@@ -119,6 +120,7 @@ const Comics = () => {
       setNumberPage(13);
     }
   }
+
   return (
     <C.MainContainer>
       <Header></Header>
@@ -151,38 +153,41 @@ const Comics = () => {
             {requisicao.map((item, index) => (
               <C.ContainerCard>
                 <C.ImgCard
-                  comicsWidth
+                  characterWidth
                   onClick={() =>
                     openDetails(
-                      item.title,
+                      item.name,
                       item.id,
                       item.description,
-                      item.thumbnail.path
+                      item.thumbnail.path,
+                      item.series.items
                     )
                   }
                   src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
                 />
                 <C.ItemName
-                comicsWidth
-                comicsHeight
+                  characterWidth
+                  characterHeight
                   onClick={() =>
                     openDetails(
-                      item.title,
+                      item.name,
                       item.id,
                       item.description,
-                      item.thumbnail.path
+                      item.thumbnail.path,
+                      item.series.items
                     )
                   }
                 >
-                  {item.title}
+                  {item.name}
                 </C.ItemName>
                 <C.ButtonDetails
                   onClick={() =>
                     openDetails(
-                      item.title,
+                      item.name,
                       item.id,
                       item.description,
-                      item.thumbnail.path
+                      item.thumbnail.path,
+                      item.series.items
                     )
                   }
                 >
@@ -219,4 +224,4 @@ const Comics = () => {
   );
 };
 
-export default Comics;
+export default HomeCharacters;

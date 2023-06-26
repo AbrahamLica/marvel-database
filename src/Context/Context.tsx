@@ -23,6 +23,10 @@ export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
   loading: false,
   series: [],
   url: "",
+  creators: [],
+  dates: [],
+  pageCount: '',
+  variants: []
 };
 
 export function reducerMarvel(
@@ -39,6 +43,10 @@ export function reducerMarvel(
         anythingOpen: action.payload.anythingOpen,
         img: action.payload.img,
         series: action.payload.series,
+        creators: action.payload.creators,
+        dates: action.payload.dates,
+        pageCount: action.payload.pageCount,
+        variants: action.payload.variants
       };
       break;
 

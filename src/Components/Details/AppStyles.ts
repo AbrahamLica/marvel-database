@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import background from '../../../Media/wallpaper.jpg'
+import background from '../../Media/wallpaper.jpg'
 
 export type ContainerProps = {
     color?: string;
