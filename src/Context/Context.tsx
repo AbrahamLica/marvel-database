@@ -14,7 +14,12 @@ export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
   id: 0,
   name: "",
   description: "",
-  anythingOpen: false,
+  detailsCharacterOpen: false,
+  detailsComicsOpen: false,
+  detailsCreatorsOpen: false,
+  detailsEventsOpen: false,
+  detailsSeriesOpen: false,
+  detailsStoriesOpen: false,
   img: "",
   homePage: true,
   openPageSelectedCategory: false,
@@ -34,7 +39,7 @@ export function reducerMarvel(
   action: ActionType
 ) {
   switch (action.type) {
-    case "OPEN_DETAILS":
+    case "OPEN_DETAILS_CHARACTERS":
       return {
         ...state,
         id: action.payload.id,
@@ -46,9 +51,27 @@ export function reducerMarvel(
         creators: action.payload.creators,
         dates: action.payload.dates,
         pageCount: action.payload.pageCount,
-        variants: action.payload.variants
+        variants: action.payload.variants,
+        detailsCharacterOpen: action.payload.detailsCharacterOpen
       };
       break;
+
+      case "OPEN_DETAILS_COMICS":
+        return {
+          ...state,
+          id: action.payload.id,
+          name: action.payload.name,
+          description: action.payload.description,
+          anythingOpen: action.payload.anythingOpen,
+          img: action.payload.img,
+          series: action.payload.series,
+          creators: action.payload.creators,
+          dates: action.payload.dates,
+          pageCount: action.payload.pageCount,
+          variants: action.payload.variants,
+          detailsComicsOpen: action.payload.detailsComicsOpen
+        };
+        break;
 
     case "BACK_PAGE":
       return {

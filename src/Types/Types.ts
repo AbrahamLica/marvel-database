@@ -2,7 +2,12 @@ export type MarvelReducerInitialStateType = {
   id: number;
   name: string;
   description: string;
-  anythingOpen: boolean;
+  detailsCharacterOpen: boolean;
+  detailsComicsOpen: boolean,
+  detailsCreatorsOpen: boolean
+  detailsEventsOpen: boolean
+  detailsSeriesOpen: boolean
+  detailsStoriesOpen: boolean
   img: string;
   homePage: boolean;
   openPageSelectedCategory: boolean;
@@ -56,6 +61,7 @@ export type RequisicaoComicsType = {
   thumbnail: Thumbnail;
   variants: string[]
 };
+
 
 export type Thumbnail = {
   extension: string;

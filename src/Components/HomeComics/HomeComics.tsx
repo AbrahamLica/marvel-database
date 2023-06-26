@@ -56,7 +56,7 @@ const HomeComics = () => {
     img: string
   ) {
     dispatch({
-      type: "OPEN_DETAILS",
+      type: "OPEN_DETAILS_COMICS",
       payload: {
         id: id,
         name: title,
@@ -67,6 +67,7 @@ const HomeComics = () => {
         dates: dates,
         pageCount: pageCount,
         variants: variants,
+        detailsComicsOpen: true
       },
     });
 

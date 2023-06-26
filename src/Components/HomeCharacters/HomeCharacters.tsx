@@ -53,7 +53,7 @@ const HomeCharacters = () => {
     series: string[]
   ) {
     dispatch({
-      type: "OPEN_DETAILS",
+      type: "OPEN_DETAILS_CHARACTERS",
       payload: {
         id: id,
         name: name,
@@ -61,6 +61,7 @@ const HomeCharacters = () => {
         anythingOpen: true,
         img: img,
         series: series,
+        detailsCharacterOpen: true
       },
     });
 
