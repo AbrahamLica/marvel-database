@@ -147,7 +147,7 @@ export const Banner = styled.div<ContainerProps>`
   height: 0vh;
   background-color: white;
   position: absolute;
-  top: 135px;
+  top: 150px;
   transition: 0.5s;
 `;
 

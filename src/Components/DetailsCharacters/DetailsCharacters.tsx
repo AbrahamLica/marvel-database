@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as C from "./AppStyles";
 import { useContext } from "react";
-import { Context } from "../../../Context/Context";
+import { Context } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
 import iconBack from "../../../Media/back.png";
 
@@ -26,7 +26,10 @@ const Details = () => {
       <C.ContainerDescriptions>
         <C.ImgDetails src={`${state.marvel.img}.jpg`} />
         <C.Description>
-          {state.marvel.description}
+          <C.Text>{state.marvel.name}</C.Text>
+          {state.marvel.description.length ? (
+            <C.Text>{state.marvel.description}</C.Text>
+          ) : null}
           <C.Container margin="30px 0px">
             <C.Text>Series:</C.Text>
             {state.marvel.series.map((item: any, index: number) => (

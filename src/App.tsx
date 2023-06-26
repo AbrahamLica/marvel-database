@@ -3,7 +3,7 @@ import { GlobalStyle } from "./AppGlobalStyles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import HomeCharacters from "./Components/Characters/HomeCharacters/HomeCharacters";
-import DetailsCharacters from "./Components/Characters/DetailsCharacters/DetailsCharacters";
+import DetailsCharacters from "./Components/DetailsCharacters/DetailsCharacters";
 import Comics from './Components/Comics/Comics'
 
 function App() {

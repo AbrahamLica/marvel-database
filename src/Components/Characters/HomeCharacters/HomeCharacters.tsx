@@ -166,6 +166,7 @@ const HomeCharacters = () => {
                   src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
                 />
                 <C.ItemName
+                  characterWidth
                   characterHeight
                   onClick={() =>
                     openDetails(
