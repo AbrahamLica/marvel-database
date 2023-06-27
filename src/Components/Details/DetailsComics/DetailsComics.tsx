@@ -5,39 +5,56 @@ import { Context } from "../../../Context/Context";
 
 const DetailsComics = () => {
   const { state, dispatch } = useContext(Context);
-  const [date, setDate] = useState<any>(state.marvel.dates);
+  const [date, setDate] = useState<any>();
 
   useEffect(() => {
-    FormatDate()
-  }, [state.marvel.dates]);
+    FormatDate();
+  }, [date]);
 
   function FormatDate() {
-    let date = state.marvel.dates[0].date
-    let slicedDate = date.slice(0, 10)
-    let day = slicedDate.slice(8, 10)
-    let month = slicedDate.slice(5, 7)
-    let year = slicedDate.slice(0, 4)
-    let dateFormated = `${day}/${month}/${year}`
-    setDate(dateFormated)
+    let datee = state.marvel.dates[0].date;
+    let slicedDate = datee.slice(0, 10);
+    let day = slicedDate.slice(8, 10);
+    let month = slicedDate.slice(5, 7);
+    let year = slicedDate.slice(0, 4);
+    let dateFormated = `${day}/${month}/${year}`;
+    setDate(dateFormated);
+  }
+
+  function teste() {
+    console.log(date);
   }
 
   return (
     <C.ContainerDescriptions>
-      <C.ImgDetails ImgDetailsComicsHeight ImgDetailsComicsWidth src={`${state.marvel.img}.jpg`} />
+      <C.ImgDetails
+        ImgDetailsComicsHeight
+        ImgDetailsComicsWidth
+        src={`${state.marvel.img}.jpg`}
+      />
 
       <C.Description>
-        <C.Text>{state.marvel.name}</C.Text>
+        <C.Title>{state.marvel.name}</C.Title>
 
-        {state.marvel.description.length ? (
-          <C.Text>{state.marvel.description}</C.Text>
+        {state.marvel.description ? (
+          <C.Container>
+            <C.Title>Description: </C.Title>
+            <C.SubTitle>{state.marvel.description}</C.SubTitle>
+          </C.Container>
         ) : null}
 
-        <C.Text>{`Published: ${date}`}</C.Text>
+        {date ? (
+          <C.Container displayFlex alignItems="center">
+            <C.Title>Published:</C.Title>
+            <C.SubTitle>{date}</C.SubTitle>
+          </C.Container>
+        ) : null}
 
-        <C.Container margin="30px 0px">
+        <C.Container displayFlex flexWrap justifyContent="space-between">
           {state.marvel.creators.items.map((item: any, index: number) => (
-            <C.Container>
-              <C.Text>{`${item.role}: ${item.name}`}</C.Text>
+            <C.Container displayFlex width="50%" alignItems="center">
+              <C.Title>{item.role}:</C.Title>
+              <C.SubTitle>{item.name}</C.SubTitle>
             </C.Container>
           ))}
         </C.Container>

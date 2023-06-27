@@ -41,7 +41,7 @@ const Details = () => {
         <DetailsComics></DetailsComics>
       )}
 
-      <button onClick={teste}>teste</button>
+      {/* <button onClick={teste}>teste</button> */}
     </C.MainContainerDetails>
   );
 };

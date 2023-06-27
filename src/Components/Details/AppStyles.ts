@@ -163,6 +163,8 @@ export const IconBack = styled.img`
   width: 30px;
 `;
 
+
+
 export const ContainerDescriptions = styled.div`
   width: 100%;
   display: flex;
@@ -183,9 +185,22 @@ export const ImgDetails = styled.img<ImgDetailsProps>`
 
 export const Description = styled.p`
   font-size: 30px;
-  width: 50%;
+  width: 60%;
   margin-left: 30px;
   color: white;
   display: flex;
   flex-direction: column;
+`;
+
+export const Title = styled.p<TextProps>`
+  text-transform: capitalize;
+  font-weight: bold;
+  /* font-size: ${(props) => props.fontSize}; */
+  font-size: 1.6rem;
+  margin-right: 6px;
+`;
+
+export const SubTitle = styled.p<TextProps>`
+  /* font-size: ${(props) => props.fontSize}; */
+  font-size: 1.5rem;
 `;
