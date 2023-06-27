@@ -20,8 +20,10 @@ const Details = () => {
   }
 
   function teste() {
-    console.log(state.marvel);
+    
   }
+
+  
 
   return (
     <C.MainContainerDetails>

@@ -45,6 +45,27 @@ export type ContainerProps = {
     zIndex?: boolean;
   };
 
+  export type ImgDetailsProps = {
+
+    ImgDetailsCharactersWidth?: boolean
+    ImgDetailsCharactersHeight?: boolean
+
+    ImgDetailsComicsWidth?: boolean
+    ImgDetailsComicsHeight?: boolean
+
+    ImgDetailsCreatorsWidth?: boolean
+    ImgDetailsCreatorsHeight?: boolean
+
+    ImgDetailsEventssWidth?: boolean
+    ImgDetailsEventssHeight?: boolean
+
+    ImgDetailsSeriesWidth?: boolean
+    ImgDetailsSeriesHeight?: boolean
+
+    ImgDetailsStoriesWidth?: boolean
+    ImgDetailsStoriesHeight?: boolean
+  }
+
   
 /////////////////// GERAL ///////////////////////
 
@@ -92,6 +113,7 @@ export const Link = styled.a<TextProps>`
   cursor: pointer;
   text-decoration: none;
 `;
+
 
 
 ////////////////////////// DETAILS ///////////////////////
@@ -148,9 +170,15 @@ export const ContainerDescriptions = styled.div`
   padding-top: 47px;
 `;
 
-export const ImgDetails = styled.img`
-  width: 400px;
-  height: 400px;
+export const ImgDetails = styled.img<ImgDetailsProps>`
+  width: ${(props) => (props.ImgDetailsCharactersWidth && "400px")};
+  height: ${(props) => (props.ImgDetailsCharactersHeight && "400px")};
+
+  width: ${(props) => (props.ImgDetailsComicsWidth && "300px")};
+  height: ${(props) => (props.ImgDetailsComicsHeight && "400px")};
+
+
+  
 `;
 
 export const Description = styled.p`
