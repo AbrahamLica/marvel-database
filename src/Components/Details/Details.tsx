@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import iconBack from "../../Media/back.png";
 import DetailsCharacters from "./DetailsCharacters/DetailsCharacters";
 import DetailsComics from "./DetailsComics/DetailsComics";
+import DetailsSeries from "./DetailsSeries/DetailsSeries";
+import wallpaper from "../../Media/wallpaper.jpg";
 
 const Details = () => {
   const { state, dispatch } = useContext(Context);
@@ -19,30 +21,24 @@ const Details = () => {
     usenavigate(-1);
   }
 
-  function teste() {
-    
-  }
-
-  
-
   return (
-    <C.MainContainerDetails>
+    <C.MainContainerBackground
+      background={`linear-gradient(rgba(0, 0, 0, 0.8),
+       rgba(0, 0, 0, 0.8)),
+       url(${state.marvel.img}.jpg)`}
+    >
       <C.HeaderFixed>
         <C.ButtonBack onClick={back}>
           <C.IconBack src={iconBack} />
         </C.ButtonBack>
       </C.HeaderFixed>
 
-      {state.marvel.detailsCharacterOpen && (
-        <DetailsCharacters></DetailsCharacters>
-      )}
-
-      {state.marvel.detailsComicsOpen && (
-        <DetailsComics></DetailsComics>
-      )}
-
-      {/* <button onClick={teste}>teste</button> */}
-    </C.MainContainerDetails>
+      <C.MainContainerDetails>
+        {state.marvel.detailsCharacterOpen && <DetailsCharacters></DetailsCharacters>}
+        {state.marvel.detailsComicsOpen && <DetailsComics></DetailsComics>}
+        {state.marvel.detailsSeriesOpen && <DetailsSeries></DetailsSeries>}
+      </C.MainContainerDetails>
+    </C.MainContainerBackground>
   );
 };
 

@@ -4,9 +4,9 @@ import * as C from "./AppStyles";
 const Home = () => {
   return (
     <C.MainContainer>
-        <Header></Header>
+      <Header></Header>
     </C.MainContainer>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

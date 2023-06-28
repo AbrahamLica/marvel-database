@@ -1,72 +1,74 @@
 import styled from "styled-components";
-import background from '../../Media/wallpaper.jpg'
+import background from "../../Media/wallpaper.jpg";
 
 export type ContainerProps = {
-    color?: string;
-    id?: any;
-    width?: string;
-    heigth?: string;
-    backgroundColor?: string;
-    displayFlex?: boolean;
-    flex?: string;
-    flexWrap?: boolean;
-    alignItems?: string;
-    margin?: string;
-    padding?: string;
-    column?: boolean;
-    border?: string;
-    borderRadius?: string;
-    cursorPointer?: boolean;
-    backgroundImage?: string;
-    backgroundPosition?: string;
-    backgroundSize?: string;
-    justifyContent?: string;
-  };
-  
-  export type InputProps = {
-    color?: string;
-    bold?: boolean;
-    fontSize?: string;
-    width?: string;
-    backgroundColor?: string;
-    margin?: string;
-  };
-  
-  export type TextProps = {
-    color?: string;
-    bold?: boolean;
-    fontSize?: string;
-    textAlign?: string;
-    margin?: string;
-    backgroundColor?: string;
-    padding?: string;
-    borderRadius?: string;
-    cursorPointer?: boolean;
-    zIndex?: boolean;
-  };
+  color?: string;
+  id?: any;
+  width?: string;
+  heigth?: string;
+  backgroundColor?: string;
+  displayFlex?: boolean;
+  flex?: string;
+  flexWrap?: boolean;
+  alignItems?: string;
+  margin?: string;
+  padding?: string;
+  column?: boolean;
+  border?: string;
+  borderRadius?: string;
+  cursorPointer?: boolean;
+  backgroundImage?: string;
+  backgroundPosition?: string;
+  backgroundSize?: string;
+  justifyContent?: string;
+};
 
-  export type ImgDetailsProps = {
+export type InputProps = {
+  color?: string;
+  bold?: boolean;
+  fontSize?: string;
+  width?: string;
+  backgroundColor?: string;
+  margin?: string;
+};
 
-    ImgDetailsCharactersWidth?: boolean
-    ImgDetailsCharactersHeight?: boolean
+export type TextProps = {
+  color?: string;
+  bold?: boolean;
+  fontSize?: string;
+  textAlign?: string;
+  margin?: string;
+  backgroundColor?: string;
+  padding?: string;
+  borderRadius?: string;
+  cursorPointer?: boolean;
+  zIndex?: boolean;
+};
 
-    ImgDetailsComicsWidth?: boolean
-    ImgDetailsComicsHeight?: boolean
+export type ImgDetailsProps = {
+  ImgDetailsCharactersWidth?: boolean;
+  ImgDetailsCharactersHeight?: boolean;
 
-    ImgDetailsCreatorsWidth?: boolean
-    ImgDetailsCreatorsHeight?: boolean
+  ImgDetailsComicsWidth?: boolean;
+  ImgDetailsComicsHeight?: boolean;
 
-    ImgDetailsEventssWidth?: boolean
-    ImgDetailsEventssHeight?: boolean
+  ImgDetailsCreatorsWidth?: boolean;
+  ImgDetailsCreatorsHeight?: boolean;
 
-    ImgDetailsSeriesWidth?: boolean
-    ImgDetailsSeriesHeight?: boolean
+  ImgDetailsEventssWidth?: boolean;
+  ImgDetailsEventssHeight?: boolean;
 
-    ImgDetailsStoriesWidth?: boolean
-    ImgDetailsStoriesHeight?: boolean
-  }
+  ImgDetailsSeriesWidth?: boolean;
+  ImgDetailsSeriesHeight?: boolean;
 
-  
+  ImgDetailsStoriesWidth?: boolean;
+  ImgDetailsStoriesHeight?: boolean;
+};
+
+export type MainContainerDetailsProps = {
+  background: any;
+};
+
 /////////////////// GERAL ///////////////////////
 
 export const Container = styled.div<ContainerProps>`
@@ -114,27 +116,30 @@ export const Link = styled.a<TextProps>`
   text-decoration: none;
 `;
 
-
-
 ////////////////////////// DETAILS ///////////////////////
 
-export const MainContainerDetails = styled.div`
+export const MainContainerBackground = styled.div<MainContainerDetailsProps>`
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(${background});
+  background: ${(props) => props.background};
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+`;
+
+export const MainContainerDetails = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  backdrop-filter: blur(5px);
 `;
 
 export const HeaderFixed = styled.div`
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
   padding: 5px;
-  background-color: black;
-  color: white;
   position: fixed;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
 `;
@@ -163,8 +168,6 @@ export const IconBack = styled.img`
   width: 30px;
 `;
 
-
-
 export const ContainerDescriptions = styled.div`
   width: 100%;
   display: flex;
@@ -173,17 +176,14 @@ export const ContainerDescriptions = styled.div`
 `;
 
 export const ImgDetails = styled.img<ImgDetailsProps>`
-  width: ${(props) => (props.ImgDetailsCharactersWidth && "400px")};
-  height: ${(props) => (props.ImgDetailsCharactersHeight && "400px")};
+  width: ${(props) => props.ImgDetailsCharactersWidth && "400px"};
+  height: ${(props) => props.ImgDetailsCharactersHeight && "400px"};
 
-  width: ${(props) => (props.ImgDetailsComicsWidth && "300px")};
-  height: ${(props) => (props.ImgDetailsComicsHeight && "400px")};
-
-
-  
+  width: ${(props) => props.ImgDetailsComicsWidth && "300px"};
+  height: ${(props) => props.ImgDetailsComicsHeight && "400px"};
 `;
 
-export const Description = styled.p`
+export const Description = styled.div`
   font-size: 30px;
   width: 60%;
   margin-left: 30px;
@@ -195,12 +195,10 @@ export const Description = styled.p`
 export const Title = styled.p<TextProps>`
   text-transform: capitalize;
   font-weight: bold;
-  /* font-size: ${(props) => props.fontSize}; */
   font-size: 1.6rem;
   margin-right: 6px;
 `;
 
 export const SubTitle = styled.p<TextProps>`
-  /* font-size: ${(props) => props.fontSize}; */
   font-size: 1.5rem;
 `;

@@ -2,12 +2,16 @@ export type MarvelReducerInitialStateType = {
   id: number;
   name: string;
   description: string;
+  startYear: number;
+  endYear: number;
+  characters: string[];
+  comics: string[];
+  stories: string[];
+  nextSeries: any;
+  previousSeries: any;
   detailsCharacterOpen: boolean;
-  detailsComicsOpen: boolean,
-  detailsCreatorsOpen: boolean
-  detailsEventsOpen: boolean
-  detailsSeriesOpen: boolean
-  detailsStoriesOpen: boolean
+  detailsComicsOpen: boolean;
+  detailsSeriesOpen: boolean;
   img: string;
   homePage: boolean;
   openPageSelectedCategory: boolean;
@@ -15,11 +19,11 @@ export type MarvelReducerInitialStateType = {
   currentPage: number;
   loading: boolean;
   series: string[] | any;
-  url: string
-  creators: string[]
-  dates: string[]
-  pageCount: string
-  variants: string[]
+  url: string;
+  creators: any;
+  dates: string[];
+  pageCount: string;
+  variants: string[];
 };
 
 export type ActionType = {
@@ -51,17 +55,32 @@ export type RequisicaoCharactersType = {
 };
 
 export type RequisicaoComicsType = {
-  title: string
-  characters: string[]
-  creators: string[]
-  dates: string[]
-  description: string
-  id: number
-  pageCount: string
+  id: number;
+  title: string;
+  characters: string[];
+  creators: any;
+  dates: string[];
+  description: string;
+  pageCount: string;
   thumbnail: Thumbnail;
-  variants: string[]
+  variants: string[];
 };
 
+export type RequisicaoSeriesType = {
+  id: number;
+  title: string;
+  description: string;
+  startYear: number;
+  endYear: number;
+  characters: string[];
+  creators: any;
+  comics: string[];
+  stories: string[];
+  thumbnail: Thumbnail;
+  nextSeries: any;
+  previousSeries: any;
+  series: any;
+};
 
 export type Thumbnail = {
   extension: string;

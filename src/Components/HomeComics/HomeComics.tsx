@@ -127,6 +127,7 @@ const HomeComics = () => {
       setNumberPage(13);
     }
   }
+
   return (
     <C.MainContainer>
       <Header></Header>
@@ -157,7 +158,7 @@ const HomeComics = () => {
         ) : (
           <C.ContainerCards>
             {requisicao.map((item, index) => (
-              <C.ContainerCard>
+              <C.ContainerCard key={index}>
                 <C.ImgCard
                   comicsWidth
                   onClick={() =>

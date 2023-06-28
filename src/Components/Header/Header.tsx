@@ -4,10 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context/Context";
 import bannercharacters from "../../Media/characters.png";
 import bannercomics from "../../Media/comics.png";
-import bannercreators from "../../Media/creators.png";
-import bannerevents from "../../Media/events.png";
 import bannerseries from "../../Media/series.png";
-import bannerstories from "../../Media/stories.png";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -48,35 +45,60 @@ const Header = () => {
       return setBannerajustado(bannercharacters);
     } else if (banner == "comics") {
       return setBannerajustado(bannercomics);
-    } else if (banner == "creators") {
-      return setBannerajustado(bannercreators);
-    } else if (banner == "events") {
-      return setBannerajustado(bannerevents);
     } else if (banner == "series") {
       return setBannerajustado(bannerseries);
-    } else if (banner == "stories") {
-      return setBannerajustado(bannerstories);
     }
   }
 
   function pageCharacters(page: string) {
     usenavigate(`/page${page}`);
     dispatch({
-      type: "SET_URL",
+      type: "CLEAR_ALL_INFORMATIONS",
       payload: {
-        url: page,
+        id: 0,
+        name: "",
+        description: "",
+        detailsCharacterOpen: false,
+        detailsComicsOpen: false,
+        detailsCreatorsOpen: false,
+        detailsEventsOpen: false,
+        detailsSeriesOpen: false,
+        detailsStoriesOpen: false,
+        img: "",
+        homePage: true,
+        openPageSelectedCategory: false,
+        selectedCategory: "",
+        currentPage: 0,
+        loading: false,
+        series: [],
+        url: "",
+        creators: [],
+        dates: [],
+        pageCount: "",
+        variants: [],
       },
     });
   }
 
   function backHome() {
-    usenavigate("/");
     dispatch({
       type: "BACK_HOME",
       payload: {
+        id: 0,
+        name: "",
+        description: "",
+        anythingOpen: false,
+        img: "",
+        series: [],
+        creators: [],
+        dates: [],
+        pageCount: "",
+        variants: [],
+        detailsCharacterOpen: false,
         currentPage: 0,
       },
     });
+    usenavigate("/");
   }
 
   return (
@@ -114,32 +136,10 @@ const Header = () => {
         </C.CategoryText>
 
         <C.CategoryText
-          onMouseOver={() => handleMouseOverText("creators")}
-          onMouseOut={handleMouseOutText}
-        >
-          Creators
-        </C.CategoryText>
-        <C.Banner></C.Banner>
-
-        <C.CategoryText
-          onMouseOver={() => handleMouseOverText("events")}
-          onMouseOut={handleMouseOutText}
-        >
-          Events
-        </C.CategoryText>
-
-        <C.CategoryText
           onMouseOver={() => handleMouseOverText("series")}
           onMouseOut={handleMouseOutText}
         >
           Series
-        </C.CategoryText>
-
-        <C.CategoryText
-          onMouseOver={() => handleMouseOverText("stories")}
-          onMouseOut={handleMouseOutText}
-        >
-          Stories
         </C.CategoryText>
       </C.BottomHeader>
     </C.Header>

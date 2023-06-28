@@ -1,17 +1,16 @@
-import React, { Fragment, useEffect, useState } from "react";
-import * as C from "./AppStyles";
-import { RequisicaoCharactersType } from "../../Types/Types";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context/Context";
+import { RequisicaoSeriesType } from "../../Types/Types";
 import Header from "../Header/Header";
 import back from "../../Media/back.svg";
 import next from "../../Media/next.svg";
-import "./styles.css";
+import "../HomeCharacters/styles.css";
+import * as C from "../HomeCharacters/AppStyles";
 
-const HomeCharacters = () => {
+const HomeSeries = () => {
   const { state, dispatch } = useContext(Context);
-  const [requisicao, setRequisicao] = useState<RequisicaoCharactersType[]>([]);
+  const [requisicao, setRequisicao] = useState<RequisicaoSeriesType[]>([]);
   const [numberPage, setNumberPage] = useState<number>(0);
   const usenavigate = useNavigate();
   const Hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
@@ -31,7 +30,7 @@ const HomeCharacters = () => {
       },
     });
     let req = await fetch(
-      `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
+      `http://gateway.marvel.com/v1/public/series?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
     );
     let json = await req.json();
     setRequisicao(json.data.results);
@@ -46,22 +45,38 @@ const HomeCharacters = () => {
   }
 
   function openDetails(
-    name: string,
     id: number,
+    name: string,
     description: string,
+    startYear: number,
+    endYear: number,
+    characters: string[],
+    creators: any,
+    comics: string[],
+    stories: string[],
+    nextSeries: any,
+    previousSeries: any,
     img: string,
     series: string[]
   ) {
     dispatch({
-      type: "OPEN_DETAILS_CHARACTERS",
+      type: "OPEN_DETAILS_SERIES",
       payload: {
         id: id,
         name: name,
         description: description,
+        startYear: startYear,
+        endYear: endYear,
+        characters: characters,
+        creators: creators,
+        comics: comics,
+        stories: stories,
+        nextSeries: nextSeries,
+        previousSeries: previousSeries,
         anythingOpen: true,
         img: img,
         series: series,
-        detailsCharacterOpen: true
+        detailsSeriesOpen: true,
       },
     });
 
@@ -157,11 +172,19 @@ const HomeCharacters = () => {
                   characterWidth
                   onClick={() =>
                     openDetails(
-                      item.name,
                       item.id,
+                      item.title,
                       item.description,
+                      item.startYear,
+                      item.endYear,
+                      item.characters,
+                      item.creators,
+                      item.comics,
+                      item.stories,
+                      item.nextSeries,
+                      item.previousSeries,
                       item.thumbnail.path,
-                      item.series.items
+                      item.series
                     )
                   }
                   src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
@@ -171,24 +194,40 @@ const HomeCharacters = () => {
                   characterHeight
                   onClick={() =>
                     openDetails(
-                      item.name,
                       item.id,
+                      item.title,
                       item.description,
+                      item.startYear,
+                      item.endYear,
+                      item.characters,
+                      item.creators,
+                      item.comics,
+                      item.stories,
+                      item.nextSeries,
+                      item.previousSeries,
                       item.thumbnail.path,
-                      item.series.items
+                      item.series
                     )
                   }
                 >
-                  {item.name}
+                  {item.title}
                 </C.ItemName>
                 <C.ButtonDetails
                   onClick={() =>
                     openDetails(
-                      item.name,
                       item.id,
+                      item.title,
                       item.description,
+                      item.startYear,
+                      item.endYear,
+                      item.characters,
+                      item.creators,
+                      item.comics,
+                      item.stories,
+                      item.nextSeries,
+                      item.previousSeries,
                       item.thumbnail.path,
-                      item.series.items
+                      item.series
                     )
                   }
                 >
@@ -225,4 +264,4 @@ const HomeCharacters = () => {
   );
 };
 
-export default HomeCharacters;
+export default HomeSeries;

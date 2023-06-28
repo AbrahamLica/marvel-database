@@ -8,19 +8,19 @@ const DetailsCharacters = () => {
 
   return (
     <C.ContainerDescriptions>
-      <C.ImgDetails src={`${state.marvel.img}.jpg`} />
+      <C.ImgDetails ImgDetailsCharactersWidth ImgDetailsCharactersHeight src={`${state.marvel.img}.jpg`} />
 
       <C.Description>
-        <C.Text>{state.marvel.name}</C.Text>
+        <C.Title>{state.marvel.name}</C.Title>
 
         {state.marvel.description.length ? (
-          <C.Text>{state.marvel.description}</C.Text>
+          <C.SubTitle>{state.marvel.description}</C.SubTitle>
         ) : null}
 
-        <C.Container margin="30px 0px">
-          <C.Text>Series:</C.Text>
+        <C.Container margin="10px 0px">
+          <C.Title>Series:</C.Title>
           {state.marvel.series.map((item: any, index: number) => (
-            <p>{item.name}</p>
+            <C.SubTitle key={index}>{item.name}</C.SubTitle>
           ))}
         </C.Container>
       </C.Description>

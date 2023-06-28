@@ -3,26 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../../Context/Context";
 
-const DetailsComics = () => {
+const DetailsSeries = () => {
   const { state, dispatch } = useContext(Context);
   const [date, setDate] = useState<any>();
 
-  useEffect(() => {
-    FormatDate();
-  }, [date]);
-
-  function FormatDate() {
-    let datee = state.marvel.dates[0].date;
-    let slicedDate = datee.slice(0, 10);
-    let day = slicedDate.slice(8, 10);
-    let month = slicedDate.slice(5, 7);
-    let year = slicedDate.slice(0, 4);
-    let dateFormated = `${day}/${month}/${year}`;
-    setDate(dateFormated);
-  }
-
   function teste() {
-    console.log(date);
+    console.log(state.marvel);
   }
 
   return (
@@ -63,9 +49,11 @@ const DetailsComics = () => {
             </C.Container>
           ))}
         </C.Container>
+
+        <button onClick={teste}>teste</button>
       </C.Description>
     </C.ContainerDescriptions>
   );
 };
 
-export default DetailsComics;
+export default DetailsSeries;
