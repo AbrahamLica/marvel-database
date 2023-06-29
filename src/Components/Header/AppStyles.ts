@@ -102,7 +102,7 @@ export const Header = styled.div<ContainerProps>`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 15vh;
+  height: 16vh;
   background-color: #202020;
   position: fixed;
   z-index: 1;

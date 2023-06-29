@@ -5,8 +5,8 @@ export type ContainerProps = {
   id?: any;
   width?: string;
   heigth?: string;
-  backgroundColor?: string;
   displayFlex?: boolean;
+  backgroundColor?: string;
   flex?: string;
   flexWrap?: boolean;
   alignItems?: string;
@@ -20,28 +20,6 @@ export type ContainerProps = {
   backgroundPosition?: string;
   backgroundSize?: string;
   justifyContent?: string;
-};
-
-export type InputProps = {
-  color?: string;
-  bold?: boolean;
-  fontSize?: string;
-  width?: string;
-  backgroundColor?: string;
-  margin?: string;
-};
-
-export type TextProps = {
-  color?: string;
-  bold?: boolean;
-  fontSize?: string;
-  textAlign?: string;
-  margin?: string;
-  backgroundColor?: string;
-  padding?: string;
-  borderRadius?: string;
-  cursorPointer?: boolean;
-  zIndex?: boolean;
 };
 
 export type ImgProps = {
@@ -90,6 +68,7 @@ export const MainContainer = styled.div<ContainerProps>`
   width: 100%;
   background-color: black;
   justify-content: center;
+ 
 `;
 
 export const Logo = styled.img<ContainerProps>`
@@ -174,6 +153,14 @@ export const ItemName = styled.div<ItemNameProps>`
   }
 `;
 
+export const ContainerNameYear = styled.div<ContainerProps>`
+  
+`;
+
+export const ItemYear = styled.p<ContainerProps>`
+  color: white;
+`;
+
 export const ButtonDetails = styled.button`
   width: 150px;
   font-size: 1.3rem;
@@ -204,11 +191,8 @@ export const ContainerButtons = styled.div<ContainerProps>`
   display: flex;
 `;
 
-// #26547C
-// #E9190F
-// #FCFCFC
-
 ///////////////////////// ANIMATION ///////////////////////
+
 
 export const Loader = styled.div<ContainerProps>`
   display: block;

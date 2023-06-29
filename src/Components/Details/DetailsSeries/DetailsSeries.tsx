@@ -11,6 +11,31 @@ const DetailsSeries = () => {
     console.log(state.marvel);
   }
 
+  async function executarRequisicaoComics() {
+
+    var array: any = []
+
+    for (let i = 0; i < state.marvel.comics.items.length; i++) {
+      array.push(state.marvel.comics.items[i].resourceURI)
+    }
+    
+    for (let i = 0; i < array.length; i++) {
+      array[i] = `${array[i]}?ts=1&apikey=8df0db429915d47e065eb03b37ca9039&hash=4a8b729d09d1d2ad3fb626dff7e2165d`
+    }
+
+    console.log(array)
+
+    // let req = await fetch(
+    //   `${}?ts=1&apikey=${publicKey}&hash=${Hash}`
+    // );
+
+    // let json = await req.json();
+
+    // setRequisicao(json.data.results);
+
+    // fazer req de series:  https://gateway.marvel.com/v1/public/comics/84352?ts=1&apikey=8df0db429915d47e065eb03b37ca9039&hash=4a8b729d09d1d2ad3fb626dff7e2165d
+  }
+  
   return (
     <C.ContainerDescriptions>
       <C.ImgDetails
@@ -50,7 +75,7 @@ const DetailsSeries = () => {
           ))}
         </C.Container>
 
-        <button onClick={teste}>teste</button>
+        <button onClick={executarRequisicaoComics}>teste</button>
       </C.Description>
     </C.ContainerDescriptions>
   );

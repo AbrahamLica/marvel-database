@@ -57,6 +57,7 @@ export function reducerMarvel(
         pageCount: action.payload.pageCount,
         variants: action.payload.variants,
         detailsCharacterOpen: action.payload.detailsCharacterOpen,
+        openPageSelectedCategory: action.payload.openPageSelectedCategory,
       };
       break;
 
@@ -68,12 +69,12 @@ export function reducerMarvel(
         description: action.payload.description,
         anythingOpen: action.payload.anythingOpen,
         img: action.payload.img,
-        series: action.payload.series,
         creators: action.payload.creators,
         dates: action.payload.dates,
         pageCount: action.payload.pageCount,
         variants: action.payload.variants,
         detailsComicsOpen: action.payload.detailsComicsOpen,
+        openPageSelectedCategory: action.payload.openPageSelectedCategory
       };
       break;
 
@@ -95,6 +96,7 @@ export function reducerMarvel(
         img: action.payload.img,
         series: action.payload.series,
         detailsSeriesOpen: action.payload.detailsSeriesOpen,
+        openPageSelectedCategory: action.payload.openPageSelectedCategory
       };
       break;
 
@@ -117,17 +119,6 @@ export function reducerMarvel(
     case "BACK_HOME":
       return {
         ...state,
-        detailsComicsOpen: action.payload.detailsComicsOpen,
-        detailsCreatorsOpen: action.payload.detailsCreatorsOpen,
-        detailsEventsOpen: action.payload.detailsEventsOpen,
-        detailsSeriesOpen: action.payload.detailsSeriesOpen,
-        detailsStoriesOpen: action.payload.detailsStoriesOpen,
-        homePage: action.payload.homePage,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory,
-        selectedCategory: action.payload.selectedCategory,
-        currentPage: action.payload.currentPage,
-        loading: action.payload.loading,
-        url: action.payload.url,
         id: action.payload.id,
         name: action.payload.name,
         description: action.payload.description,
@@ -139,6 +130,8 @@ export function reducerMarvel(
         pageCount: action.payload.pageCount,
         variants: action.payload.variants,
         detailsCharacterOpen: action.payload.detailsCharacterOpen,
+        openPageSelectedCategory: action.payload.openPageSelectedCategory,
+        currentPage: action.payload.currentPage,
       };
       break;
 

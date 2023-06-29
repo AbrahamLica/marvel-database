@@ -202,3 +202,7 @@ export const Title = styled.p<TextProps>`
 export const SubTitle = styled.p<TextProps>`
   font-size: 1.5rem;
 `;
+
+
+
+

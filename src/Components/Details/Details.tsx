@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as C from "./AppStyles";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
@@ -8,6 +8,7 @@ import DetailsCharacters from "./DetailsCharacters/DetailsCharacters";
 import DetailsComics from "./DetailsComics/DetailsComics";
 import DetailsSeries from "./DetailsSeries/DetailsSeries";
 import wallpaper from "../../Media/wallpaper.jpg";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 const Details = () => {
   const { state, dispatch } = useContext(Context);
@@ -18,6 +19,32 @@ const Details = () => {
   }, []);
 
   function back() {
+    dispatch({
+      type: "CLEAR_ALL_INFORMATIONS",
+      payload: {
+        id: 0,
+        name: "",
+        description: "",
+        detailsCharacterOpen: false,
+        detailsComicsOpen: false,
+        detailsCreatorsOpen: false,
+        detailsEventsOpen: false,
+        detailsSeriesOpen: false,
+        detailsStoriesOpen: false,
+        openPageSelectedCategory: true,
+        img: "",
+        homePage: true,
+        selectedCategory: "",
+        currentPage: 0,
+        loading: false,
+        series: [],
+        url: "",
+        creators: [],
+        dates: [],
+        pageCount: "",
+        variants: [],
+      },
+    });
     usenavigate(-1);
   }
 
@@ -33,11 +60,16 @@ const Details = () => {
         </C.ButtonBack>
       </C.HeaderFixed>
 
+      <ProgressBar></ProgressBar>
+
       <C.MainContainerDetails>
-        {state.marvel.detailsCharacterOpen && <DetailsCharacters></DetailsCharacters>}
+        {state.marvel.detailsCharacterOpen && (
+          <DetailsCharacters></DetailsCharacters>
+        )}
         {state.marvel.detailsComicsOpen && <DetailsComics></DetailsComics>}
         {state.marvel.detailsSeriesOpen && <DetailsSeries></DetailsSeries>}
       </C.MainContainerDetails>
+
     </C.MainContainerBackground>
   );
 };

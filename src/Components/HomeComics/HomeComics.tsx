@@ -8,6 +8,7 @@ import Header from "../Header/Header";
 import back from "../../Media/back.svg";
 import next from "../../Media/next.svg";
 import "../HomeCharacters/styles.css";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 const HomeComics = () => {
   const { state, dispatch } = useContext(Context);
@@ -67,7 +68,8 @@ const HomeComics = () => {
         dates: dates,
         pageCount: pageCount,
         variants: variants,
-        detailsComicsOpen: true
+        detailsComicsOpen: true,
+        openPageSelectedCategory: false
       },
     });
 
@@ -131,6 +133,7 @@ const HomeComics = () => {
   return (
     <C.MainContainer>
       <Header></Header>
+      <ProgressBar></ProgressBar>
       <C.MainContainerCards>
         {state.marvel.loading ? (
           <div

@@ -1,4 +1,5 @@
 export type MarvelReducerInitialStateType = {
+  // numbers and strings
   id: number;
   name: string;
   description: string;
@@ -9,21 +10,23 @@ export type MarvelReducerInitialStateType = {
   stories: string[];
   nextSeries: any;
   previousSeries: any;
-  detailsCharacterOpen: boolean;
-  detailsComicsOpen: boolean;
-  detailsSeriesOpen: boolean;
   img: string;
-  homePage: boolean;
-  openPageSelectedCategory: boolean;
-  selectedCategory: string | number;
-  currentPage: number;
-  loading: boolean;
   series: string[] | any;
   url: string;
   creators: any;
   dates: string[];
   pageCount: string;
   variants: string[];
+  selectedCategory: string | number;
+  currentPage: number;
+
+  // booleans
+  detailsCharacterOpen: boolean;
+  detailsComicsOpen: boolean;
+  detailsSeriesOpen: boolean;
+  openPageSelectedCategory: boolean;
+  homePage: boolean;  
+  loading: boolean;
 };
 
 export type ActionType = {

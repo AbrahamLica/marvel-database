@@ -8,6 +8,7 @@ import Header from "../Header/Header";
 import back from "../../Media/back.svg";
 import next from "../../Media/next.svg";
 import "./styles.css";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 const HomeCharacters = () => {
   const { state, dispatch } = useContext(Context);
@@ -18,9 +19,9 @@ const HomeCharacters = () => {
   const publicKey = "8df0db429915d47e065eb03b37ca9039";
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     executarRequisicao();
     convertNumberPage();
+    window.scrollTo(0, 0);
   }, [state.marvel.currentPage]);
 
   async function executarRequisicao() {
@@ -61,7 +62,8 @@ const HomeCharacters = () => {
         anythingOpen: true,
         img: img,
         series: series,
-        detailsCharacterOpen: true
+        detailsCharacterOpen: true,
+        openPageSelectedCategory: false
       },
     });
 
@@ -125,6 +127,7 @@ const HomeCharacters = () => {
   return (
     <C.MainContainer>
       <Header></Header>
+      <ProgressBar></ProgressBar>
       <C.MainContainerCards>
         {state.marvel.loading ? (
           <div

@@ -7,6 +7,7 @@ import back from "../../Media/back.svg";
 import next from "../../Media/next.svg";
 import "../HomeCharacters/styles.css";
 import * as C from "../HomeCharacters/AppStyles";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 const HomeSeries = () => {
   const { state, dispatch } = useContext(Context);
@@ -44,6 +45,10 @@ const HomeSeries = () => {
     }, 1000);
   }
 
+ 
+
+  
+
   function openDetails(
     id: number,
     name: string,
@@ -77,6 +82,7 @@ const HomeSeries = () => {
         img: img,
         series: series,
         detailsSeriesOpen: true,
+        openPageSelectedCategory: false,
       },
     });
 
@@ -140,6 +146,7 @@ const HomeSeries = () => {
   return (
     <C.MainContainer>
       <Header></Header>
+      <ProgressBar></ProgressBar>
       <C.MainContainerCards>
         {state.marvel.loading ? (
           <div
@@ -189,29 +196,36 @@ const HomeSeries = () => {
                   }
                   src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
                 />
-                <C.ItemName
-                  characterWidth
-                  characterHeight
-                  onClick={() =>
-                    openDetails(
-                      item.id,
-                      item.title,
-                      item.description,
-                      item.startYear,
-                      item.endYear,
-                      item.characters,
-                      item.creators,
-                      item.comics,
-                      item.stories,
-                      item.nextSeries,
-                      item.previousSeries,
-                      item.thumbnail.path,
-                      item.series
-                    )
-                  }
-                >
-                  {item.title}
-                </C.ItemName>
+                <C.ContainerNameYear>
+                  <C.ItemName
+                    characterWidth
+                    characterHeight
+                    onClick={() =>
+                      openDetails(
+                        item.id,
+                        item.title,
+                        item.description,
+                        item.startYear,
+                        item.endYear,
+                        item.characters,
+                        item.creators,
+                        item.comics,
+                        item.stories,
+                        item.nextSeries,
+                        item.previousSeries,
+                        item.thumbnail.path,
+                        item.series
+                      )
+                    }
+                  >
+                    {item.title}
+                  </C.ItemName>
+
+                  {item.startYear == item.endYear ? (
+                    <C.ItemYear>{item.startYear}</C.ItemYear>
+                  ) : <C.ItemYear>{`${item.startYear} - ${item.endYear}`}</C.ItemYear>}
+                </C.ContainerNameYear>
+
                 <C.ButtonDetails
                   onClick={() =>
                     openDetails(

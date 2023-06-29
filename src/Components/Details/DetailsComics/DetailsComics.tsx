@@ -21,10 +21,6 @@ const DetailsComics = () => {
     setDate(dateFormated);
   }
 
-  function teste() {
-    console.log(date);
-  }
-
   return (
     <C.ContainerDescriptions>
       <C.ImgDetails
@@ -63,6 +59,7 @@ const DetailsComics = () => {
             </C.Container>
           ))}
         </C.Container>
+
       </C.Description>
     </C.ContainerDescriptions>
   );

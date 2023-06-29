@@ -66,7 +66,7 @@ const Header = () => {
         detailsStoriesOpen: false,
         img: "",
         homePage: true,
-        openPageSelectedCategory: false,
+        openPageSelectedCategory: true,
         selectedCategory: "",
         currentPage: 0,
         loading: false,
@@ -95,10 +95,15 @@ const Header = () => {
         pageCount: "",
         variants: [],
         detailsCharacterOpen: false,
+        openPageSelectedCategory: true,
         currentPage: 0,
       },
     });
     usenavigate("/");
+  }
+
+  function teste() {
+    console.log(state.marvel);
   }
 
   return (
@@ -142,6 +147,8 @@ const Header = () => {
           Series
         </C.CategoryText>
       </C.BottomHeader>
+
+      {/* <button onClick={teste}>teste</button> */}
     </C.Header>
   );
 };
