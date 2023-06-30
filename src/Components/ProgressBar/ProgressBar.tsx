@@ -22,13 +22,13 @@ const ProgressBar = () => {
     const progress = (scrollTop / scrollHeight) * 100;
     setProgressBar(progress);
     if (state.marvel.openPageSelectedCategory == true) {
-      setTop(140);
+      setTop(0);
     } else if (state.marvel.detailsCharacterOpen == true) {
-      setTop(47);
+      setTop(0);
     } else if (state.marvel.detailsComicsOpen == true) {
-      setTop(47);
+      setTop(0);
     } else if (state.marvel.detailsSeriesOpen == true) {
-      setTop(47);
+      setTop(0);
     }
   }
 

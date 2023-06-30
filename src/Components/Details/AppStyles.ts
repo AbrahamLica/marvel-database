@@ -124,7 +124,7 @@ export const HeaderFixed = styled.div`
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   position: fixed;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
 `;
