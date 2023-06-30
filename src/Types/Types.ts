@@ -8,10 +8,10 @@ export type MarvelReducerInitialStateType = {
   characters: string[];
   comics: string[];
   stories: string[];
-  nextSeries: any;
-  previousSeries: any;
+  nextSeries: string;
+  previousSeries: string;
   img: string;
-  series: string[] | any;
+  series: string[];
   url: string;
   creators: any;
   dates: string[];
@@ -55,13 +55,14 @@ export type RequisicaoCharactersType = {
   id: number;
   thumbnail: Thumbnail;
   description: string;
+  creators: string[]
 };
 
 export type RequisicaoComicsType = {
   id: number;
   title: string;
   characters: string[];
-  creators: any;
+  creators: string;
   dates: string[];
   description: string;
   pageCount: string;
@@ -76,7 +77,7 @@ export type RequisicaoSeriesType = {
   startYear: number;
   endYear: number;
   characters: string[];
-  creators: any;
+  creators: string;
   comics: string[];
   stories: string[];
   thumbnail: Thumbnail;

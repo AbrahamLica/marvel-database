@@ -63,7 +63,7 @@ const HomeCharacters = () => {
         img: img,
         series: series,
         detailsCharacterOpen: true,
-        openPageSelectedCategory: false
+        openPageSelectedCategory: false,
       },
     });
 
