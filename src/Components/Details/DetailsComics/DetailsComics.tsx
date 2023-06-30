@@ -22,46 +22,47 @@ const DetailsComics = () => {
   }
 
   return (
-    <C.ContainerDescriptions>
-      <C.ImgDetails
-        ImgDetailsComicsHeight
-        ImgDetailsComicsWidth
-        src={`${state.marvel.img}.jpg`}
-      />
+    <C.MainContainerDetailsSeries>
+      <C.ContainerDescriptions>
+        <C.ImgDetails
+          ImgDetailsComicsHeight
+          ImgDetailsComicsWidth
+          src={`${state.marvel.img}.jpg`}
+        />
 
-      <C.Description>
-        <C.Title>{state.marvel.name}</C.Title>
+        <C.Description>
+          <C.Title>{state.marvel.name}</C.Title>
 
-        {state.marvel.description ? (
-          <C.Container>
-            <C.Title>Description: </C.Title>
-            <C.SubTitle>{state.marvel.description}</C.SubTitle>
-          </C.Container>
-        ) : null}
-
-        {date ? (
-          <C.Container displayFlex alignItems="center">
-            <C.Title>Published:</C.Title>
-            <C.SubTitle>{date}</C.SubTitle>
-          </C.Container>
-        ) : null}
-
-        <C.Container displayFlex flexWrap justifyContent="space-between">
-          {state.marvel.creators.items.map((item: any, index: number) => (
-            <C.Container
-              displayFlex
-              width="50%"
-              alignItems="center"
-              key={index}
-            >
-              <C.Title>{item.role}:</C.Title>
-              <C.SubTitle>{item.name}</C.SubTitle>
+          {state.marvel.description ? (
+            <C.Container>
+              <C.Title>Description: </C.Title>
+              <C.SubTitle>{state.marvel.description}</C.SubTitle>
             </C.Container>
-          ))}
-        </C.Container>
+          ) : null}
 
-      </C.Description>
-    </C.ContainerDescriptions>
+          {date ? (
+            <C.Container alignItems="center">
+              <C.Title>Published:</C.Title>
+              <C.SubTitle>{date}</C.SubTitle>
+            </C.Container>
+          ) : null}
+
+          <C.Container displayFlex flexWrap justifyContent="space-between">
+            {state.marvel.creators.items.map((item: any, index: number) => (
+              <C.Container
+                displayFlex
+                width="50%"
+                alignItems="center"
+                key={index}
+              >
+                <C.SubTitle>{item.role}:</C.SubTitle>
+                <C.SubTitle>{item.name}</C.SubTitle>
+              </C.Container>
+            ))}
+          </C.Container>
+        </C.Description>
+      </C.ContainerDescriptions>
+    </C.MainContainerDetailsSeries>
   );
 };
 

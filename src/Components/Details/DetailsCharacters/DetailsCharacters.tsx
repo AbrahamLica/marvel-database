@@ -7,28 +7,30 @@ const DetailsCharacters = () => {
   const { state, dispatch } = useContext(Context);
 
   return (
-    <C.ContainerDescriptions>
-      <C.ImgDetails
-        ImgDetailsCharactersWidth
-        ImgDetailsCharactersHeight
-        src={`${state.marvel.img}.jpg`}
-      />
+    <C.MainContainerDetailsSeries>
+      <C.ContainerDescriptions>
+        <C.ImgDetails
+          ImgDetailsCharactersWidth
+          ImgDetailsCharactersHeight
+          src={`${state.marvel.img}.jpg`}
+        />
 
-      <C.Description>
-        <C.Title>{state.marvel.name}</C.Title>
+        <C.Description>
+          <C.Title>{state.marvel.name}</C.Title>
 
-        {state.marvel.description.length ? (
-          <C.SubTitle>{state.marvel.description}</C.SubTitle>
-        ) : null}
+          {state.marvel.description.length ? (
+            <C.SubTitle>{state.marvel.description}</C.SubTitle>
+          ) : null}
 
-        <C.Container margin="10px 0px">
-          <C.Title>Series:</C.Title>
-          {state.marvel.series.map((item: any, index: number) => (
-            <C.SubTitle key={index}>{item.name}</C.SubTitle>
-          ))}
-        </C.Container>
-      </C.Description>
-    </C.ContainerDescriptions>
+          <C.Container margin="10px 0px">
+            <C.Title>Series:</C.Title>
+            {state.marvel.series.map((item: any, index: number) => (
+              <C.SubTitle key={index}>{item.name}</C.SubTitle>
+            ))}
+          </C.Container>
+        </C.Description>
+      </C.ContainerDescriptions>
+    </C.MainContainerDetailsSeries>
   );
 };
 

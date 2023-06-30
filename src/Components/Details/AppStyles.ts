@@ -116,22 +116,7 @@ export const Link = styled.a<TextProps>`
   text-decoration: none;
 `;
 
-////////////////////////// DETAILS ///////////////////////
-
-export const MainContainerBackground = styled.div<MainContainerDetailsProps>`
-  width: 100%;
-  min-height: 100vh;
-  background: ${(props) => props.background};
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-`;
-
-export const MainContainerDetails = styled.div`
-  min-height: 100vh;
-  width: 100%;
-  backdrop-filter: blur(5px);
-`;
+////////////////////////// HEADER FIXED ///////////////////////
 
 export const HeaderFixed = styled.div`
   z-index: 1;
@@ -168,11 +153,46 @@ export const IconBack = styled.img`
   width: 30px;
 `;
 
-export const ContainerDescriptions = styled.div`
+////////////////////////// DETAILS ///////////////////////
+
+export const MainContainerBackground = styled.div<MainContainerDetailsProps>`
+  width: 100%;
+  min-height: 100vh;
+  background: ${(props) => props.background};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
+export const MainContainerDetails = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  backdrop-filter: blur(5px);
+`;
+
+////////////////////////// DETAILS SERIES ///////////////////////
+
+export const MainContainerDetailsSeries = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const ContainerDescriptions = styled.div`
+  width: 80%;
+  display: flex;
+  /* align-items: center; */
   justify-content: center;
   padding-top: 47px;
+`;
+
+export const Description = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 30px;
 `;
 
 export const ImgDetails = styled.img<ImgDetailsProps>`
@@ -181,28 +201,43 @@ export const ImgDetails = styled.img<ImgDetailsProps>`
 
   width: ${(props) => props.ImgDetailsComicsWidth && "300px"};
   height: ${(props) => props.ImgDetailsComicsHeight && "400px"};
-`;
 
-export const Description = styled.div`
-  font-size: 30px;
-  width: 60%;
-  margin-left: 30px;
-  color: white;
-  display: flex;
-  flex-direction: column;
+  width: ${(props) => props.ImgDetailsSeriesWidth && "200px"};
+  height: ${(props) => props.ImgDetailsSeriesHeight && "300px"};
 `;
 
 export const Title = styled.p<TextProps>`
-  text-transform: capitalize;
   font-weight: bold;
   font-size: 1.6rem;
-  margin-right: 6px;
+
+  color: white;
 `;
 
 export const SubTitle = styled.p<TextProps>`
-  font-size: 1.5rem;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  color: white;
+  margin-right: 6px;
 `;
 
+export const TitleSeries = styled.p<TextProps>`
+  text-transform: capitalize;
+  font-size: 1rem;
+  color: white;
+`;
 
+export const ContainerSeries = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
 
-
+export const ContainerItemSeries = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 40px 20px;
+  width: 200px;
+`;

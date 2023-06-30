@@ -35,7 +35,6 @@ const Details = () => {
         img: "",
         homePage: true,
         selectedCategory: "",
-        currentPage: 0,
         loading: false,
         series: [],
         url: "",
@@ -49,6 +48,7 @@ const Details = () => {
   }
 
   return (
+
     <C.MainContainerBackground
       background={`linear-gradient(rgba(0, 0, 0, 0.8),
        rgba(0, 0, 0, 0.8)),
@@ -63,9 +63,7 @@ const Details = () => {
       <ProgressBar></ProgressBar>
 
       <C.MainContainerDetails>
-        {state.marvel.detailsCharacterOpen && (
-          <DetailsCharacters></DetailsCharacters>
-        )}
+        {state.marvel.detailsCharacterOpen && (<DetailsCharacters></DetailsCharacters>)}
         {state.marvel.detailsComicsOpen && <DetailsComics></DetailsComics>}
         {state.marvel.detailsSeriesOpen && <DetailsSeries></DetailsSeries>}
       </C.MainContainerDetails>
