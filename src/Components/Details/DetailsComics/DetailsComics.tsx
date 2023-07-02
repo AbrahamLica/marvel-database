@@ -47,19 +47,14 @@ const DetailsComics = () => {
             </C.Container>
           ) : null}
 
-          <C.Container displayFlex flexWrap justifyContent="space-between">
+          <C.ContainerCreators>
             {state.marvel.creators.items.map((item: any, index: number) => (
-              <C.Container
-                displayFlex
-                width="50%"
-                alignItems="center"
-                key={index}
-              >
+              <C.ContainerRoleandName key={index}>
                 <C.SubTitle>{item.role}:</C.SubTitle>
                 <C.SubTitle>{item.name}</C.SubTitle>
-              </C.Container>
+              </C.ContainerRoleandName>
             ))}
-          </C.Container>
+          </C.ContainerCreators>
         </C.Description>
       </C.ContainerDescriptions>
     </C.MainContainerDetailsSeries>

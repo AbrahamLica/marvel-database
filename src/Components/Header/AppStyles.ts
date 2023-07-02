@@ -136,23 +136,30 @@ export const CategoryText = styled.p<ContainerProps>`
   font-family: "Roboto Condensed";
   font-weight: bold;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 0px 5px;
+  border-radius: 5px;
+
+  :hover {
+    background-color: #e9190f;
+  }
 `;
 
-export const Banner = styled.div<ContainerProps>`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 0vh;
-  background-color: white;
-  position: absolute;
-  left: 0;
-  top: calc(100% + -1vh);
-  transition: 0.5s;
-  cursor: pointer;
- 
-`;
+// export const Banner = styled.div<ContainerProps>`
+//   display: flex;
+//   justify-content: center;
+//   width: 100%;
+//   height: 0vh;
+//   background-color: white;
+//   position: absolute;
+//   left: 0;
+//   top: calc(100% + -1vh);
+//   transition: 0.5s;
+//   cursor: pointer;
+// `;
 
-export const ImgBanner = styled.img<ContainerProps>`
-  max-width: 100%;
-  cursor: pointer;
-`;
+// export const ImgBanner = styled.img<ContainerProps>`
+//   max-width: 100%;
+//   cursor: pointer;
+// `;

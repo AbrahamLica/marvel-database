@@ -162,12 +162,14 @@ export const MainContainerBackground = styled.div<MainContainerDetailsProps>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  
 `;
 
 export const MainContainerDetails = styled.div`
   min-height: 100vh;
   width: 100%;
   backdrop-filter: blur(5px);
+
 `;
 
 ////////////////////////// DETAILS SERIES ///////////////////////
@@ -176,15 +178,21 @@ export const MainContainerDetailsSeries = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  /* justify-content: center; */
   flex-direction: column;
 `;
 
 export const ContainerDescriptions = styled.div`
   width: 80%;
   display: flex;
-  /* align-items: center; */
+
   justify-content: center;
   padding-top: 47px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Description = styled.div`
@@ -192,7 +200,12 @@ export const Description = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-left: 30px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 export const ImgDetails = styled.img<ImgDetailsProps>`
@@ -204,6 +217,11 @@ export const ImgDetails = styled.img<ImgDetailsProps>`
 
   width: ${(props) => props.ImgDetailsSeriesWidth && "200px"};
   height: ${(props) => props.ImgDetailsSeriesHeight && "300px"};
+
+  @media (max-width: 375px) {
+    width: 300px;
+    height: 400px;
+  }
 `;
 
 export const Title = styled.p<TextProps>`
@@ -240,4 +258,23 @@ export const ContainerItemSeries = styled.div`
   flex-direction: column;
   margin: 40px 20px;
   width: 200px;
+`;
+
+export const ContainerCreators = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ContainerRoleandName = styled.div`
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 425px) {
+    width: 100%;
+  }
 `;

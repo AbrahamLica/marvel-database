@@ -12,7 +12,8 @@ function App() {
     <Fragment>
       <GlobalStyle />
 
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      {/* basename={process.env.PUBLIC_URL} */}
+      <BrowserRouter >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pagecharacters" element={<HomeCharacters />} />

@@ -15,37 +15,7 @@ const Header = () => {
   const [bannerajustado, setBannerajustado] = useState<string>();
   const usenavigate = useNavigate();
 
-  useEffect(() => {
-    setNameBanner();
-  }, [banner]);
-
-  function handleMouseOverText(banner: string) {
-    setIsHoverText(true);
-    setBanner(banner);
-  }
-
-  function handleMouseOutText() {
-    setIsHoverText(false);
-  }
-
-  function handleMouseOverBanner() {
-    setIsHoverBanner(true);
-  }
-
-  function handleMouseOutBanner() {
-    setIsHoverBanner(false);
-    setIsHoverText(false);
-  }
-
-  function setNameBanner() {
-    if (banner == "characters") {
-      return setBannerajustado(bannercharacters);
-    } else if (banner == "comics") {
-      return setBannerajustado(bannercomics);
-    } else if (banner == "series") {
-      return setBannerajustado(bannerseries);
-    }
-  }
+  useEffect(() => {}, [banner]);
 
   function pageCharacters(page: string) {
     usenavigate(`/page${page}`);
@@ -106,41 +76,18 @@ const Header = () => {
       </C.TopHeader>
 
       <C.BottomHeader>
-        <C.CategoryText
-          onMouseOver={() => handleMouseOverText("characters")}
-          onMouseOut={handleMouseOutText}
-        >
+        <C.CategoryText onClick={() => pageCharacters(`characters`)}>
           Characters
         </C.CategoryText>
 
-        <C.CategoryText
-          onMouseOver={() => handleMouseOverText("comics")}
-          onMouseOut={handleMouseOutText}
-        >
+        <C.CategoryText onClick={() => pageCharacters(`comics`)}>
           Comics
         </C.CategoryText>
 
-        <C.CategoryText
-          onMouseOver={() => handleMouseOverText("series")}
-          onMouseOut={handleMouseOutText}
-        >
+        <C.CategoryText onClick={() => pageCharacters(`series`)}>
           Series
         </C.CategoryText>
       </C.BottomHeader>
-
-      <C.Banner
-        onMouseOver={handleMouseOverBanner}
-        onMouseOut={handleMouseOutBanner}
-        style={{
-          height: isHoverText || isHoverBanner ? "75vh" : "0%",
-        }}
-      >
-        <C.ImgBanner
-          onClick={() => pageCharacters(`${banner}`)}
-          src={bannerajustado}
-        ></C.ImgBanner>
-      </C.Banner>
-
     </C.Header>
   );
 };
