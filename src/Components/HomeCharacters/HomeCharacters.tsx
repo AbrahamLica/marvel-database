@@ -125,6 +125,7 @@ const HomeCharacters = () => {
   }
 
   return (
+    
     <C.MainContainer>
       <Header></Header>
       <ProgressBar></ProgressBar>

@@ -167,6 +167,34 @@ export function reducerMarvel(
         detailsCharacterOpen: action.payload.detailsCharacterOpen,
       };
       break;
+
+      case "CLEAR_ALL_INFORMATIONS_2":
+      return {
+        ...state,
+        detailsComicsOpen: action.payload.detailsComicsOpen,
+        detailsCreatorsOpen: action.payload.detailsCreatorsOpen,
+        detailsEventsOpen: action.payload.detailsEventsOpen,
+        detailsSeriesOpen: action.payload.detailsSeriesOpen,
+        detailsStoriesOpen: action.payload.detailsStoriesOpen,
+        homePage: action.payload.homePage,
+        openPageSelectedCategory: action.payload.openPageSelectedCategory,
+        selectedCategory: action.payload.selectedCategory,
+        loading: action.payload.loading,
+        url: action.payload.url,
+        id: action.payload.id,
+        name: action.payload.name,
+        description: action.payload.description,
+        anythingOpen: action.payload.anythingOpen,
+        img: action.payload.img,
+        series: action.payload.series,
+        creators: action.payload.creators,
+        dates: action.payload.dates,
+        pageCount: action.payload.pageCount,
+        variants: action.payload.variants,
+        currentPage: action.payload.currentPage,
+        detailsCharacterOpen: action.payload.detailsCharacterOpen,
+      };
+      break;
   }
   return state;
 }

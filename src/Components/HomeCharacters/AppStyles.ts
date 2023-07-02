@@ -68,7 +68,6 @@ export const MainContainer = styled.div<ContainerProps>`
   width: 100%;
   background-color: black;
   justify-content: center;
- 
 `;
 
 export const Logo = styled.img<ContainerProps>`
@@ -105,6 +104,10 @@ export const ImgCard = styled.img<ImgProps>`
   :hover {
     transform: translateY(-10px);
   }
+
+  /* @media (max-width: 320px) {
+    width: 250px;
+  } */
 `;
 
 export const ItemName = styled.div<ItemNameProps>`
@@ -185,6 +188,11 @@ export const ContainerCard = styled.div<ContainerProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 320px) {
+    margin: 30px 0px;
+  }
+
 `;
 
 export const ContainerButtons = styled.div<ContainerProps>`
@@ -233,13 +241,16 @@ export const moving = keyframes`
 
 export const ContainerMainNextBack = styled.div<ContainerProps>`
   display: flex;
+  flex-direction: column;
   width: 100%;
+  margin-top: 40px;
 `;
 
 export const ContainerMainPageAtual = styled.div<ContainerProps>`
   display: flex;
-  width: 53%;
-  justify-content: flex-end;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ContainerPageAtual = styled.div<ContainerProps>`
@@ -263,5 +274,5 @@ export const TextPaginaAtual = styled.div<ContainerProps>`
 export const ContainerNextBack = styled.div<ContainerProps>`
   display: flex;
   justify-content: flex-end;
-  width: 50%;
+  width: 100%;
 `;

@@ -30,9 +30,6 @@ const Header = () => {
 
   function handleMouseOverBanner() {
     setIsHoverBanner(true);
-    if (isHoverText == false) {
-      setIsHoverBanner(false);
-    }
   }
 
   function handleMouseOutBanner() {
@@ -53,7 +50,7 @@ const Header = () => {
   function pageCharacters(page: string) {
     usenavigate(`/page${page}`);
     dispatch({
-      type: "CLEAR_ALL_INFORMATIONS",
+      type: "CLEAR_ALL_INFORMATIONS_2",
       payload: {
         id: 0,
         name: "",
@@ -102,10 +99,6 @@ const Header = () => {
     usenavigate("/");
   }
 
-  function teste() {
-    console.log(state.marvel);
-  }
-
   return (
     <C.Header>
       <C.TopHeader>
@@ -119,19 +112,6 @@ const Header = () => {
         >
           Characters
         </C.CategoryText>
-
-        <C.Banner
-          onMouseOver={handleMouseOverBanner}
-          onMouseOut={handleMouseOutBanner}
-          style={{
-            height: isHoverText || isHoverBanner ? "75vh" : "0%",
-          }}
-        >
-          <C.ImgBanner
-            onClick={() => pageCharacters(`${banner}`)}
-            src={bannerajustado}
-          ></C.ImgBanner>
-        </C.Banner>
 
         <C.CategoryText
           onMouseOver={() => handleMouseOverText("comics")}
@@ -148,7 +128,19 @@ const Header = () => {
         </C.CategoryText>
       </C.BottomHeader>
 
-      {/* <button onClick={teste}>teste</button> */}
+      <C.Banner
+        onMouseOver={handleMouseOverBanner}
+        onMouseOut={handleMouseOutBanner}
+        style={{
+          height: isHoverText || isHoverBanner ? "75vh" : "0%",
+        }}
+      >
+        <C.ImgBanner
+          onClick={() => pageCharacters(`${banner}`)}
+          src={bannerajustado}
+        ></C.ImgBanner>
+      </C.Banner>
+
     </C.Header>
   );
 };

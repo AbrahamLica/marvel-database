@@ -95,17 +95,16 @@ export const Link = styled.a<TextProps>`
 
 ////////////////////////// HOME  ///////////////////////
 
-
 export const Header = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 16vh;
+  height: 20vh;
   background-color: #202020;
   position: fixed;
-  z-index: 1;
+  z-index: 99;
 `;
 
 export const TopHeader = styled.div<ContainerProps>`
@@ -113,12 +112,11 @@ export const TopHeader = styled.div<ContainerProps>`
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 50px;
-  margin-bottom: 10px;
+  height: 100%;
 `;
 
 export const Logo = styled.img<ContainerProps>`
-  width: 200px;
+  height: 10vh;
   cursor: pointer;
 `;
 
@@ -132,9 +130,9 @@ export const BottomHeader = styled.div<ContainerProps>`
 `;
 
 export const CategoryText = styled.p<ContainerProps>`
-  font-size: 17px;
+  font-size: 1.2rem;
   color: white;
-  margin: 10px 20px;
+  margin: 10px 15px;
   font-family: "Roboto Condensed";
   font-weight: bold;
   text-transform: uppercase;
@@ -147,12 +145,14 @@ export const Banner = styled.div<ContainerProps>`
   height: 0vh;
   background-color: white;
   position: absolute;
-  top: 160px;
+  left: 0;
+  top: calc(100% + -1vh);
   transition: 0.5s;
+  cursor: pointer;
+ 
 `;
 
 export const ImgBanner = styled.img<ContainerProps>`
   max-width: 100%;
   cursor: pointer;
 `;
-
