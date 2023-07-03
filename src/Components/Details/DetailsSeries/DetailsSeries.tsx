@@ -34,21 +34,12 @@ const DetailsSeries = () => {
       json.push(await req.json());
       setRequisicao((current) => [...current, json[i]]);
     }
-
-    console.log(requisicao);
-
-    // fazer req de series:  https://gateway.marvel.com/v1/public/comics/84352?ts=1&apikey=8df0db429915d47e065eb03b37ca9039&hash=4a8b729d09d1d2ad3fb626dff7e2165d
   }
 
   return (
-
     <C.MainContainerDetailsSeries>
       <C.ContainerDescriptions>
-        <C.ImgDetails
-          ImgDetailsComicsHeight
-          ImgDetailsComicsWidth
-          src={`${state.marvel.img}.jpg`}
-        />
+        <C.ImgDetailsSeries src={`${state.marvel.img}.jpg`} />
 
         <C.Description>
           <C.Title>{state.marvel.name}</C.Title>
@@ -67,19 +58,14 @@ const DetailsSeries = () => {
             </C.Container>
           ) : null}
 
-          <C.Container displayFlex flexWrap justifyContent="space-between">
+          <C.ContainerCreators>
             {state.marvel.creators.items.map((item: any, index: number) => (
-              <C.Container
-                displayFlex
-                width="50%"
-                alignItems="center"
-                key={index}
-              >
+              <C.ContainerRoleandName key={index}>
                 <C.SubTitle>{item.role}:</C.SubTitle>
                 <C.SubTitle>{item.name}</C.SubTitle>
-              </C.Container>
+              </C.ContainerRoleandName>
             ))}
-          </C.Container>
+          </C.ContainerCreators>
         </C.Description>
       </C.ContainerDescriptions>
 
@@ -87,11 +73,9 @@ const DetailsSeries = () => {
         <C.ContainerSeries>
           {requisicao.map((item: any, index: number) => (
             <C.ContainerItemSeries>
-              <C.ImgDetails
+              <C.ImgDetailsSeries
                 src={`${item.data.results[0].thumbnail.path}.jpg`}
-                ImgDetailsSeriesHeight
-                ImgDetailsSeriesWidth
-              ></C.ImgDetails>
+              ></C.ImgDetailsSeries>
               <C.TitleSeries>{item.data.results[0].title}</C.TitleSeries>
             </C.ContainerItemSeries>
           ))}

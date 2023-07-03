@@ -45,10 +45,6 @@ const HomeSeries = () => {
     }, 1000);
   }
 
- 
-
-  
-
   function openDetails(
     id: number,
     name: string,
@@ -175,8 +171,7 @@ const HomeSeries = () => {
           <C.ContainerCards>
             {requisicao.map((item, index) => (
               <C.ContainerCard key={index}>
-                <C.ImgCard
-                  characterWidth
+                <C.ImgCardSeries
                   onClick={() =>
                     openDetails(
                       item.id,
@@ -197,7 +192,7 @@ const HomeSeries = () => {
                   src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
                 />
                 <C.ContainerNameYear>
-                  <C.ItemName
+                  <C.ItemNameSeries
                     characterWidth
                     characterHeight
                     onClick={() =>
@@ -219,11 +214,13 @@ const HomeSeries = () => {
                     }
                   >
                     {item.title}
-                  </C.ItemName>
+                  </C.ItemNameSeries>
 
                   {item.startYear == item.endYear ? (
                     <C.ItemYear>{item.startYear}</C.ItemYear>
-                  ) : <C.ItemYear>{`${item.startYear} - ${item.endYear}`}</C.ItemYear>}
+                  ) : (
+                    <C.ItemYear>{`${item.startYear} - ${item.endYear}`}</C.ItemYear>
+                  )}
                 </C.ContainerNameYear>
 
                 <C.ButtonDetails

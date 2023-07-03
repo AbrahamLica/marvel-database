@@ -24,11 +24,7 @@ const DetailsComics = () => {
   return (
     <C.MainContainerDetailsSeries>
       <C.ContainerDescriptions>
-        <C.ImgDetails
-          ImgDetailsComicsHeight
-          ImgDetailsComicsWidth
-          src={`${state.marvel.img}.jpg`}
-        />
+        <C.ImgDetailsComics src={`${state.marvel.img}.jpg`} />
 
         <C.Description>
           <C.Title>{state.marvel.name}</C.Title>

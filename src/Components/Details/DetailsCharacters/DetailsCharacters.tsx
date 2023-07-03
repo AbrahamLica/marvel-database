@@ -9,11 +9,7 @@ const DetailsCharacters = () => {
   return (
     <C.MainContainerDetailsSeries>
       <C.ContainerDescriptions>
-        <C.ImgDetails
-          ImgDetailsCharactersWidth
-          ImgDetailsCharactersHeight
-          src={`${state.marvel.img}.jpg`}
-        />
+        <C.ImgDetailsCharacters src={`${state.marvel.img}.jpg`} />
 
         <C.Description>
           <C.Title>{state.marvel.name}</C.Title>

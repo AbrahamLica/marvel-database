@@ -69,7 +69,7 @@ const HomeComics = () => {
         pageCount: pageCount,
         variants: variants,
         detailsComicsOpen: true,
-        openPageSelectedCategory: false
+        openPageSelectedCategory: false,
       },
     });
 
@@ -162,8 +162,7 @@ const HomeComics = () => {
           <C.ContainerCards>
             {requisicao.map((item, index) => (
               <C.ContainerCard key={index}>
-                <C.ImgCard
-                  comicsWidth
+                <C.ImgCardComics
                   onClick={() =>
                     openDetails(
                       item.title,
@@ -178,7 +177,7 @@ const HomeComics = () => {
                   }
                   src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
                 />
-                <C.ItemName
+                <C.ItemNameComics
                   comicsWidth
                   comicsHeight
                   onClick={() =>
@@ -195,7 +194,7 @@ const HomeComics = () => {
                   }
                 >
                   {item.title}
-                </C.ItemName>
+                </C.ItemNameComics>
                 <C.ButtonDetails
                   onClick={() =>
                     openDetails(

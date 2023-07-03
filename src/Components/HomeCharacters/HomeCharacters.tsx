@@ -125,7 +125,6 @@ const HomeCharacters = () => {
   }
 
   return (
-    
     <C.MainContainer>
       <Header></Header>
       <ProgressBar></ProgressBar>
@@ -157,8 +156,7 @@ const HomeCharacters = () => {
           <C.ContainerCards>
             {requisicao.map((item, index) => (
               <C.ContainerCard key={index}>
-                <C.ImgCard
-                  characterWidth
+                <C.ImgCardCharacters
                   onClick={() =>
                     openDetails(
                       item.name,
@@ -170,7 +168,7 @@ const HomeCharacters = () => {
                   }
                   src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
                 />
-                <C.ItemName
+                <C.ItemNameCharacters
                   characterWidth
                   characterHeight
                   onClick={() =>
@@ -184,7 +182,7 @@ const HomeCharacters = () => {
                   }
                 >
                   {item.name}
-                </C.ItemName>
+                </C.ItemNameCharacters>
                 <C.ButtonDetails
                   onClick={() =>
                     openDetails(
