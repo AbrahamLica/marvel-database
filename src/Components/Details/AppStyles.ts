@@ -282,3 +282,4 @@ export const ContainerItemSeries = styled.div`
   margin: 25px;
   width: 300px;
 `;
+
