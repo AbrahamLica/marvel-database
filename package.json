@@ -4,6 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://AbrahamLica.github.io/marvel-studios ",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "dependencies": {
     "@types/styled-components": "^5.1.26",
     "react": "^18.2.0",
