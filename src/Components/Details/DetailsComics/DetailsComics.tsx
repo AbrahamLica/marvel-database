@@ -50,8 +50,6 @@ const DetailsComics = () => {
                 <C.SubTitle>{item.name}</C.SubTitle>
               </C.ContainerRoleandName>
             ))}
-
-           
           </C.ContainerCreators>
         </C.Description>
       </C.ContainerDescriptions>
