@@ -19,6 +19,8 @@ const DetailsComics = () => {
     let year = slicedDate.slice(0, 4);
     let dateFormated = `${day}/${month}/${year}`;
     setDate(dateFormated);
+
+    // teste;..
   }
 
   return (
