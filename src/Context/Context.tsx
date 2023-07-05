@@ -8,6 +8,8 @@ import {
   Thumbnail,
 } from "../Types/Types";
 
+// teste
+
 ////////////////////////  REDUCER MOVIES  ////////////////////////////////
 
 export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
