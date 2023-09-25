@@ -1,52 +1,6 @@
 import styled from "styled-components";
-
-/////////////////// PROPS ///////////////////////
-
-export type ContainerProps = {
-  color?: string;
-  id?: any;
-  width?: string;
-  heigth?: string;
-  backgroundColor?: string;
-  displayFlex?: boolean;
-  flex?: string;
-  flexWrap?: boolean;
-  alignItems?: string;
-  margin?: string;
-  padding?: string;
-  column?: boolean;
-  border?: string;
-  borderRadius?: string;
-  cursorPointer?: boolean;
-  backgroundImage?: string;
-  backgroundPosition?: string;
-  backgroundSize?: string;
-  justifyContent?: string;
-};
-
-export type InputProps = {
-  color?: string;
-  bold?: boolean;
-  fontSize?: string;
-  width?: string;
-  backgroundColor?: string;
-  margin?: string;
-};
-
-export type TextProps = {
-  color?: string;
-  bold?: boolean;
-  fontSize?: string;
-  textAlign?: string;
-  margin?: string;
-  backgroundColor?: string;
-  padding?: string;
-  borderRadius?: string;
-  cursorPointer?: boolean;
-  zIndex?: boolean;
-};
-
-/////////////////// GERAL ///////////////////////
+import { ContainerProps } from "../Types/GlobalStylesTypes";
+import { TextProps } from "../Types/GlobalStylesTypes";
 
 export const Container = styled.div<ContainerProps>`
   color: ${(props) => props.color};
@@ -92,15 +46,3 @@ export const Link = styled.a<TextProps>`
   cursor: pointer;
   text-decoration: none;
 `;
-
-////////////////////////// HOME  ///////////////////////
-
-export const MainContainer = styled.div<ContainerProps>`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  background-color: black;
-  color: white;
-`;
-

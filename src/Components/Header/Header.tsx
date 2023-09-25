@@ -1,4 +1,4 @@
-import * as C from "./AppStyles";
+import * as C from "./styles";
 import logo from "../../Media/logo.png";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context/Context";
