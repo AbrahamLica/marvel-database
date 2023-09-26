@@ -17,7 +17,7 @@ export type MarvelReducerInitialStateType = {
   dates: any;
   pageCount: string;
   variants: string[];
-  selectedCategory: string | number;
+  selectedCategory: string
   currentPage: number;
   fetch: any;
 
@@ -31,41 +31,32 @@ export type MarvelReducerInitialStateType = {
   loadedItems: boolean;
 };
 
-export type RequisicaoCharactersType = {
-  series: any;
-  name: string;
-  id: number;
-  thumbnail: Thumbnail;
-  description: string;
-  creators: any[];
-};
+export type RequisicaoType = {
+  //IN COMMON
+  id?: number;
+  description?: string;
+  thumbnail?: Thumbnail;
+  title?: string;
+  series?: any;
 
-export type RequisicaoComicsType = {
-  id: number;
-  title: string;
-  characters: string[];
-  creators: any;
-  dates: any;
-  description: string;
-  pageCount: string;
-  thumbnail: Thumbnail;
-  variants: string[];
-};
+  //CHARACTERS TYPE
+  name?: string;
+  creators?: any[];
 
-export type RequisicaoSeriesType = {
-  id: number;
-  title: string;
-  description: string;
-  startYear: number;
-  endYear: number;
-  characters: string[];
-  creators: string;
-  comics: any[];
-  stories: string[];
-  thumbnail: Thumbnail;
-  nextSeries: any;
-  previousSeries: any;
-  series: any;
+  //COMICS TYPE
+  characters?: string[];
+  creatorss?: any;
+  dates?: any;
+  pageCount?: string;
+  variants?: string[];
+
+  //SERIES TYPE
+  startYear?: number;
+  endYear?: number;
+  comics?: any[];
+  stories?: string[];
+  nextSeries?: any;
+  previousSeries?: any;
 };
 
 export type Thumbnail = {

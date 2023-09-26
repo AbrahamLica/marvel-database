@@ -1,15 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
-import { RequisicaoSeriesType } from "../Types/Types";
-import { RequisicaoComicsType } from "../Types/Types";
-import { RequisicaoCharactersType } from "../Types/Types";
+import { RequisicaoType } from "../Types/Types";
 
 // Requisitions
 
 export async function executarRequisicao(
   dispatch: any,
   setRequisicao: Dispatch<SetStateAction<any>>,
-  state: any,
-  requisicao:any
+  requisicao: any
 ) {
   dispatch({
     type: "SET_LOADING",
@@ -38,13 +35,13 @@ export function goToSelectedCategory(
   const publicKey = "8df0db429915d47e065eb03b37ca9039";
   const hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
 
-  console.log('executou');
   if (selectedCategory == "characters") {
     dispatch({
       type: "SELECT_CATEGORY_CHARACTERS",
       payload: {
         loadedItems: true,
-        fetch: `http://gateway.marvel.com/v1/public/${selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
+        selectedCategory: selectedCategory,
+        fetch: `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
       },
     });
   } else if (selectedCategory == "comics") {
@@ -52,7 +49,8 @@ export function goToSelectedCategory(
       type: "SELECT_CATEGORY_COMICS",
       payload: {
         loadedItems: true,
-        fetch: `http://gateway.marvel.com/v1/public/${selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
+        selectedCategory: selectedCategory,
+        fetch: `http://gateway.marvel.com/v1/public/comics?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
       },
     });
   } else {
@@ -60,28 +58,29 @@ export function goToSelectedCategory(
       type: "SELECT_CATEGORY_SERIES",
       payload: {
         loadedItems: true,
-        fetch: `http://gateway.marvel.com/v1/public/${selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
+        selectedCategory: selectedCategory,
+        fetch: `http://gateway.marvel.com/v1/public/series?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
       },
     });
   }
 }
 
 export function openDetails(
-  id: number,
-  name: string,
-  description: string,
-  startYear: number,
-  endYear: number,
-  characters: string[],
-  creators: any,
-  comics: string[],
-  stories: string[],
-  nextSeries: any,
-  previousSeries: any,
-  img: string,
-  series: string[],
-  dispatch: any,
-  usenavigate: any
+  id?: number,
+  name?: string,
+  description?: string,
+  startYear?: number,
+  endYear?: number,
+  characters?: string[],
+  creators?: any,
+  comics?: string[],
+  stories?: string[],
+  nextSeries?: any,
+  previousSeries?: any,
+  img?: string,
+  series?: string[],
+  dispatch?: any,
+  usenavigate?: any
 ) {
   dispatch({
     type: "OPEN_DETAILS_SERIES",
@@ -190,8 +189,6 @@ export function updateProgressBar(
     setTop(0);
   }
 }
-
-
 
 export function backToHome(dispatch: any, usenavigate: any) {
   dispatch({

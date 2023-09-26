@@ -105,6 +105,7 @@ export function reducerMarvel(
         return {
           ...state,
           loadedItems: action.payload.loadedItems,
+          selectedCategory: action.payload.selectedCategory,
           fetch: action.payload.fetch,
         };
         break;
@@ -113,6 +114,7 @@ export function reducerMarvel(
           return {
             ...state,
             loadedItems: action.payload.loadedItems,
+            selectedCategory: action.payload.selectedCategory,
             fetch: action.payload.fetch,
           };
           break;
@@ -121,6 +123,7 @@ export function reducerMarvel(
             return {
               ...state,
               loadedItems: action.payload.loadedItems,
+              selectedCategory: action.payload.selectedCategory,
               fetch: action.payload.fetch,
             };
             break;

@@ -3,33 +3,31 @@ import { ContainerProps } from "../../../Types/GlobalStylesTypes";
 import { ImgProps } from "../../../Types/GlobalStylesTypes";
 import { ItemNameProps } from "../../../Types/GlobalStylesTypes";
 
-export const MainContainer = styled.div<ContainerProps>`
-  display: flex;
-  min-height: 100vh;
-  padding-bottom: 20px;
-  width: 100%;
-  background-color: black;
-  justify-content: center;
-`;
-
-export const Logo = styled.img<ContainerProps>`
-  height: 100%;
-  width: 10%;
-  cursor: pointer;
-`;
+// characters
 
 export const ContainerCards = styled.div<ContainerProps>`
   display: flex;
-  flex-direction: column;
-  background-color: black;
-  width: 95%;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  margin-top: 140px;
+  background-color: black;
+  width: 90%;
+  margin-top: 120px;
 `;
 
-export const ImgCardCharacters = styled.img<ImgProps>`
+export const ContainerCard = styled.div<ContainerProps>`
+  margin: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 320px) {
+    margin: 30px 0px;
+  }
+`;
+
+export const ImgCard = styled.img<ImgProps>`
   width: 300px;
   height: 300px;
   transition: 0.3s;
@@ -40,29 +38,7 @@ export const ImgCardCharacters = styled.img<ImgProps>`
   }
 `;
 
-export const ImgCardComics = styled.img<ImgProps>`
-  width: 200px;
-  height: 300px;
-  transition: 0.3s;
-  cursor: pointer;
-
-  :hover {
-    transform: translateY(-10px);
-  }
-`;
-
-export const ImgCardSeries = styled.img<ImgProps>`
-  width: 250px;
-  height: 300px;
-  transition: 0.3s;
-  cursor: pointer;
-
-  :hover {
-    transform: translateY(-10px);
-  }
-`;
-
-export const ItemNameCharacters = styled.div<ItemNameProps>`
+export const ItemName = styled.div<ItemNameProps>`
   width: 300px;
   font-size: 17px;
   margin-top: 15px;
@@ -103,6 +79,19 @@ export const ItemNameCharacters = styled.div<ItemNameProps>`
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
     transition-duration: 400ms;
     transition-property: width, left;
+  }
+`;
+
+////////////////// COMICS ///////////////////
+
+export const ImgCardComics = styled.img<ImgProps>`
+  width: 200px;
+  height: 300px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  :hover {
+    transform: translateY(-10px);
   }
 `;
 
@@ -150,6 +139,8 @@ export const ItemNameComics = styled.div<ItemNameProps>`
   }
 `;
 
+////////////////// SERIES ///////////////////
+
 export const ItemNameSeries = styled.div<ItemNameProps>`
   width: 200px;
   font-size: 17px;
@@ -194,6 +185,17 @@ export const ItemNameSeries = styled.div<ItemNameProps>`
   }
 `;
 
+export const ImgCardSeries = styled.img<ImgProps>`
+  width: 250px;
+  height: 300px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  :hover {
+    transform: translateY(-10px);
+  }
+`;
+
 export const ContainerNameYear = styled.div<ContainerProps>``;
 
 export const ItemYear = styled.p<ContainerProps>`
@@ -215,18 +217,6 @@ export const ButtonDetails = styled.button`
 
   :hover {
     transform: translate(10px, -6px);
-  }
-`;
-
-export const ContainerCard = styled.div<ContainerProps>`
-  margin: 30px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 320px) {
-    margin: 30px 0px;
   }
 `;
 
@@ -269,4 +259,10 @@ export const moving = keyframes`
     right: 0;
     left: unset;
   }
+`;
+
+export const Logo = styled.img<ContainerProps>`
+  height: 100%;
+  width: 10%;
+  cursor: pointer;
 `;
