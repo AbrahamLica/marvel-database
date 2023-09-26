@@ -1,90 +1,38 @@
 import * as C from "./styles";
 import logo from "../../Media/logo.png";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Context } from "../../Context/Context";
-import bannercharacters from "../../Media/characters.png";
-import bannercomics from "../../Media/comics.png";
-import bannerseries from "../../Media/series.png";
 import { useNavigate } from "react-router-dom";
+import { backToHome } from "../../Helpers/Functions";
+import { goToSelectedCategory } from "../../Helpers/Functions";
 
 const Header = () => {
   const { state, dispatch } = useContext(Context);
-  const [isHoverText, setIsHoverText] = useState(false);
-  const [isHoverBanner, setIsHoverBanner] = useState(false);
-  const [banner, setBanner] = useState<string>();
-  const [bannerajustado, setBannerajustado] = useState<string>();
   const usenavigate = useNavigate();
-
-  useEffect(() => {}, [banner]);
-
-  function pageCharacters(page: string) {
-    usenavigate(`/page${page}`);
-    dispatch({
-      type: "CLEAR_ALL_INFORMATIONS_2",
-      payload: {
-        id: 0,
-        name: "",
-        description: "",
-        detailsCharacterOpen: false,
-        detailsComicsOpen: false,
-        detailsCreatorsOpen: false,
-        detailsEventsOpen: false,
-        detailsSeriesOpen: false,
-        detailsStoriesOpen: false,
-        img: "",
-        homePage: true,
-        openPageSelectedCategory: true,
-        selectedCategory: "",
-        currentPage: 0,
-        loading: false,
-        series: [],
-        url: "",
-        creators: [],
-        dates: [],
-        pageCount: "",
-        variants: [],
-      },
-    });
-  }
-
-  function backHome() {
-    dispatch({
-      type: "BACK_HOME",
-      payload: {
-        id: 0,
-        name: "",
-        description: "",
-        anythingOpen: false,
-        img: "",
-        series: [],
-        creators: [],
-        dates: [],
-        pageCount: "",
-        variants: [],
-        detailsCharacterOpen: false,
-        openPageSelectedCategory: true,
-        currentPage: 0,
-      },
-    });
-    usenavigate("/");
-  }
 
   return (
     <C.Header>
       <C.TopHeader>
-        <C.Logo src={logo} onClick={backHome} />
+        <C.Logo src={logo} onClick={() => backToHome(dispatch, usenavigate)} />
+        <button onClick={() => console.log(state.marvel)}>teste</button>
       </C.TopHeader>
 
       <C.BottomHeader>
-        <C.CategoryText onClick={() => pageCharacters(`characters`)}>
+        <C.CategoryText
+          onClick={() => goToSelectedCategory("characters", dispatch, state)}
+        >
           Characters
         </C.CategoryText>
 
-        <C.CategoryText onClick={() => pageCharacters(`comics`)}>
+        <C.CategoryText
+          onClick={() => goToSelectedCategory("comics", dispatch, state)}
+        >
           Comics
         </C.CategoryText>
 
-        <C.CategoryText onClick={() => pageCharacters(`series`)}>
+        <C.CategoryText
+          onClick={() => goToSelectedCategory("series", dispatch, state)}
+        >
           Series
         </C.CategoryText>
       </C.BottomHeader>

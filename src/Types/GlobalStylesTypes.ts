@@ -18,6 +18,7 @@ export type ContainerProps = {
   backgroundPosition?: string;
   backgroundSize?: string;
   justifyContent?: string;
+  top?: string;
 };
 
 export type InputProps = {
@@ -40,4 +41,16 @@ export type TextProps = {
   borderRadius?: string;
   cursorPointer?: boolean;
   zIndex?: boolean;
+};
+
+export type ImgProps = {
+  characterWidth?: boolean;
+  comicsWidth?: boolean;
+};
+
+export type ItemNameProps = {
+  characterWidth?: boolean;
+  comicsWidth?: boolean;
+  characterHeight?: boolean;
+  comicsHeight?: boolean;
 };

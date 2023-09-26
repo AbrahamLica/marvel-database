@@ -8,7 +8,7 @@ import DetailsCharacters from "./DetailsCharacters/DetailsCharacters";
 import DetailsComics from "./DetailsComics/DetailsComics";
 import DetailsSeries from "./DetailsSeries/DetailsSeries";
 import wallpaper from "../../Media/wallpaper.jpg";
-import ProgressBar from "../ProgressBar/ProgressBar";
+import ProgressBar from "../../ProgressBar/ProgressBar";
 
 const Details = () => {
   const { state, dispatch } = useContext(Context);

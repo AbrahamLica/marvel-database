@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ContainerProps } from "../../Types/GlobalStylesTypes";
+import { ContainerProps } from "../../../Types/GlobalStylesTypes";
 
 export const MainContainer = styled.div<ContainerProps>`
   width: 100%;

@@ -8,8 +8,6 @@ import {
   Thumbnail,
 } from "../Types/Types";
 
-// teste
-
 ////////////////////////  REDUCER MOVIES  ////////////////////////////////
 
 export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
@@ -38,6 +36,8 @@ export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
   dates: [],
   pageCount: "",
   variants: [],
+  loadedItems: false,
+  fetch: "",
 };
 
 export function reducerMarvel(
@@ -75,7 +75,7 @@ export function reducerMarvel(
         pageCount: action.payload.pageCount,
         variants: action.payload.variants,
         detailsComicsOpen: action.payload.detailsComicsOpen,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory
+        openPageSelectedCategory: action.payload.openPageSelectedCategory,
       };
       break;
 
@@ -97,9 +97,33 @@ export function reducerMarvel(
         img: action.payload.img,
         series: action.payload.series,
         detailsSeriesOpen: action.payload.detailsSeriesOpen,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory
+        openPageSelectedCategory: action.payload.openPageSelectedCategory,
       };
       break;
+
+      case "SELECT_CATEGORY_CHARACTERS":
+        return {
+          ...state,
+          loadedItems: action.payload.loadedItems,
+          fetch: action.payload.fetch,
+        };
+        break;
+
+        case "SELECT_CATEGORY_COMICS":
+          return {
+            ...state,
+            loadedItems: action.payload.loadedItems,
+            fetch: action.payload.fetch,
+          };
+          break;
+
+          case "SELECT_CATEGORY_SERIES":
+            return {
+              ...state,
+              loadedItems: action.payload.loadedItems,
+              fetch: action.payload.fetch,
+            };
+            break;
 
     case "BACK_PAGE":
       return {
@@ -170,7 +194,7 @@ export function reducerMarvel(
       };
       break;
 
-      case "CLEAR_ALL_INFORMATIONS_2":
+    case "CLEAR_ALL_INFORMATIONS_2":
       return {
         ...state,
         detailsComicsOpen: action.payload.detailsComicsOpen,

@@ -19,34 +19,16 @@ export type MarvelReducerInitialStateType = {
   variants: string[];
   selectedCategory: string | number;
   currentPage: number;
+  fetch: any;
 
   // booleans
   detailsCharacterOpen: boolean;
   detailsComicsOpen: boolean;
   detailsSeriesOpen: boolean;
   openPageSelectedCategory: boolean;
-  homePage: boolean;  
+  homePage: boolean;
   loading: boolean;
-};
-
-export type ActionType = {
-  type: string;
-  payload: {
-    [key: string]: any;
-  };
-};
-
-export type ChildrenType = {
-  children: React.ReactNode;
-};
-
-export type ContextType = {
-  state: InitialStateContextType;
-  dispatch: React.Dispatch<any>;
-};
-
-export type InitialStateContextType = {
-  marvel: MarvelReducerInitialStateType;
+  loadedItems: boolean;
 };
 
 export type RequisicaoCharactersType = {
@@ -55,7 +37,7 @@ export type RequisicaoCharactersType = {
   id: number;
   thumbnail: Thumbnail;
   description: string;
-  creators: any[]
+  creators: any[];
 };
 
 export type RequisicaoComicsType = {
@@ -89,4 +71,24 @@ export type RequisicaoSeriesType = {
 export type Thumbnail = {
   extension: string;
   path: string;
+};
+
+export type ActionType = {
+  type: string;
+  payload: {
+    [key: string]: any;
+  };
+};
+
+export type ChildrenType = {
+  children: React.ReactNode;
+};
+
+export type ContextType = {
+  state: InitialStateContextType;
+  dispatch: React.Dispatch<any>;
+};
+
+export type InitialStateContextType = {
+  marvel: MarvelReducerInitialStateType;
 };
