@@ -1,0 +1,55 @@
+HomeComics:
+
+onClick={() =>
+              openDetails(
+                item.title,
+                item.creators,
+                item.dates,
+                item.description,
+                item.id,
+                item.pageCount,
+                item.variants,
+                item.thumbnail.path
+              )
+
+
+
+
+
+
+
+HomeCharacters:
+
+async function executarRequisicao() {
+    dispatch({
+      type: "SET_LOADING",
+      payload: {
+        loading: true,
+      },
+    });
+    let req = await fetch(
+      `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${Hash}&limit=100&offset=${state.marvel.currentPage}`
+    );
+    let json = await req.json();
+    setRequisicao(json.data.results);
+    setTimeout(() => {
+      dispatch({
+        type: "SET_LOADING",
+        payload: {
+          loading: false,
+        },
+      });
+    }, 1000);
+  }
+
+
+
+onClick={() =>
+                    openDetails(
+                      item.name,
+                      item.id,
+                      item.description,
+                      item.thumbnail.path,
+                      item.series.items
+                    )
+                  }
