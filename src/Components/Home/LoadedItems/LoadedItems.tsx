@@ -20,25 +20,45 @@ const LoadedItems = () => {
   }, [state.marvel.currentPage]);
 
   function handeClickOpenDetails(item: any) {
-    openDetails(
-      item.id,
-      item.title,
-      item.description,
-      item.startYear,
-      item.endYear,
-      item.characters,
-      item.creators,
-      item.comics,
-      item.stories,
-      item.nextSeries,
-      item.previousSeries,
-      item.thumbnail.path,
-      item.series,
-      dispatch,
-      usenavigate
-    );
+    if (state.marvel.selectedCategory == "characters") {
+      openDetails(
+        item.id,
+        item.name,
+        item.description,
+        item.thumbnail.path,
+        item.series.items,
+        dispatch,
+        usenavigate
+      );
+    } else if (state.marvel.selectedCategory == "comics") {
+      openDetails(
+        item.title,
+        item.creators,
+        item.dates,
+        item.description,
+        item.id,
+        item.pageCount,
+        item.variants,
+        item.thumbnail.path
+      );
+    } else {
+      openDetails(
+        item.id,
+        item.title,
+        item.description,
+        item.startYear,
+        item.endYear,
+        item.characters,
+        item.creators,
+        item.comics,
+        item.stories,
+        item.nextSeries,
+        item.previousSeries,
+        item.thumbnail.path,
+        item.series
+      );
+    }
   }
-
 
   return (
     <C.ContainerCards>
@@ -53,14 +73,54 @@ const LoadedItems = () => {
               <C.ImgCard
                 onClick={(e) => handeClickOpenDetails(e)}
                 src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
+                style={{
+                  width:
+                    state.marvel.selectedCategory == "characters"
+                      ? "300px"
+                      : state.marvel.selectedCategory == "comics"
+                      ? "200px"
+                      : "250px",
+                }}
               />
-              <C.ItemName
-                characterWidth
-                characterHeight
-                onClick={(e) => handeClickOpenDetails(e)}
-              >
-                {item.name}
-              </C.ItemName>
+
+              {state.marvel.selectedCategory == "series" ? (
+                <C.ContainerNameYear>
+                  <C.ItemName
+                    onClick={(e) => handeClickOpenDetails(e)}
+                    style={{
+                      width: "200px",
+                      height: "100px",
+                    }}
+                  >
+                    {item.title}
+                  </C.ItemName>
+
+                  {item.startYear == item.endYear ? (
+                    <C.ItemYear>{item.startYear}</C.ItemYear>
+                  ) : (
+                    <C.ItemYear>{`${item.startYear} - ${item.endYear}`}</C.ItemYear>
+                  )}
+                </C.ContainerNameYear>
+              ) : (
+                <C.ItemName
+                  onClick={(e) => handeClickOpenDetails(e)}
+                  style={{
+                    width:
+                      state.marvel.selectedCategory == "characters"
+                        ? "300px"
+                        : "200px",
+                    height:
+                      state.marvel.selectedCategory == "characters"
+                        ? "50px"
+                        : "120px",
+                  }}
+                >
+                  {state.marvel.selectedCategory == "characters"
+                    ? item.name
+                    : item.title}
+                </C.ItemName>
+              )}
+
               <C.ButtonDetails onClick={(e) => handeClickOpenDetails(e)}>
                 Details
               </C.ButtonDetails>

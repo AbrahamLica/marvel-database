@@ -69,14 +69,14 @@ export function openDetails(
   id?: number,
   name?: string,
   description?: string,
-  startYear?: number,
-  endYear?: number,
-  characters?: string[],
-  creators?: any,
-  comics?: string[],
-  stories?: string[],
-  nextSeries?: any,
-  previousSeries?: any,
+  // startYear?: number,
+  // endYear?: number,
+  // characters?: string[],
+  // creators?: any,
+  // comics?: string[],
+  // stories?: string[],
+  // nextSeries?: any,
+  // previousSeries?: any,
   img?: string,
   series?: string[],
   dispatch?: any,
@@ -107,7 +107,7 @@ export function openDetails(
   usenavigate("/details");
 }
 
-// Navigation / routes
+// Navigation|routes
 
 export function backHome(usenavigate: any) {
   usenavigate("/");

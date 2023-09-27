@@ -82,119 +82,13 @@ export const ItemName = styled.div<ItemNameProps>`
   }
 `;
 
-////////////////// COMICS ///////////////////
-
-export const ImgCardComics = styled.img<ImgProps>`
-  width: 200px;
-  height: 300px;
-  transition: 0.3s;
+export const Logo = styled.img<ContainerProps>`
+  height: 100%;
+  width: 10%;
   cursor: pointer;
-
-  :hover {
-    transform: translateY(-10px);
-  }
-`;
-
-export const ItemNameComics = styled.div<ItemNameProps>`
-  width: 200px;
-  font-size: 17px;
-  margin-top: 15px;
-  margin-bottom: 30px;
-  color: #e1e1e1;
-  font-family: inherit;
-  font-weight: 800;
-  cursor: pointer;
-  position: relative;
-  border: none;
-  background: none;
-  text-transform: uppercase;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-duration: 400ms;
-  transition-property: color;
-  height: 120px;
-
-  :focus,
-  :hover {
-    color: #fff;
-  }
-
-  :focus:after,
-  :hover:after {
-    width: 100%;
-    left: 0%;
-  }
-
-  :after {
-    content: "";
-    pointer-events: none;
-    bottom: -2px;
-    left: 50%;
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background-color: #fff;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-duration: 400ms;
-    transition-property: width, left;
-  }
 `;
 
 ////////////////// SERIES ///////////////////
-
-export const ItemNameSeries = styled.div<ItemNameProps>`
-  width: 200px;
-  font-size: 17px;
-  margin-top: 15px;
-  margin-bottom: 30px;
-  color: #e1e1e1;
-  font-family: inherit;
-  font-weight: 800;
-  cursor: pointer;
-  position: relative;
-  border: none;
-  background: none;
-  text-transform: uppercase;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-duration: 400ms;
-  transition-property: color;
-  height: 100px;
-
-  :focus,
-  :hover {
-    color: #fff;
-  }
-
-  :focus:after,
-  :hover:after {
-    width: 100%;
-    left: 0%;
-  }
-
-  :after {
-    content: "";
-    pointer-events: none;
-    bottom: -2px;
-    left: 50%;
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background-color: #fff;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-duration: 400ms;
-    transition-property: width, left;
-  }
-`;
-
-export const ImgCardSeries = styled.img<ImgProps>`
-  width: 250px;
-  height: 300px;
-  transition: 0.3s;
-  cursor: pointer;
-
-  :hover {
-    transform: translateY(-10px);
-  }
-`;
 
 export const ContainerNameYear = styled.div<ContainerProps>``;
 
@@ -259,10 +153,4 @@ export const moving = keyframes`
     right: 0;
     left: unset;
   }
-`;
-
-export const Logo = styled.img<ContainerProps>`
-  height: 100%;
-  width: 10%;
-  cursor: pointer;
 `;
