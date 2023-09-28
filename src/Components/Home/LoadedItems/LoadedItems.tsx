@@ -20,44 +20,56 @@ const LoadedItems = () => {
   }, [state.marvel.currentPage]);
 
   function handeClickOpenDetails(item: any) {
-    if (state.marvel.selectedCategory == "characters") {
-      openDetails(
-        item.id,
-        item.name,
-        item.description,
-        item.thumbnail.path,
-        item.series.items,
-        dispatch,
-        usenavigate
-      );
-    } else if (state.marvel.selectedCategory == "comics") {
-      openDetails(
-        item.title,
-        item.creators,
-        item.dates,
-        item.description,
-        item.id,
-        item.pageCount,
-        item.variants,
-        item.thumbnail.path
-      );
-    } else {
-      openDetails(
-        item.id,
-        item.title,
-        item.description,
-        item.startYear,
-        item.endYear,
-        item.characters,
-        item.creators,
-        item.comics,
-        item.stories,
-        item.nextSeries,
-        item.previousSeries,
-        item.thumbnail.path,
-        item.series
-      );
+    let details = {};
+
+    switch (state.marvel.selectedCategory) {
+      case "characters":
+        details = {
+          id: item.id,
+          name: item.name,
+          description: item.description,
+          // img: item.thumbnail.path,
+          // series: item.series.items,
+          dispatch,
+          usenavigate,
+        };
+        break;
+
+      case "comics":
+        details = {
+          id: item.id,
+          title: item.title,
+          creators: item.creators,
+          dates: item.dates,
+          description: item.description,
+          pageCount: item.pageCount,
+          variants: item.variants,
+          img: item.thumbnail.path,
+          dispatch,
+          usenavigate,
+        };
+        break;
+
+      case "series":
+        details = {
+          id: item.id,
+          title: item.title,
+          description: item.description,
+          img: item.thumbnail.path,
+          series: item.series.items,
+          creators: item.creators,
+          startYear: item.startYear,
+          endYear: item.endYear,
+          characters: item.characters,
+          comics: item.comics,
+          stories: item.stories,
+          nextSeries: item.nextSeries,
+          previousSeries: item.previousSeries,
+        };
+        break;
     }
+
+    openDetails(details, dispatch, usenavigate);
   }
 
   return (

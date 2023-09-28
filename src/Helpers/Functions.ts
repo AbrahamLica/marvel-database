@@ -65,42 +65,11 @@ export function goToSelectedCategory(
   }
 }
 
-export function openDetails(
-  id?: number,
-  name?: string,
-  description?: string,
-  // startYear?: number,
-  // endYear?: number,
-  // characters?: string[],
-  // creators?: any,
-  // comics?: string[],
-  // stories?: string[],
-  // nextSeries?: any,
-  // previousSeries?: any,
-  img?: string,
-  series?: string[],
-  dispatch?: any,
-  usenavigate?: any
-) {
+export function openDetails(details: any, dispatch?: any, usenavigate?: any) {
   dispatch({
-    type: "OPEN_DETAILS_SERIES",
+    type: "OPEN_DETAILS",
     payload: {
-      id: id,
-      name: name,
-      description: description,
-      startYear: startYear,
-      endYear: endYear,
-      characters: characters,
-      creators: creators,
-      comics: comics,
-      stories: stories,
-      nextSeries: nextSeries,
-      previousSeries: previousSeries,
-      anythingOpen: true,
-      img: img,
-      series: series,
-      detailsSeriesOpen: true,
-      openPageSelectedCategory: false,
+      details: details,
     },
   });
 

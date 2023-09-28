@@ -17,7 +17,7 @@ export type MarvelReducerInitialStateType = {
   dates: any;
   pageCount: string;
   variants: string[];
-  selectedCategory: string
+  selectedCategory: string;
   currentPage: number;
   fetch: any;
 

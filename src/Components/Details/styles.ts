@@ -1,75 +1,9 @@
 import styled from "styled-components";
 import background from "../../Media/wallpaper.jpg";
-
-export type ContainerProps = {
-  color?: string;
-  id?: any;
-  width?: string;
-  heigth?: string;
-  backgroundColor?: string;
-  displayFlex?: boolean;
-  flex?: string;
-  flexWrap?: boolean;
-  alignItems?: string;
-  margin?: string;
-  padding?: string;
-  column?: boolean;
-  border?: string;
-  borderRadius?: string;
-  cursorPointer?: boolean;
-  backgroundImage?: string;
-  backgroundPosition?: string;
-  backgroundSize?: string;
-  justifyContent?: string;
-};
-
-export type InputProps = {
-  color?: string;
-  bold?: boolean;
-  fontSize?: string;
-  width?: string;
-  backgroundColor?: string;
-  margin?: string;
-};
-
-export type TextProps = {
-  color?: string;
-  bold?: boolean;
-  fontSize?: string;
-  textAlign?: string;
-  margin?: string;
-  backgroundColor?: string;
-  padding?: string;
-  borderRadius?: string;
-  cursorPointer?: boolean;
-  zIndex?: boolean;
-};
-
-export type ImgDetailsProps = {
-  ImgDetailsCharactersWidth?: boolean;
-  ImgDetailsCharactersHeight?: boolean;
-
-  ImgDetailsComicsWidth?: boolean;
-  ImgDetailsComicsHeight?: boolean;
-
-  ImgDetailsCreatorsWidth?: boolean;
-  ImgDetailsCreatorsHeight?: boolean;
-
-  ImgDetailsEventssWidth?: boolean;
-  ImgDetailsEventssHeight?: boolean;
-
-  ImgDetailsSeriesWidth?: boolean;
-  ImgDetailsSeriesHeight?: boolean;
-
-  ImgDetailsStoriesWidth?: boolean;
-  ImgDetailsStoriesHeight?: boolean;
-};
-
-export type MainContainerDetailsProps = {
-  background: any;
-};
-
-
+import { ContainerProps } from "../../Types/GlobalStylesTypes";
+import { TextProps } from "../../Types/GlobalStylesTypes";
+import { MainContainerDetailsProps } from "../../Types/GlobalStylesTypes";
+import { ImgDetailsProps } from "../../Types/GlobalStylesTypes";
 
 export const Container = styled.div<ContainerProps>`
   color: ${(props) => props.color};
@@ -116,8 +50,6 @@ export const Link = styled.a<TextProps>`
   text-decoration: none;
 `;
 
-
-
 export const HeaderFixed = styled.div`
   z-index: 1;
   display: flex;
@@ -153,8 +85,6 @@ export const IconBack = styled.img`
   width: 30px;
 `;
 
-
-
 export const MainContainerBackground = styled.div<MainContainerDetailsProps>`
   width: 100%;
   min-height: 100vh;
@@ -170,13 +100,11 @@ export const MainContainerDetails = styled.div`
   backdrop-filter: blur(5px);
 `;
 
-
-
 export const MainContainerDetailsSeries = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
- 
+
   flex-direction: column;
 `;
 
@@ -222,8 +150,6 @@ export const ContainerRoleandName = styled.div`
     width: 100%;
     justify-content: center;
   }
-
- 
 `;
 
 export const ImgDetailsCharacters = styled.img<ImgDetailsProps>`
@@ -282,4 +208,3 @@ export const ContainerItemSeries = styled.div`
   margin: 25px;
   width: 300px;
 `;
-

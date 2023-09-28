@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
-import * as C from "./AppStyles";
+import * as G from "../../Helpers/GlobalStyles";
+import * as C from "./styles";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../../Context/Context";
-import { useNavigate } from "react-router-dom";
 import iconBack from "../../Media/back.png";
-import DetailsCharacters from "./DetailsCharacters/DetailsCharacters";
-import DetailsComics from "./DetailsComics/DetailsComics";
-import DetailsSeries from "./DetailsSeries/DetailsSeries";
-import wallpaper from "../../Media/wallpaper.jpg";
-import ProgressBar from "../../ProgressBar/ProgressBar";
+import ProgressBar from "../../Components/ProgressBar/ProgressBar";
+import { useNavigate } from "react-router-dom";
 
 const Details = () => {
   const { state, dispatch } = useContext(Context);
@@ -47,8 +44,11 @@ const Details = () => {
     usenavigate(-1);
   }
 
-  return (
+  function teste() {
+    console.log(state.marvel)
+  }
 
+  return (
     <C.MainContainerBackground
       background={`linear-gradient(rgba(0, 0, 0, 0.8),
        rgba(0, 0, 0, 0.8)),
@@ -58,16 +58,34 @@ const Details = () => {
         <C.ButtonBack onClick={back}>
           <C.IconBack src={iconBack} />
         </C.ButtonBack>
+
+        <button onClick={teste}>teste</button>
       </C.HeaderFixed>
 
       <ProgressBar></ProgressBar>
 
       <C.MainContainerDetails>
-        {state.marvel.detailsCharacterOpen && (<DetailsCharacters></DetailsCharacters>)}
-        {state.marvel.detailsComicsOpen && <DetailsComics></DetailsComics>}
-        {state.marvel.detailsSeriesOpen && <DetailsSeries></DetailsSeries>}
-      </C.MainContainerDetails>
+        <C.MainContainerDetailsSeries>
+          <C.ContainerDescriptions>
+            <C.ImgDetailsCharacters src={`${state.marvel.img}.jpg`} />
 
+            <C.Description>
+              <C.Title>{state.marvel.name}</C.Title>
+
+              {state.marvel.description.length ? (
+                <C.SubTitle>{state.marvel.description}</C.SubTitle>
+              ) : null}
+
+              <C.Container margin="10px 0px">
+                <C.Title>Series:</C.Title>
+                {state.marvel.series.map((item: any, index: number) => (
+                  <C.SubTitle key={index}>{item.name}</C.SubTitle>
+                ))}
+              </C.Container>
+            </C.Description>
+          </C.ContainerDescriptions>
+        </C.MainContainerDetailsSeries>
+      </C.MainContainerDetails>
     </C.MainContainerBackground>
   );
 };

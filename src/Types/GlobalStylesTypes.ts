@@ -54,3 +54,27 @@ export type ItemNameProps = {
   characterHeight?: boolean;
   comicsHeight?: boolean;
 };
+
+export type ImgDetailsProps = {
+  ImgDetailsCharactersWidth?: boolean;
+  ImgDetailsCharactersHeight?: boolean;
+
+  ImgDetailsComicsWidth?: boolean;
+  ImgDetailsComicsHeight?: boolean;
+
+  ImgDetailsCreatorsWidth?: boolean;
+  ImgDetailsCreatorsHeight?: boolean;
+
+  ImgDetailsEventssWidth?: boolean;
+  ImgDetailsEventssHeight?: boolean;
+
+  ImgDetailsSeriesWidth?: boolean;
+  ImgDetailsSeriesHeight?: boolean;
+
+  ImgDetailsStoriesWidth?: boolean;
+  ImgDetailsStoriesHeight?: boolean;
+};
+
+export type MainContainerDetailsProps = {
+  background: any;
+};

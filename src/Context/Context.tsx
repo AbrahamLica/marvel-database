@@ -45,88 +45,39 @@ export function reducerMarvel(
   action: ActionType
 ) {
   switch (action.type) {
-    case "OPEN_DETAILS_CHARACTERS":
+    case "OPEN_DETAILS":
       return {
         ...state,
-        id: action.payload.id,
-        name: action.payload.name,
-        description: action.payload.description,
-        anythingOpen: action.payload.anythingOpen,
-        img: action.payload.img,
-        series: action.payload.series,
-        dates: action.payload.dates,
-        pageCount: action.payload.pageCount,
-        variants: action.payload.variants,
-        detailsCharacterOpen: action.payload.detailsCharacterOpen,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory,
+        details: action.payload.details,
       };
       break;
 
-    case "OPEN_DETAILS_COMICS":
+    case "SELECT_CATEGORY_CHARACTERS":
       return {
         ...state,
-        id: action.payload.id,
-        name: action.payload.name,
-        description: action.payload.description,
-        anythingOpen: action.payload.anythingOpen,
-        img: action.payload.img,
-        creators: action.payload.creators,
-        dates: action.payload.dates,
-        pageCount: action.payload.pageCount,
-        variants: action.payload.variants,
-        detailsComicsOpen: action.payload.detailsComicsOpen,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory,
+        loadedItems: action.payload.loadedItems,
+        selectedCategory: action.payload.selectedCategory,
+        fetch: action.payload.fetch,
       };
       break;
 
-    case "OPEN_DETAILS_SERIES":
+    case "SELECT_CATEGORY_COMICS":
       return {
         ...state,
-        id: action.payload.id,
-        name: action.payload.name,
-        description: action.payload.description,
-        startYear: action.payload.startYear,
-        endYear: action.payload.endYear,
-        characters: action.payload.characters,
-        creators: action.payload.creators,
-        comics: action.payload.comics,
-        stories: action.payload.stories,
-        nextSeries: action.payload.nextSeries,
-        previousSeries: action.payload.previousSeries,
-        anythingOpen: action.payload.anythingOpen,
-        img: action.payload.img,
-        series: action.payload.series,
-        detailsSeriesOpen: action.payload.detailsSeriesOpen,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory,
+        loadedItems: action.payload.loadedItems,
+        selectedCategory: action.payload.selectedCategory,
+        fetch: action.payload.fetch,
       };
       break;
 
-      case "SELECT_CATEGORY_CHARACTERS":
-        return {
-          ...state,
-          loadedItems: action.payload.loadedItems,
-          selectedCategory: action.payload.selectedCategory,
-          fetch: action.payload.fetch,
-        };
-        break;
-
-        case "SELECT_CATEGORY_COMICS":
-          return {
-            ...state,
-            loadedItems: action.payload.loadedItems,
-            selectedCategory: action.payload.selectedCategory,
-            fetch: action.payload.fetch,
-          };
-          break;
-
-          case "SELECT_CATEGORY_SERIES":
-            return {
-              ...state,
-              loadedItems: action.payload.loadedItems,
-              selectedCategory: action.payload.selectedCategory,
-              fetch: action.payload.fetch,
-            };
-            break;
+    case "SELECT_CATEGORY_SERIES":
+      return {
+        ...state,
+        loadedItems: action.payload.loadedItems,
+        selectedCategory: action.payload.selectedCategory,
+        fetch: action.payload.fetch,
+      };
+      break;
 
     case "BACK_PAGE":
       return {
