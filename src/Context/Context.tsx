@@ -135,6 +135,7 @@ export function reducerOthers(
       return {
         ...state,
         currentPage: action.payload.currentPage,
+        fetch: action.payload.fetch
       };
       break;
 
@@ -142,6 +143,7 @@ export function reducerOthers(
       return {
         ...state,
         currentPage: action.payload.currentPage,
+        fetch: action.payload.fetch
       };
       break;
 

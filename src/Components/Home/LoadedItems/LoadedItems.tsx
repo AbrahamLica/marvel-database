@@ -20,7 +20,7 @@ const LoadedItems = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     executarRequisicao(dispatch, setRequisicao, state.others.fetch);
-  }, [state.others.currentPage]);
+  }, [state.others.fetch]);
 
   return (
     <C.ContainerCards>

@@ -12,7 +12,7 @@ export const ContainerCards = styled.div<ContainerProps>`
   flex-wrap: wrap;
   background-color: black;
   width: 90%;
-  margin-top: 120px;
+  margin-top: 190px;
 `;
 
 export const ContainerCard = styled.div<ContainerProps>`
