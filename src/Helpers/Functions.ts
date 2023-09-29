@@ -1,5 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { RequisicaoType } from "../Types/Types";
+import { Context } from "../Context/Context";
+import { useContext } from "react";
 
 // Requisitions
 
@@ -41,7 +43,7 @@ export function goToSelectedCategory(
       payload: {
         loadedItems: true,
         selectedCategory: selectedCategory,
-        fetch: `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
+        fetch: `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
       },
     });
   } else if (selectedCategory == "comics") {
@@ -50,7 +52,7 @@ export function goToSelectedCategory(
       payload: {
         loadedItems: true,
         selectedCategory: selectedCategory,
-        fetch: `http://gateway.marvel.com/v1/public/comics?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
+        fetch: `http://gateway.marvel.com/v1/public/comics?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
       },
     });
   } else {
@@ -59,24 +61,115 @@ export function goToSelectedCategory(
       payload: {
         loadedItems: true,
         selectedCategory: selectedCategory,
-        fetch: `http://gateway.marvel.com/v1/public/series?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.marvel.currentPage}`,
+        fetch: `http://gateway.marvel.com/v1/public/series?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
       },
     });
   }
 }
 
-export function openDetails(details: any, dispatch?: any, usenavigate?: any) {
+export function OpenDetails(
+  item: any,
+  state: any,
+  dispatch: any,
+  usenavigate: any
+) {
+  const {
+    id,
+    name,
+    title,
+    description,
+    startYear,
+    endYear,
+    characters,
+    comics,
+    stories,
+    nextSeries,
+    previousSeries,
+    thumbnail,
+    series,
+    creators,
+    dates,
+    variants,
+    pageCount,
+  } = item;
+
+  let payload;
+
+  if (state.others.selectedCategory == "characters") {
+    payload = {
+      id,
+      name,
+      title: "",
+      creators: "",
+      description,
+      startYear: 0,
+      endYear: 0,
+      characters: "",
+      dates: 0,
+      variants: "",
+      img: thumbnail?.path,
+      series,
+      comics: "",
+      stories: "",
+      nextSeries: "",
+      previousSeries: "",
+      pageCount: "",
+    };
+  } else if (state.others.selectedCategory == "comics") {
+    payload = {
+      id,
+      name: "",
+      title,
+      creators,
+      description,
+      startYear: 0,
+      endYear: 0,
+      characters: "",
+      dates,
+      variants,
+      img: thumbnail?.path,
+      series: "",
+      comics: "",
+      stories: "",
+      nextSeries: "",
+      previousSeries: "",
+      pageCount,
+    };
+  } else if (state.others.selectedCategory == "series") {
+    payload = {
+      id,
+      name: "",
+      title,
+      creators,
+      description,
+      startYear,
+      endYear,
+      characters,
+      dates: 0,
+      variants: "",
+      img: thumbnail?.path,
+      series,
+      comics,
+      stories,
+      nextSeries,
+      previousSeries,
+      pageCount: "",
+    };
+  }
+
   dispatch({
     type: "OPEN_DETAILS",
-    payload: {
-      details: details,
-    },
+    payload,
   });
 
   usenavigate("/details");
 }
 
-// Navigation|routes
+// Navigation | routes
+
+export function backToSelectedCategory(dispatch: any, usenavigate: any) {
+  usenavigate(-1);
+}
 
 export function backHome(usenavigate: any) {
   usenavigate("/");
@@ -86,20 +179,18 @@ export function backPage(dispatch: any, state: any) {
   dispatch({
     type: "BACK_PAGE",
     payload: {
-      currentPage: state.marvel.currentPage - 100,
+      currentPage: state.others.currentPage - 100,
     },
   });
-  //   executarRequisicao();
 }
 
 export function nextPage(dispatch: any, state: any) {
   dispatch({
     type: "NEXT_PAGE",
     payload: {
-      currentPage: (state.marvel.currentPage += 100),
+      currentPage: (state.others.currentPage += 100),
     },
   });
-  //   executarRequisicao();
 }
 
 // Others
@@ -108,31 +199,31 @@ export function convertNumberPage(
   state: any,
   setNumberPage: Dispatch<SetStateAction<number>>
 ) {
-  if (state.marvel.currentPage == 0) {
+  if (state.others.currentPage == 0) {
     setNumberPage(1);
-  } else if (state.marvel.currentPage == 100) {
+  } else if (state.others.currentPage == 100) {
     setNumberPage(2);
-  } else if (state.marvel.currentPage == 200) {
+  } else if (state.others.currentPage == 200) {
     setNumberPage(3);
-  } else if (state.marvel.currentPage == 300) {
+  } else if (state.others.currentPage == 300) {
     setNumberPage(4);
-  } else if (state.marvel.currentPage == 400) {
+  } else if (state.others.currentPage == 400) {
     setNumberPage(5);
-  } else if (state.marvel.currentPage == 500) {
+  } else if (state.others.currentPage == 500) {
     setNumberPage(6);
-  } else if (state.marvel.currentPage == 600) {
+  } else if (state.others.currentPage == 600) {
     setNumberPage(7);
-  } else if (state.marvel.currentPage == 700) {
+  } else if (state.others.currentPage == 700) {
     setNumberPage(8);
-  } else if (state.marvel.currentPage == 800) {
+  } else if (state.others.currentPage == 800) {
     setNumberPage(9);
-  } else if (state.marvel.currentPage == 900) {
+  } else if (state.others.currentPage == 900) {
     setNumberPage(10);
-  } else if (state.marvel.currentPage == 1000) {
+  } else if (state.others.currentPage == 1000) {
     setNumberPage(11);
-  } else if (state.marvel.currentPage == 11000) {
+  } else if (state.others.currentPage == 11000) {
     setNumberPage(12);
-  } else if (state.marvel.currentPage == 12000) {
+  } else if (state.others.currentPage == 12000) {
     setNumberPage(13);
   }
 }
@@ -161,22 +252,11 @@ export function updateProgressBar(
 
 export function backToHome(dispatch: any, usenavigate: any) {
   dispatch({
-    type: "BACK_HOME",
-    payload: {
-      id: 0,
-      name: "",
-      description: "",
-      anythingOpen: false,
-      img: "",
-      series: [],
-      creators: [],
-      dates: [],
-      pageCount: "",
-      variants: [],
-      detailsCharacterOpen: false,
-      openPageSelectedCategory: true,
-      currentPage: 0,
-    },
+    type: "CLEAR_ALL_INFORMATIONS_1",
+  });
+
+  dispatch({
+    type: "CLEAR_ALL_INFORMATIONS_2",
   });
   usenavigate("/");
 }

@@ -14,7 +14,9 @@ const Header = () => {
     <C.Header>
       <C.TopHeader>
         <C.Logo src={logo} onClick={() => backToHome(dispatch, usenavigate)} />
-        <button onClick={() => console.log(state.marvel)}>teste</button>
+        <button onClick={() => console.log(state.others, state.marvel)}>
+          teste
+        </button>
       </C.TopHeader>
 
       <C.BottomHeader>

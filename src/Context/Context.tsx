@@ -6,6 +6,7 @@ import {
   InitialStateContextType,
   MarvelReducerInitialStateType,
   Thumbnail,
+  OthersReducerInitialStateType,
 } from "../Types/Types";
 
 ////////////////////////  REDUCER MOVIES  ////////////////////////////////
@@ -13,6 +14,7 @@ import {
 export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
   id: 0,
   name: "",
+  title: "",
   description: "",
   startYear: 0,
   endYear: 0,
@@ -21,23 +23,12 @@ export const MarvelReducerInitialState: MarvelReducerInitialStateType = {
   stories: [],
   nextSeries: "",
   previousSeries: "",
-  detailsCharacterOpen: false,
-  detailsComicsOpen: false,
-  detailsSeriesOpen: false,
   img: "",
-  homePage: true,
-  openPageSelectedCategory: false,
-  selectedCategory: "",
-  currentPage: 0,
-  loading: false,
   series: [],
-  url: "",
   creators: [],
   dates: [],
-  pageCount: "",
   variants: [],
-  loadedItems: false,
-  fetch: "",
+  pageCount: "",
 };
 
 export function reducerMarvel(
@@ -48,10 +39,71 @@ export function reducerMarvel(
     case "OPEN_DETAILS":
       return {
         ...state,
-        details: action.payload.details,
+        id: action.payload.id,
+        name: action.payload.name,
+        title: action.payload.title,
+        creators: action.payload.creators,
+        description: action.payload.description,
+        startYear: action.payload.startYear,
+        endYear: action.payload.endYear,
+        characters: action.payload.characters,
+        dates: action.payload.dates,
+        variants: action.payload.variants,
+        img: action.payload.img,
+        series: action.payload.series,
+        comics: action.payload.comics,
+        stories: action.payload.stories,
+        nextSeries: action.payload.nextSeries,
+        previousSeries: action.payload.previousSeries,
+        pageCount: action.payload.pageCount,
       };
       break;
 
+    case "CLEAR_ALL_INFORMATIONS":
+      return {
+        ...state,
+        id: 0,
+        name: "",
+        title: "",
+        description: "",
+        startYear: 0,
+        endYear: 0,
+        characters: [],
+        comics: [],
+        stories: [],
+        nextSeries: "",
+        previousSeries: "",
+        img: "",
+        series: [],
+        creators: [],
+        dates: [],
+        variants: [],
+        pageCount: "",
+      };
+      break;
+  }
+  return state;
+}
+
+////////////////////////  REDUCER OTHERS  ////////////////////////////////
+
+export const OthersReducerInitialState: OthersReducerInitialStateType = {
+  url: "",
+  currentPage: 0,
+  fetch: "",
+  openPageSelectedCategory: false,
+  homePage: true,
+  loading: false,
+  loadedItems: false,
+  detailsOpen: false,
+  selectedCategory: "",
+};
+
+export function reducerOthers(
+  state: OthersReducerInitialStateType,
+  action: ActionType
+) {
+  switch (action.type) {
     case "SELECT_CATEGORY_CHARACTERS":
       return {
         ...state,
@@ -83,33 +135,12 @@ export function reducerMarvel(
       return {
         ...state,
         currentPage: action.payload.currentPage,
-        loading: action.payload.loading,
       };
       break;
 
     case "NEXT_PAGE":
       return {
         ...state,
-        currentPage: action.payload.currentPage,
-        loading: action.payload.loading,
-      };
-      break;
-
-    case "BACK_HOME":
-      return {
-        ...state,
-        id: action.payload.id,
-        name: action.payload.name,
-        description: action.payload.description,
-        anythingOpen: action.payload.anythingOpen,
-        img: action.payload.img,
-        series: action.payload.series,
-        creators: action.payload.creators,
-        dates: action.payload.dates,
-        pageCount: action.payload.pageCount,
-        variants: action.payload.variants,
-        detailsCharacterOpen: action.payload.detailsCharacterOpen,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory,
         currentPage: action.payload.currentPage,
       };
       break;
@@ -121,58 +152,15 @@ export function reducerMarvel(
       };
       break;
 
-    case "CLEAR_ALL_INFORMATIONS":
-      return {
-        ...state,
-        detailsComicsOpen: action.payload.detailsComicsOpen,
-        detailsCreatorsOpen: action.payload.detailsCreatorsOpen,
-        detailsEventsOpen: action.payload.detailsEventsOpen,
-        detailsSeriesOpen: action.payload.detailsSeriesOpen,
-        detailsStoriesOpen: action.payload.detailsStoriesOpen,
-        homePage: action.payload.homePage,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory,
-        selectedCategory: action.payload.selectedCategory,
-        loading: action.payload.loading,
-        url: action.payload.url,
-        id: action.payload.id,
-        name: action.payload.name,
-        description: action.payload.description,
-        anythingOpen: action.payload.anythingOpen,
-        img: action.payload.img,
-        series: action.payload.series,
-        creators: action.payload.creators,
-        dates: action.payload.dates,
-        pageCount: action.payload.pageCount,
-        variants: action.payload.variants,
-        detailsCharacterOpen: action.payload.detailsCharacterOpen,
-      };
-      break;
-
     case "CLEAR_ALL_INFORMATIONS_2":
       return {
         ...state,
-        detailsComicsOpen: action.payload.detailsComicsOpen,
-        detailsCreatorsOpen: action.payload.detailsCreatorsOpen,
-        detailsEventsOpen: action.payload.detailsEventsOpen,
-        detailsSeriesOpen: action.payload.detailsSeriesOpen,
-        detailsStoriesOpen: action.payload.detailsStoriesOpen,
-        homePage: action.payload.homePage,
-        openPageSelectedCategory: action.payload.openPageSelectedCategory,
-        selectedCategory: action.payload.selectedCategory,
-        loading: action.payload.loading,
-        url: action.payload.url,
-        id: action.payload.id,
-        name: action.payload.name,
-        description: action.payload.description,
-        anythingOpen: action.payload.anythingOpen,
-        img: action.payload.img,
-        series: action.payload.series,
-        creators: action.payload.creators,
-        dates: action.payload.dates,
-        pageCount: action.payload.pageCount,
-        variants: action.payload.variants,
-        currentPage: action.payload.currentPage,
-        detailsCharacterOpen: action.payload.detailsCharacterOpen,
+        openPageSelectedCategory: false,
+        homePage: true,
+        loading: false,
+        loadedItems: false,
+        detailsOpen: false,
+        currentPage: 0,
       };
       break;
   }
@@ -183,6 +171,7 @@ export function reducerMarvel(
 
 const ContextInitialState = {
   marvel: MarvelReducerInitialState,
+  others: OthersReducerInitialState,
 };
 
 export const Context = createContext<ContextType>({
@@ -192,6 +181,7 @@ export const Context = createContext<ContextType>({
 
 const mainReducer = (state: InitialStateContextType, action: ActionType) => ({
   marvel: reducerMarvel(state.marvel, action),
+  others: reducerOthers(state.others, action),
 });
 
 export function ContextProvider({ children }: ChildrenType) {

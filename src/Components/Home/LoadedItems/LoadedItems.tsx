@@ -1,104 +1,56 @@
-import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../../Context/Context";
 import { RequisicaoType } from "../../../Types/Types";
 import * as G from "../../../Helpers/GlobalStyles";
 import * as C from "./styles";
 import ProgressBar from "../../ProgressBar/ProgressBar";
 import LoadingHamster from "../LoadingHamster/LoadingHamster";
-import { executarRequisicao, openDetails } from "../../../Helpers/Functions";
+import {
+  executarRequisicao,
+  goToSelectedCategory,
+  OpenDetails,
+} from "../../../Helpers/Functions";
 
 const LoadedItems = () => {
   const { state, dispatch } = useContext(Context);
   const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
-  const [ok, setOK] = useState(false);
   const usenavigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    executarRequisicao(dispatch, setRequisicao, state.marvel.fetch);
-  }, [state.marvel.currentPage]);
-
-  function handeClickOpenDetails(item: any) {
-    let details = {};
-
-    switch (state.marvel.selectedCategory) {
-      case "characters":
-        details = {
-          id: item.id,
-          name: item.name,
-          description: item.description,
-          // img: item.thumbnail.path,
-          // series: item.series.items,
-          dispatch,
-          usenavigate,
-        };
-        break;
-
-      case "comics":
-        details = {
-          id: item.id,
-          title: item.title,
-          creators: item.creators,
-          dates: item.dates,
-          description: item.description,
-          pageCount: item.pageCount,
-          variants: item.variants,
-          img: item.thumbnail.path,
-          dispatch,
-          usenavigate,
-        };
-        break;
-
-      case "series":
-        details = {
-          id: item.id,
-          title: item.title,
-          description: item.description,
-          img: item.thumbnail.path,
-          series: item.series.items,
-          creators: item.creators,
-          startYear: item.startYear,
-          endYear: item.endYear,
-          characters: item.characters,
-          comics: item.comics,
-          stories: item.stories,
-          nextSeries: item.nextSeries,
-          previousSeries: item.previousSeries,
-        };
-        break;
-    }
-
-    openDetails(details, dispatch, usenavigate);
-  }
+    executarRequisicao(dispatch, setRequisicao, state.others.fetch);
+  }, [state.others.currentPage]);
 
   return (
     <C.ContainerCards>
       <ProgressBar></ProgressBar>
 
-      {state.marvel.loading ? (
+      {state.others.loading ? (
         <LoadingHamster></LoadingHamster>
       ) : (
         <>
           {requisicao.map((item, index) => (
             <C.ContainerCard key={index}>
               <C.ImgCard
-                onClick={(e) => handeClickOpenDetails(e)}
+                onClick={() => OpenDetails(item, state, dispatch, usenavigate)}
                 src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
                 style={{
                   width:
-                    state.marvel.selectedCategory == "characters"
+                    state.others.selectedCategory == "characters"
                       ? "300px"
-                      : state.marvel.selectedCategory == "comics"
+                      : state.others.selectedCategory == "comics"
                       ? "200px"
                       : "250px",
                 }}
               />
 
-              {state.marvel.selectedCategory == "series" ? (
+              {state.others.selectedCategory == "series" ? (
                 <C.ContainerNameYear>
                   <C.ItemName
-                    onClick={(e) => handeClickOpenDetails(e)}
+                    onClick={() =>
+                      OpenDetails(item, state, dispatch, usenavigate)
+                    }
                     style={{
                       width: "200px",
                       height: "100px",
@@ -115,25 +67,29 @@ const LoadedItems = () => {
                 </C.ContainerNameYear>
               ) : (
                 <C.ItemName
-                  onClick={(e) => handeClickOpenDetails(e)}
+                  onClick={() =>
+                    OpenDetails(item, state, dispatch, usenavigate)
+                  }
                   style={{
                     width:
-                      state.marvel.selectedCategory == "characters"
+                      state.others.selectedCategory == "characters"
                         ? "300px"
                         : "200px",
                     height:
-                      state.marvel.selectedCategory == "characters"
+                      state.others.selectedCategory == "characters"
                         ? "50px"
                         : "120px",
                   }}
                 >
-                  {state.marvel.selectedCategory == "characters"
+                  {state.others.selectedCategory == "characters"
                     ? item.name
                     : item.title}
                 </C.ItemName>
               )}
 
-              <C.ButtonDetails onClick={(e) => handeClickOpenDetails(e)}>
+              <C.ButtonDetails
+                onClick={() => OpenDetails(item, state, dispatch, usenavigate)}
+              >
                 Details
               </C.ButtonDetails>
             </C.ContainerCard>

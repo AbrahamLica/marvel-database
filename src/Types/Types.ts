@@ -1,7 +1,7 @@
 export type MarvelReducerInitialStateType = {
-  // numbers and strings
   id: number;
   name: string;
+  title: string;
   description: string;
   startYear: number;
   endYear: number;
@@ -11,24 +11,23 @@ export type MarvelReducerInitialStateType = {
   nextSeries: string;
   previousSeries: string;
   img: string;
-  series: string[];
-  url: string;
+  series: any;
   creators: any;
   dates: any;
-  pageCount: string;
   variants: string[];
-  selectedCategory: string;
+  pageCount: string;
+};
+
+export type OthersReducerInitialStateType = {
+  url: string;
   currentPage: number;
   fetch: any;
-
-  // booleans
-  detailsCharacterOpen: boolean;
-  detailsComicsOpen: boolean;
-  detailsSeriesOpen: boolean;
   openPageSelectedCategory: boolean;
   homePage: boolean;
   loading: boolean;
   loadedItems: boolean;
+  detailsOpen: boolean;
+  selectedCategory: string;
 };
 
 export type RequisicaoType = {
@@ -38,18 +37,14 @@ export type RequisicaoType = {
   thumbnail?: Thumbnail;
   title?: string;
   series?: any;
-
   //CHARACTERS TYPE
   name?: string;
   creators?: any[];
-
   //COMICS TYPE
   characters?: string[];
-  creatorss?: any;
   dates?: any;
   pageCount?: string;
   variants?: string[];
-
   //SERIES TYPE
   startYear?: number;
   endYear?: number;
@@ -82,4 +77,5 @@ export type ContextType = {
 
 export type InitialStateContextType = {
   marvel: MarvelReducerInitialStateType;
+  others: OthersReducerInitialStateType;
 };

@@ -21,9 +21,9 @@ const Home = () => {
         width="100%"
         column
       >
-        {state.marvel.loadedItems ? <LoadedItems></LoadedItems> : null}
+        {state.others.loadedItems ? <LoadedItems></LoadedItems> : null}
 
-        {state.marvel.loadedItems ? <Footer></Footer> : null}
+        {state.others.loadedItems ? <Footer></Footer> : null}
       </G.Container>
     </C.MainContainer>
   );
