@@ -38,14 +38,16 @@ export async function executeRequestComics(state: any, setRequisicao: any) {
   for (let i = 0; i < state.marvel.comics?.items.length; i++) {
     const arrayItem = state.marvel.comics?.items[i];
     if (arrayItem) {
+      const httpsUrl = arrayItem.resourceURI.replace("http://", "https://");
       const req = await fetch(
-        `${arrayItem.resourceURI}?ts=1&apikey=8df0db429915d47e065eb03b37ca9039&hash=4a8b729d09d1d2ad3fb626dff7e2165d`
+        `${httpsUrl}?ts=1&apikey=8df0db429915d47e065eb03b37ca9039&hash=4a8b729d09d1d2ad3fb626dff7e2165d`
       );
       const json = await req.json();
       newRequisicao.push(json);
     }
   }
 
+  console.log(newRequisicao);
   setRequisicao(newRequisicao);
 }
 
