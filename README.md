@@ -8,6 +8,7 @@ Site criado usando a API da [Marvel](https://developer.marvel.com/). Conheça ma
 
 - Javascript (react)
 - Styled Components (estilização)
+- Typescript
 
 
 ## Autor
