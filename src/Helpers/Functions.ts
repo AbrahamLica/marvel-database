@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { RequisicaoType } from "../Types/Types";
+import { RequestType } from "../Types/Types";
 import { Context } from "../Context/Context";
 import { useContext } from "react";
 
@@ -7,9 +7,8 @@ import { useContext } from "react";
 
 const publicKey = "8df0db429915d47e065eb03b37ca9039";
 const hash = "4a8b729d09d1d2ad3fb626dff7e2165d";
-var selectedCategoryy = "";
 
-export async function executarRequisicao(
+export async function executeRequest(
   dispatch: any,
   setRequisicao: Dispatch<SetStateAction<any>>,
   requisicao: any
@@ -30,7 +29,24 @@ export async function executarRequisicao(
         loading: false,
       },
     });
-  }, 1000);
+  }, 300);
+}
+
+export async function executeRequestComics(state: any, setRequisicao: any) {
+  const newRequisicao = [];
+
+  for (let i = 0; i < state.marvel.comics?.items.length; i++) {
+    const arrayItem = state.marvel.comics?.items[i];
+    if (arrayItem) {
+      const req = await fetch(
+        `${arrayItem.resourceURI}?ts=1&apikey=8df0db429915d47e065eb03b37ca9039&hash=4a8b729d09d1d2ad3fb626dff7e2165d`
+      );
+      const json = await req.json();
+      newRequisicao.push(json);
+    }
+  }
+
+  setRequisicao(newRequisicao);
 }
 
 export function goToSelectedCategory(
@@ -38,37 +54,15 @@ export function goToSelectedCategory(
   dispatch: any,
   state: any
 ) {
-  if (selectedCategory == "characters") {
-    selectedCategoryy = "characters";
-    dispatch({
-      type: "SELECT_CATEGORY_CHARACTERS",
-      payload: {
-        loadedItems: true,
-        selectedCategory: selectedCategory,
-        fetch: `http://gateway.marvel.com/v1/public/${selectedCategoryy}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
-      },
-    });
-  } else if (selectedCategory == "comics") {
-    selectedCategoryy = "comics";
-    dispatch({
-      type: "SELECT_CATEGORY_COMICS",
-      payload: {
-        loadedItems: true,
-        selectedCategory: selectedCategory,
-        fetch: `http://gateway.marvel.com/v1/public/${selectedCategoryy}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
-      },
-    });
-  } else {
-    selectedCategoryy = "series";
-    dispatch({
-      type: "SELECT_CATEGORY_SERIES",
-      payload: {
-        loadedItems: true,
-        selectedCategory: selectedCategory,
-        fetch: `http://gateway.marvel.com/v1/public/${selectedCategoryy}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
-      },
-    });
-  }
+  dispatch({
+    type: "SELECT_CATEGORY",
+    payload: {
+      loadedItems: true,
+      selectedCategory: selectedCategory,
+      fetch: `http://gateway.marvel.com/v1/public/${selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=0`,
+      currentPage: 0,
+    },
+  });
 }
 
 export function OpenDetails(
@@ -180,13 +174,16 @@ export function backHome(usenavigate: any) {
 }
 
 export function backPage(dispatch: any, state: any) {
-  dispatch({
-    type: "BACK_PAGE",
-    payload: {
-      currentPage: (state.others.currentPage -= 100),
-      fetch: `http://gateway.marvel.com/v1/public/${selectedCategoryy}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
-    },
-  });
+  if (state.others.currentPage > 0) {
+    dispatch({
+      type: "BACK_PAGE",
+      payload: {
+        currentPage: (state.others.currentPage -= 100),
+        fetch: `http://gateway.marvel.com/v1/public/${state.others.selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
+      },
+    });
+  }
+  console.log("executei backPage");
 }
 
 export function nextPage(dispatch: any, state: any) {
@@ -194,9 +191,10 @@ export function nextPage(dispatch: any, state: any) {
     type: "NEXT_PAGE",
     payload: {
       currentPage: (state.others.currentPage += 100),
-      fetch: `http://gateway.marvel.com/v1/public/${selectedCategoryy}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
+      fetch: `http://gateway.marvel.com/v1/public/${state.others.selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
     },
   });
+  console.log("executei nextPage");
 }
 
 // Others
@@ -265,4 +263,16 @@ export function backToHome(dispatch: any, usenavigate: any) {
     type: "CLEAR_ALL_INFORMATIONS_2",
   });
   usenavigate("/");
+}
+
+export function FormatDate(state: any, setDate: any) {
+  if (state.marvel.dates) {
+    let datee = state.marvel.dates[0].date;
+    let slicedDate = datee.slice(0, 10);
+    let day = slicedDate.slice(8, 10);
+    let month = slicedDate.slice(5, 7);
+    let year = slicedDate.slice(0, 4);
+    let dateFormated = `${day}/${month}/${year}`;
+    setDate(dateFormated);
+  }
 }

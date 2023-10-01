@@ -104,30 +104,13 @@ export function reducerOthers(
   action: ActionType
 ) {
   switch (action.type) {
-    case "SELECT_CATEGORY_CHARACTERS":
+    case "SELECT_CATEGORY":
       return {
         ...state,
         loadedItems: action.payload.loadedItems,
         selectedCategory: action.payload.selectedCategory,
         fetch: action.payload.fetch,
-      };
-      break;
-
-    case "SELECT_CATEGORY_COMICS":
-      return {
-        ...state,
-        loadedItems: action.payload.loadedItems,
-        selectedCategory: action.payload.selectedCategory,
-        fetch: action.payload.fetch,
-      };
-      break;
-
-    case "SELECT_CATEGORY_SERIES":
-      return {
-        ...state,
-        loadedItems: action.payload.loadedItems,
-        selectedCategory: action.payload.selectedCategory,
-        fetch: action.payload.fetch,
+        currentPage: action.payload.currentPage,
       };
       break;
 
@@ -135,7 +118,7 @@ export function reducerOthers(
       return {
         ...state,
         currentPage: action.payload.currentPage,
-        fetch: action.payload.fetch
+        fetch: action.payload.fetch,
       };
       break;
 
@@ -143,7 +126,7 @@ export function reducerOthers(
       return {
         ...state,
         currentPage: action.payload.currentPage,
-        fetch: action.payload.fetch
+        fetch: action.payload.fetch,
       };
       break;
 

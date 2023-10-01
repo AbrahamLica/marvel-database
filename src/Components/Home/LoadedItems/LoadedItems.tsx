@@ -1,25 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../../Context/Context";
-import { RequisicaoType } from "../../../Types/Types";
+import { RequestType } from "../../../Types/Types";
 import * as G from "../../../Helpers/GlobalStyles";
 import * as C from "./styles";
 import ProgressBar from "../../ProgressBar/ProgressBar";
 import LoadingHamster from "../LoadingHamster/LoadingHamster";
 import {
-  executarRequisicao,
+  executeRequest,
   goToSelectedCategory,
   OpenDetails,
 } from "../../../Helpers/Functions";
 
 const LoadedItems = () => {
   const { state, dispatch } = useContext(Context);
-  const [requisicao, setRequisicao] = useState<RequisicaoType[]>([]);
+  const [request, setRequest] = useState<RequestType[]>([]);
   const usenavigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    executarRequisicao(dispatch, setRequisicao, state.others.fetch);
+    executeRequest(dispatch, setRequest, state.others.fetch);
   }, [state.others.fetch]);
 
   return (
@@ -30,7 +30,7 @@ const LoadedItems = () => {
         <LoadingHamster></LoadingHamster>
       ) : (
         <>
-          {requisicao.map((item, index) => (
+          {request.map((item, index) => (
             <C.ContainerCard key={index}>
               <C.ImgCard
                 onClick={() => OpenDetails(item, state, dispatch, usenavigate)}
@@ -90,7 +90,7 @@ const LoadedItems = () => {
               <C.ButtonDetails
                 onClick={() => OpenDetails(item, state, dispatch, usenavigate)}
               >
-                Details
+                Detalhes
               </C.ButtonDetails>
             </C.ContainerCard>
           ))}

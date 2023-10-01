@@ -30,7 +30,7 @@ export type OthersReducerInitialStateType = {
   selectedCategory: string;
 };
 
-export type RequisicaoType = {
+export type RequestType = {
   //IN COMMON
   id?: number;
   description?: string;

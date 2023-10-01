@@ -20,16 +20,6 @@ const Footer = () => {
     convertNumberPage(state, setNumberPage);
   }, [state.others.currentPage]);
 
-  function handleBackPage() {
-    backPage(dispatch, state);
-    // goToSelectedCategory(state.others.selectedCategory, dispatch, state);
-  }
-
-  function handleNextPage() {
-    nextPage(dispatch, state);
-    // goToSelectedCategory(state.others.selectedCategory, dispatch, state);
-  }
-
   return (
     <>
       {state.others.loading == true ? null : (
@@ -43,11 +33,21 @@ const Footer = () => {
           <C.ContainerNextBack>
             <G.Container displayFlex>
               <G.Container cursorPointer>
-                <img src={back} onClick={handleBackPage} alt="" width="40px" />
+                <img
+                  src={back}
+                  onClick={() => backPage(dispatch, state)}
+                  alt=""
+                  width="40px"
+                />
               </G.Container>
 
               <G.Container cursorPointer>
-                <img src={next} onClick={handleNextPage} alt="" width="40px" />
+                <img
+                  src={next}
+                  onClick={() => nextPage(dispatch, state)}
+                  alt=""
+                  width="40px"
+                />
               </G.Container>
             </G.Container>
           </C.ContainerNextBack>
