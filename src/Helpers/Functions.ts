@@ -59,7 +59,7 @@ export function goToSelectedCategory(
     payload: {
       loadedItems: true,
       selectedCategory: selectedCategory,
-      fetch: `http://gateway.marvel.com/v1/public/${selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=0`,
+      fetch: `https://gateway.marvel.com/v1/public/${selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=0`,
       currentPage: 0,
     },
   });
@@ -179,7 +179,7 @@ export function backPage(dispatch: any, state: any) {
       type: "BACK_PAGE",
       payload: {
         currentPage: (state.others.currentPage -= 100),
-        fetch: `http://gateway.marvel.com/v1/public/${state.others.selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
+        fetch: `https://gateway.marvel.com/v1/public/${state.others.selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
       },
     });
   }
@@ -191,7 +191,7 @@ export function nextPage(dispatch: any, state: any) {
     type: "NEXT_PAGE",
     payload: {
       currentPage: (state.others.currentPage += 100),
-      fetch: `http://gateway.marvel.com/v1/public/${state.others.selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
+      fetch: `https://gateway.marvel.com/v1/public/${state.others.selectedCategory}?ts=1&apikey=${publicKey}&hash=${hash}&limit=100&offset=${state.others.currentPage}`,
     },
   });
   console.log("executei nextPage");
