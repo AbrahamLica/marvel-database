@@ -16,10 +16,10 @@ Site criado usando a API da [Marvel](https://developer.marvel.com/). Conheça ma
 
 
 <h3>Screenshot</h3>
-<img src="./src/media/screenshot.png">
+<img src="./src/Media/screenshot.png">
 
 
-<img src="./src/media/meu-logo-branco.png" width='300px'>
+<img src="./src/Media/meu-logo-branco.png" width='300px'>
 
 
 
